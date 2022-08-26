@@ -18,7 +18,7 @@ const ButtonView = styled.TouchableOpacity`
 // Types
 import { ButtonProps } from "./types";
 
-const Body1: FunctionComponent<ButtonProps> = (props) => {
+const Button: FunctionComponent<ButtonProps> = (props) => {
     return ( 
         <ButtonView onPress={props.onPress} style={props.btnStyles}>
             <Cap1 textStyles={props.textStyles}>{props.children}</Cap1>
@@ -26,4 +26,4 @@ const Body1: FunctionComponent<ButtonProps> = (props) => {
     );
 };
 
-export default Body1;
+export default Button;

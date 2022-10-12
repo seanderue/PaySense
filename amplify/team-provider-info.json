@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-paysense-dev-103043-authRole",
+      "UnauthRoleArn": "arn:aws:iam::630334398663:role/amplify-paysense-dev-103043-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::630334398663:role/amplify-paysense-dev-103043-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-paysense-dev-103043-deployment",
+      "UnauthRoleName": "amplify-paysense-dev-103043-unauthRole",
+      "StackName": "amplify-paysense-dev-103043",
+      "StackId": "arn:aws:cloudformation:us-east-1:630334398663:stack/amplify-paysense-dev-103043/55c0cba0-2870-11ed-956e-0afb34e334ab",
+      "AmplifyAppId": "d3avqrpx0oguck"
+    },
+    "categories": {
+      "auth": {
+        "paysensea0b1768b": {}
+      }
+    }
+  }
+}

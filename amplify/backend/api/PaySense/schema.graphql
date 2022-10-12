@@ -1,0 +1,51 @@
+type Transaction @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String!
+  amount: Float!
+  date: AWSDate!
+  memo: String
+  is_sorted: Boolean!
+  iso_currency_code: String!
+  budgetID: ID! @index(name: "byBudget")
+}
+
+type SavingGoal @model @auth(rules: [{allow: public}, {allow: owner}]) {
+  id: ID!
+  name: String!
+  percent_of_income: Float!
+  date_created: AWSDate!
+  date_affordable: AWSDate!
+  is_paused: Boolean
+  pause_duration_hour: Int
+  userID: ID! @index(name: "byUser")
+}
+
+type User @model @auth(rules: [{allow: public}, {allow: owner}]) {
+  id: ID!
+  username: String!
+  Budgets: [SavingGoal] @hasMany(indexName: "byUser", fields: ["id"])
+  email: AWSEmail!
+  income_distribution: [AWSJSON!]!
+  is_premium: Boolean!
+  img: AWSURL
+  promo_code: AWSURL
+  SavingGoals: [SavingGoal] @hasMany(indexName: "byUser", fields: ["id"])
+}
+
+enum Categories {
+  NEED
+  SAVE
+  WANT
+}
+
+type Budget @model @auth(rules: [{allow: public}, {allow: owner}]) {
+  id: ID!
+  name: String!
+  percent_of_income: Float!
+  balance: Float!
+  img: AWSURL!
+  userID: ID! @index(name: "byUser")
+  category: Categories
+  Transactions: [Transaction] @hasMany(indexName: "byBudget", fields: ["id"])
+}
+ 

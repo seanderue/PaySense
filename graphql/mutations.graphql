@@ -1,0 +1,313 @@
+# this is an auto generated file. This will be overwritten
+mutation CreateUser(
+  $input: CreateUserInput!
+  $condition: ModelUserConditionInput
+) {
+  createUser(input: $input, condition: $condition) {
+    id
+    username
+    SavingGoals {
+      items {
+        id
+        name
+        percent_of_savings
+        img
+        date_created
+        date_affordable
+        userID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    email
+    income_distribution
+    Budgets {
+      items {
+        id
+        name
+        percent_of_category
+        category
+        img
+        userID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    is_premium
+    date_created
+    img
+    promo_code
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation UpdateUser(
+  $input: UpdateUserInput!
+  $condition: ModelUserConditionInput
+) {
+  updateUser(input: $input, condition: $condition) {
+    id
+    username
+    SavingGoals {
+      items {
+        id
+        name
+        percent_of_savings
+        img
+        date_created
+        date_affordable
+        userID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    email
+    income_distribution
+    Budgets {
+      items {
+        id
+        name
+        percent_of_category
+        category
+        img
+        userID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    is_premium
+    date_created
+    img
+    promo_code
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation DeleteUser(
+  $input: DeleteUserInput!
+  $condition: ModelUserConditionInput
+) {
+  deleteUser(input: $input, condition: $condition) {
+    id
+    username
+    SavingGoals {
+      items {
+        id
+        name
+        percent_of_savings
+        img
+        date_created
+        date_affordable
+        userID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    email
+    income_distribution
+    Budgets {
+      items {
+        id
+        name
+        percent_of_category
+        category
+        img
+        userID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    is_premium
+    date_created
+    img
+    promo_code
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation CreateSavingGoal(
+  $input: CreateSavingGoalInput!
+  $condition: ModelSavingGoalConditionInput
+) {
+  createSavingGoal(input: $input, condition: $condition) {
+    id
+    name
+    percent_of_savings
+    img
+    date_created
+    date_affordable
+    userID
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation UpdateSavingGoal(
+  $input: UpdateSavingGoalInput!
+  $condition: ModelSavingGoalConditionInput
+) {
+  updateSavingGoal(input: $input, condition: $condition) {
+    id
+    name
+    percent_of_savings
+    img
+    date_created
+    date_affordable
+    userID
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation DeleteSavingGoal(
+  $input: DeleteSavingGoalInput!
+  $condition: ModelSavingGoalConditionInput
+) {
+  deleteSavingGoal(input: $input, condition: $condition) {
+    id
+    name
+    percent_of_savings
+    img
+    date_created
+    date_affordable
+    userID
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation CreateBudget(
+  $input: CreateBudgetInput!
+  $condition: ModelBudgetConditionInput
+) {
+  createBudget(input: $input, condition: $condition) {
+    id
+    name
+    percent_of_category
+    category
+    img
+    transactions {
+      id
+      name
+      description
+      amount
+      date
+      is_sorted
+      budget_id
+      iso_currency_code
+      bank_account_name
+      bank_account_id
+    }
+    userID
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation UpdateBudget(
+  $input: UpdateBudgetInput!
+  $condition: ModelBudgetConditionInput
+) {
+  updateBudget(input: $input, condition: $condition) {
+    id
+    name
+    percent_of_category
+    category
+    img
+    transactions {
+      id
+      name
+      description
+      amount
+      date
+      is_sorted
+      budget_id
+      iso_currency_code
+      bank_account_name
+      bank_account_id
+    }
+    userID
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation DeleteBudget(
+  $input: DeleteBudgetInput!
+  $condition: ModelBudgetConditionInput
+) {
+  deleteBudget(input: $input, condition: $condition) {
+    id
+    name
+    percent_of_category
+    category
+    img
+    transactions {
+      id
+      name
+      description
+      amount
+      date
+      is_sorted
+      budget_id
+      iso_currency_code
+      bank_account_name
+      bank_account_id
+    }
+    userID
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}

@@ -16,6 +16,7 @@ import { withAuthenticator } from "@aws-amplify/ui-react";
 import { BudgetButtonSection } from "./components/BudgetButtons/BudgetButtonSection";
 import { StyleSheet, Text, View } from "react-native";
 import { BudgetButtonPage } from "./components/BudgetButtons/BudgetButtonPage";
+import { Home } from "./screens/Home";
 
 function App() {
   let [fontsLoaded] = useFonts({
@@ -100,22 +101,23 @@ function App() {
   ];
 
   return (
-    <>
-      <View style={{ marginTop: 250 }}>
-        <Text>Testing the font 🍎👾🍗🛼🏡🥊</Text>
-        <Text style={{ fontFamily: "Poppins-Regular" }}>
-          Testing the font 🍎👾🍗🛼🏡🥊
-        </Text>
-      </View>
-      <View style={styles.container}>
-        <BudgetButtonSection data={budgetData} page={0} />
-      </View>
-      {/* <View style={styles.container}>
-        <BudgetButtonPage data={budgetData} page={0} />
-      </View> */}
-    </>
+    // <>
+    //   <View style={{ marginTop: 250 }}>
+    //     <Text>Testing the font 🍎👾🍗🛼🏡🥊</Text>
+    //     <Text style={{ fontFamily: "Poppins-Regular" }}>
+    //       Testing the font 🍎👾🍗🛼🏡🥊
+    //     </Text>
+    //   </View>
+    //   <View style={styles.container}>
+    //     <BudgetButtonSection data={budgetData} page={0} />
+    //   </View>
+    //   {/* <View style={styles.container}>
+    //     <BudgetButtonPage data={budgetData} page={0} />
+    //   </View> */}
+    // </>
+    // return <RootStack />;
+    <Home />
   );
-  // return <RootStack />;
 }
 
 //Migrate this code

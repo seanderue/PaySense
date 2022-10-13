@@ -1,126 +1,65 @@
-import React, { FunctionComponent, useEffect, useState } from "react";
-import { StatusBar } from "expo-status-bar";
-import styled from "styled-components/native";
-
-// custom components
-import { Container } from "../components/shared";
+import React, { FC } from "react";
+import { View, StyleSheet } from "react-native";
 import { colors } from "../components/colors";
-import BudgetCardSection from "../components/BudgetButtons/depreciated (delete me)/OldBudgetButtonSection";
-import TransactionSection from "../components/Transactions/TransactionsSection";
+import { ScreenHeight, ScreenWidth } from "../components/shared";
+import H1 from "../components/Texts/H1";
 
-// images
-import diningImg from "../assets/cards/dining-out.jpeg";
+const CONTENT_WIDTH_PERCENTAGE = 0.8746;
+const TOP_FOLD_HEIGHT_PERCENTAGE = 0.328;
+const BOTTOM_FOLD_HEIGHT_PERCENTAGE = 1 - TOP_FOLD_HEIGHT_PERCENTAGE;
+const SAFE_STATUS_BAR_HEIGHT = 44;
 
-// types
-import { RootStackParamList } from "../navigators/RootStack";
-import { StackScreenProps } from "@react-navigation/stack";
-import { BudgetCardProps as BudgetCard } from "../components/BudgetButtons/types";
+interface HomeProps {}
 
-export type Props = StackScreenProps<RootStackParamList, "Home">;
-
-// GraphQL queries
-import { API, graphqlOperation } from "aws-amplify";
-import { ListBudgetsQuery } from "../src/API";
-import { listBudgets } from "../src/graphql/queries";
-import { mapListBudgets } from "../src/models/budgetCards/mapListBudgetsQuery";
-import callGraphQL from "../util/callGraphQL";
-import { Image } from "react-native";
-
-const HomeContainer = styled(Container)`
-  background-color: ${colors.white};
-  flex: 1;
-  width: 100%;
-`;
-
-const Home: FunctionComponent<Props> = () => {
-  const [budgets, setBudgets] = useState<BudgetCard[]>([]);
-
-  useEffect(() => {
-    async function getData() {
-      try {
-        const budgetData = await callGraphQL<ListBudgetsQuery>(listBudgets);
-        // console.log(JSON.stringify(budgetData));
-        const budgets = mapListBudgets(budgetData);
-        setBudgets(budgets);
-      } catch (error) {
-        console.error("Error fetching budgets", error);
-      }
-    }
-    getData();
-  }, []);
-
-  const cardsData = [
-    {
-      id: 1,
-      title: "Dining out",
-      balance: 420.69,
-      flag: false,
-      background: diningImg,
-    },
-    {
-      id: 2,
-      title: "Another dining out",
-      balance: 4102.54,
-      flag: false,
-      background: diningImg,
-    },
-    {
-      id: 3,
-      title: "Last dining out",
-      balance: 10.69,
-      flag: false,
-      background: diningImg,
-    },
-  ];
-
-  const transactionData = [
-    {
-      id: 1,
-      amount: "-$40",
-      date: "14 Sep 2022",
-      title: "got hecked",
-      subtitle: "Uber",
-      art: {
-        background: colors.green,
-        icon: "car",
-      },
-    },
-    {
-      id: 2,
-      amount: "-$69",
-      date: "14 Sep 2022",
-      title: "Ice cream truck",
-      subtitle: "Handles",
-      art: {
-        background: colors.red,
-        icon: "cart",
-      },
-    },
-    {
-      id: 3,
-      amount: "-$20",
-      date: "14 Sep 2022",
-      title: "New squirt gun",
-      subtitle: "Walmart",
-      art: {
-        background: colors.yellow,
-        icon: "airplane",
-      },
-    },
-  ];
-
+export const Home: FC<HomeProps> = () => {
   return (
-    <HomeContainer>
-      <StatusBar style="dark" />
-      <Image
-        source={{
-          uri: "https://cdn6.f-cdn.com/contestentries/1485199/27006121/5ca3e39ced7f1_thumb900.jpg",
-        }}
-      />
-      <BudgetCardSection data={budgets} />
-      <TransactionSection data={transactionData} />
-    </HomeContainer>
+    <View style={styles.background}>
+      <View style={styles.wrapper}>
+        <View style={styles.topFoldContainer}>
+          <View style={styles.iconsContainer}></View>
+          <H1>TESTICLES</H1>
+        </View>
+        <View style={styles.bottomFoldContainer}></View>
+      </View>
+    </View>
   );
 };
 
-export default Home;
+const styles = StyleSheet.create({
+  background: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    bottom: 0,
+    right: 0,
+    backgroundColor: "#33404F",
+  },
+  wrapper: {
+    height: ScreenHeight,
+    width: ScreenWidth,
+    alignSelf: "center",
+    // backgroundColor: "red",
+    display: "flex",
+    flexDirection: "column",
+  },
+  topFoldContainer: {
+    width: "100%",
+    paddingHorizontal:
+      (ScreenWidth - ScreenWidth * CONTENT_WIDTH_PERCENTAGE) / 2,
+    flex: TOP_FOLD_HEIGHT_PERCENTAGE,
+    // paddingTop: SAFE_STATUS_BAR_HEIGHT,
+  },
+  bottomFoldContainer: {
+    width: "100%",
+    flex: BOTTOM_FOLD_HEIGHT_PERCENTAGE,
+    backgroundColor: colors.white,
+    borderTopEndRadius: 47,
+    borderTopLeftRadius: 47,
+  },
+  iconsContainer: {
+    marginTop: SAFE_STATUS_BAR_HEIGHT,
+    width: "100%",
+    height: 24,
+    backgroundColor: "cyan",
+  },
+});

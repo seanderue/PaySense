@@ -12,7 +12,7 @@ import Overline from "../../Texts/Overline";
 
 // navigation
 import { useNavigation } from "@react-navigation/native";
-import { Props as HomeProps } from "../../../screens/Home";
+import { Props as HomeProps } from "../../../screens/OldNewHome";
 
 const BudgetCardBackground = styled.ImageBackground`
   height: ${ScreenHeight * 0.0972}px;

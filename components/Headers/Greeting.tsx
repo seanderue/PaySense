@@ -9,40 +9,23 @@ import { colors } from "../colors";
 // We will delete Overline after TUT
 
 const StyledView = styled.View`
-    flex-direction: column;
-    flex: 1;
-    justify-content: center;
+  flex-direction: column;
+  flex: 1;
+  justify-content: center;
 `;
 
 interface GreetingProps {
-    mainText: string;
-    subText: string;
-    mainTextStyles?: StyleProp<TextStyle>;
-    subTextStyles?: StyleProp<TextStyle>;
+  mainText: string;
+  subText: string;
 }
 
 const Greeting: FunctionComponent<GreetingProps> = (props) => {
-    return (
-        <StyledView>
-            <Title1 textStyles={[
-                {
-                    color: colors.neutral2,
-                },
-                props.mainTextStyles
-            ]}>
-                {props.mainText}
-            </Title1>
-            <Overline textStyles={[
-                {
-                    color: colors.neutral2,
-                },
-                props.subTextStyles
-            ]}>
-                {props.subText}
-
-            </Overline>
-        </StyledView>
-    );
+  return (
+    <StyledView>
+      <Title1 color={colors.neutral2}>{props.mainText}</Title1>
+      <Overline color={colors.neutral2}>{props.subText}</Overline>
+    </StyledView>
+  );
 };
 
 export default Greeting;

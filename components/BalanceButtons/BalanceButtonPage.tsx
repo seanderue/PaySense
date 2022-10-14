@@ -1,21 +1,22 @@
 import React, { FC } from "react";
-import { BudgetButton } from "./BudgetButton";
+import { BalanceButton } from "./BalanceButton";
 import { Dimensions, StyleSheet, View } from "react-native";
-import H1 from "../Texts/H1";
+import { ScreenWidth as width } from "../shared/sizes";
 
-//MAY NEED TO RENAME
-import { BudgetButtonPageProps } from "./types";
+import { BalanceButtonPageProps } from "./types";
+import { NewBalance } from "./NewBalance";
 
-const { width } = Dimensions.get("window");
-
-export const BudgetButtonPage: FC<BudgetButtonPageProps> = ({ data, page }) => {
+export const BalanceButtonPage: FC<BalanceButtonPageProps> = ({
+  data,
+  page,
+}) => {
   const sixDataElements = data.slice(page * 6, page * 6 + 6);
   const topRowElements = sixDataElements.slice(0, 3).map((item) => {
-    if (item.id === "1") return <H1 key={item.id}>New</H1>;
-    else return <BudgetButton key={item.id} {...item} />;
+    if (item.id === "1") return <NewBalance key={item.id} />;
+    else return <BalanceButton key={item.id} {...item} />;
   });
   const bottomRowElements = sixDataElements.slice(-3).map((item) => {
-    return <BudgetButton key={item.id} {...item} />;
+    return <BalanceButton key={item.id} {...item} />;
   });
 
   return (
@@ -29,21 +30,21 @@ export const BudgetButtonPage: FC<BudgetButtonPageProps> = ({ data, page }) => {
 
 const styles = StyleSheet.create({
   pageContainer: {
-    backgroundColor: "pink",
+    // backgroundColor: "pink",
     display: "flex",
     alignItems: "center",
     width: width,
     // justifyContent: "center",
   },
   pageTopRow: {
-    backgroundColor: "teal",
+    // backgroundColor: "teal",
     display: "flex",
     flexDirection: "row",
     width: "80%",
     justifyContent: "space-between",
   },
   pageBottomRow: {
-    backgroundColor: "green",
+    // backgroundColor: "green",
     display: "flex",
     flexDirection: "row",
     width: "80%",

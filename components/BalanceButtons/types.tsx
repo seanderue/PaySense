@@ -9,14 +9,9 @@ export interface BudgetCardProps {
   background: ImageSourcePropType;
 }
 
-//DELETE ME
-export interface BudgetCardSectionProps {
-  data: Array<BudgetCardProps>;
-}
-
 //May need to update the type of icon
 //May want to make a custom enum type for flags
-export interface BudgetButtonProps {
+export interface BalanceButtonProps {
   id: string;
   title: string;
   balance: number;
@@ -25,12 +20,12 @@ export interface BudgetButtonProps {
   percentRemaining: number;
 }
 
-export interface BudgetButtonPageProps {
-  data: Array<BudgetButtonProps>;
+export interface BalanceButtonPageProps {
+  data: Array<BalanceButtonProps>;
   page: number;
 }
 
-export interface BudgetButtonDetailsProps {
+export interface BalanceButtonDetailsProps {
   title: string;
   balance: number;
   percentRemaining: number;
@@ -39,11 +34,10 @@ export interface BudgetButtonDetailsProps {
 export interface DonutGradientPathProps {
   strokeWidth: number;
   radius: number;
-  //breadcrumb change (%remain to SkiaMut...<number> from number)
   percentRemaining: SkiaMutableValue<number>;
 }
 
-export interface BudgetIconProps {
+export interface BalanceIconProps {
   emoji: string;
   percentRemaining: SkiaMutableValue<number>;
 }

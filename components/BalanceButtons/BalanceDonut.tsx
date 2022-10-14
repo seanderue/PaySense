@@ -12,13 +12,13 @@ import React, { FC } from "react";
 import { StyleSheet, View } from "react-native";
 import { DonutGradientPath } from "./DonutGradientPath";
 
-interface BudgetDonutProps {
+interface BalanceDonutProps {
   strokeWidth: number;
   radius: number;
   percentRemaining: SkiaMutableValue<number>;
 }
 
-export const BudgetDonut: FC<BudgetDonutProps> = ({
+export const BalanceDonut: FC<BalanceDonutProps> = ({
   strokeWidth,
   radius,
   percentRemaining,

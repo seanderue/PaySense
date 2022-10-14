@@ -1,7 +1,7 @@
 import { ListBudgetsQuery } from "../../API";
 import { GraphQLResult } from "@aws-amplify/api";
 import { Storage } from "@aws-amplify/storage";
-import { BudgetCardProps } from "../../../components/BudgetButtons/types";
+import { BudgetCardProps } from "../../../components/BalanceButtons/types";
 import { ImageURISource } from "react-native";
 
 // interface BudgetCardProps {

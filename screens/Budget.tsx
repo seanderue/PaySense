@@ -3,9 +3,8 @@ import { StatusBar } from "expo-status-bar";
 import styled from "styled-components/native";
 
 // custom components
-import { Container } from "../components/shared";
-import { colors } from "../components/colors";
-import BudgetCardSection from "../components/BudgetButtons/depreciated (delete me)/OldBudgetButtonSection";
+import { Container } from "../components/shared/sizes";
+import { colors } from "../components/shared/colors";
 import TransactionSection from "../components/Transactions/TransactionsSection";
 
 // images

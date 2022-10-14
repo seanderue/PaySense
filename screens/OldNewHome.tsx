@@ -3,9 +3,9 @@ import { StatusBar } from "expo-status-bar";
 import styled from "styled-components/native";
 
 // custom components
-import { Container } from "../components/shared";
-import { colors } from "../components/colors";
-import BudgetCardSection from "../components/BudgetButtons/depreciated (delete me)/OldBudgetButtonSection";
+import { Container } from "../components/shared/sizes";
+import { colors } from "../components/shared/colors";
+import BudgetCardSection from "../components/BalanceButtons/depreciated (delete me)/OldBudgetButtonSection";
 import TransactionSection from "../components/Transactions/TransactionsSection";
 
 // images
@@ -14,7 +14,7 @@ import diningImg from "../assets/cards/dining-out.jpeg";
 // types
 import { RootStackParamList } from "../navigators/RootStack";
 import { StackScreenProps } from "@react-navigation/stack";
-import { BudgetCardProps as BudgetCard } from "../components/BudgetButtons/types";
+import { BudgetCardProps as BudgetCard } from "../components/BalanceButtons/types";
 
 export type Props = StackScreenProps<RootStackParamList, "Home">;
 

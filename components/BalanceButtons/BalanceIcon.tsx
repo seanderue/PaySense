@@ -8,15 +8,15 @@ import {
 } from "@shopify/react-native-skia";
 import React, { FC } from "react";
 import { PixelRatio, StyleSheet, View } from "react-native";
-import { BudgetDonut } from "./BudgetDonut";
+import { BalanceDonut } from "./BalanceDonut";
 import { DonutGradientPath } from "./DonutGradientPath";
 
 const RADIUS = PixelRatio.roundToNearestPixel(79.32 / 2);
-const STROKE_WIDTH = 4.5;
+const STROKE_WIDTH = 3;
 
-import { BudgetIconProps } from "./types";
+import { BalanceIconProps } from "./types";
 
-export const BudgetIcon: FC<BudgetIconProps> = ({
+export const BalanceIcon: FC<BalanceIconProps> = ({
   emoji,
   percentRemaining,
 }) => {

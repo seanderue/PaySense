@@ -3,8 +3,8 @@ import { StatusBar } from "expo-status-bar";
 import styled from "styled-components/native";
 
 // custom components
-import { Container } from "../components/shared";
-import { colors } from "../components/colors";
+import { Container } from "../components/shared/sizes";
+import { colors } from "../components/shared/colors";
 import H1 from "../components/Texts/H1";
 import Body1 from "../components/Texts/Body1";
 import RegularButton from "../components/Buttons/RegularButton";

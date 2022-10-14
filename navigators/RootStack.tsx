@@ -2,11 +2,11 @@ import React, { FunctionComponent } from "react";
 
 // React Screens
 import Welcome from "../screens/Welcome";
-import Home from "../screens/Home";
+import Home from "../screens/OldNewHome";
 import Budget from "../screens/Budget";
 
 // custom components
-import { colors } from "../components/colors";
+import { colors } from "../components/shared/colors";
 import Greeting from "../components/Headers/Greeting";
 import Profile from "../components/Headers/Profile";
 
@@ -17,7 +17,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 // ---Budget Screen Imports---
 
 // params
-import { BudgetCardProps } from "../components/BudgetButtons/types";
+import { BudgetCardProps } from "../components/BalanceButtons/types";
 
 // budget back icon
 import { Ionicons } from "@expo/vector-icons";

@@ -1,4 +1,4 @@
-import { BudgetCardProps } from "../BudgetButtons/types";
+import { BudgetCardProps } from "../BalanceButtons/types";
 
 export interface AmountProps {
   balance: number;

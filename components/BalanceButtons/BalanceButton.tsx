@@ -6,8 +6,8 @@ import {
 } from "@shopify/react-native-skia";
 import React, { FC, useEffect } from "react";
 import { PixelRatio, Pressable, StyleSheet, View, Text } from "react-native";
-import { BudgetButtonDetails } from "./BudgetButtonDetails";
-import { BudgetIcon } from "./BudgetIcon";
+import { BalanceButtonDetails } from "./BalanceButtonDetails";
+import { BalanceIcon } from "./BalanceIcon";
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
@@ -19,9 +19,9 @@ import Animated, {
 const RADIUS = PixelRatio.roundToNearestPixel(79.32 / 2);
 
 // prop types
-import { BudgetButtonProps } from "./types";
+import { BalanceButtonProps } from "./types";
 
-export const BudgetButton: FC<BudgetButtonProps> = ({
+export const BalanceButton: FC<BalanceButtonProps> = ({
   title,
   emojiIcon,
   balance,
@@ -68,10 +68,10 @@ export const BudgetButton: FC<BudgetButtonProps> = ({
 
   return (
     <Animated.View style={[styles.container, animatedStyles]}>
-      <Pressable onPress={animateChart} style={styles.BudgetButtonContainer}>
-        <BudgetIcon emoji={emojiIcon} percentRemaining={chartAnimationState} />
+      <Pressable onPress={animateChart} style={styles.BalanceButtonContainer}>
+        <BalanceIcon emoji={emojiIcon} percentRemaining={chartAnimationState} />
       </Pressable>
-      <BudgetButtonDetails
+      <BalanceButtonDetails
         title={title}
         balance={balance}
         percentRemaining={percentRemaining}
@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  BudgetButtonContainer: {
+  BalanceButtonContainer: {
     height: RADIUS * 2,
     width: RADIUS * 2,
   },

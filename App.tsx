@@ -13,9 +13,9 @@ Amplify.configure(awsconfig);
 
 import { withAuthenticator } from "@aws-amplify/ui-react";
 
-import { BudgetButtonSection } from "./components/BudgetButtons/BudgetButtonSection";
+import { BudgetButtonSection } from "./components/BalanceButtons/BalanceButtonSection";
 import { StyleSheet, Text, View } from "react-native";
-import { BudgetButtonPage } from "./components/BudgetButtons/BudgetButtonPage";
+import { BudgetButtonPage } from "./components/BalanceButtons/BalanceButtonPage";
 import { Home } from "./screens/Home";
 
 function App() {
@@ -25,80 +25,13 @@ function App() {
     "Poppins-Black": require("./assets/fonts/Poppins-Black.ttf"),
     "Poppins-Medium": require("./assets/fonts/Poppins-Medium.ttf"),
     "Poppins-SemiBold": require("./assets/fonts/Poppins-SemiBold.ttf"),
+    "Poppins-ExtraLight": require("./assets/fonts/Poppins-ExtraLight.ttf"),
     "NotoColorEmoji-Regular": require("./assets/fonts/NotoColorEmoji-Regular.ttf"),
   });
 
   if (!fontsLoaded) {
     return <AppLoading />;
   }
-
-  //Migrate some code to a screen for this
-
-  const budgetData = [
-    {
-      id: "1",
-      title: "test",
-      balance: 420.69,
-      emojiIcon: "",
-      percentRemaining: 0.34,
-    },
-    {
-      id: "2",
-      title: "ONE",
-      balance: 420.69,
-      emojiIcon: "🍎",
-      percentRemaining: 0.34,
-    },
-    {
-      id: "3",
-      title: "TWO",
-      balance: 23.19,
-      emojiIcon: "🍎",
-      percentRemaining: 0.23,
-    },
-    {
-      id: "4",
-      title: "THREE",
-      balance: 40,
-      emojiIcon: "🍎",
-      percentRemaining: 0.69,
-    },
-    {
-      id: "5",
-      title: "FOUR",
-      balance: 23.19,
-      emojiIcon: "🍎",
-      percentRemaining: 0.23,
-    },
-    {
-      id: "6",
-      title: "FIVE",
-      balance: 23.19,
-      emojiIcon: "🍎",
-      percentRemaining: 0.23,
-    },
-    {
-      id: "7",
-      title: "SIX",
-      balance: 23.19,
-      emojiIcon: "🍎",
-      percentRemaining: 0.23,
-    },
-    {
-      id: "8",
-      title: "SEVEN",
-      balance: 23.19,
-      emojiIcon: "🍎",
-      percentRemaining: 0.23,
-    },
-    {
-      id: "9",
-      title: "EIGHT",
-      balance: 23.19,
-      emojiIcon: "🍎",
-      percentRemaining: 0.23,
-    },
-  ];
 
   return (
     // <>

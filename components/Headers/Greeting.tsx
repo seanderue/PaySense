@@ -5,7 +5,7 @@ import styled from "styled-components/native";
 // custom components
 import Title1 from "../Texts/Title1";
 import Overline from "../Texts/Overline";
-import { colors } from "../colors";
+import { colors } from "../shared/colors";
 // We will delete Overline after TUT
 
 const StyledView = styled.View`

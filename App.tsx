@@ -13,9 +13,9 @@ Amplify.configure(awsconfig);
 
 import { withAuthenticator } from "@aws-amplify/ui-react";
 
-import { BudgetButtonSection } from "./components/BalanceButtons/BalanceButtonSection";
+import { BalanceButtonSection } from "./components/BalanceButtons/BalanceButtonSection";
 import { StyleSheet, Text, View } from "react-native";
-import { BudgetButtonPage } from "./components/BalanceButtons/BalanceButtonPage";
+import { BalanceButtonPage } from "./components/BalanceButtons/BalanceButtonPage";
 import { Home } from "./screens/Home";
 
 function App() {
@@ -42,10 +42,10 @@ function App() {
     //     </Text>
     //   </View>
     //   <View style={styles.container}>
-    //     <BudgetButtonSection data={budgetData} page={0} />
+    //     <BalanceButtonSection data={balanceData} page={0} />
     //   </View>
     //   {/* <View style={styles.container}>
-    //     <BudgetButtonPage data={budgetData} page={0} />
+    //     <BalanceButtonPage data={balanceData} page={0} />
     //   </View> */}
     // </>
     // return <RootStack />;

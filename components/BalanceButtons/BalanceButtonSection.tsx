@@ -3,19 +3,21 @@ import { Dimensions, StyleSheet, View } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import Animated from "react-native-reanimated";
 import { BalanceButtonPage } from "./BalanceButtonPage";
-import { balanceData } from "../../balanceData";
+import { balanceData } from "../shared/balanceData";
 
-//IRRELEVANT TYPE
-import { BalanceButtonPageProps } from "./types";
+import { CONTENT_WIDTH_PERCENTAGE } from "../../screens/Home";
+import { BALANCE_PAGE_MARGIN } from "../shared/sizes";
 const { width, height } = Dimensions.get("window");
 
-export const BalanceButtonSection: FC<BalanceButtonPageProps> = ({ data }) => {
+export const BalanceButtonSection: FC = () => {
   return (
     <View style={styles.container}>
       <View style={styles.slider}>
         <Animated.ScrollView
           horizontal
-          snapToInterval={width}
+          snapToInterval={
+            width * CONTENT_WIDTH_PERCENTAGE + BALANCE_PAGE_MARGIN
+          }
           decelerationRate={"fast"}
           showsHorizontalScrollIndicator={false}
           bounces={false}

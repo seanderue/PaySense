@@ -2,9 +2,9 @@ import React, { FC } from "react";
 import { StyleSheet, View } from "react-native";
 import { colors } from "../shared/colors";
 
-interface SwitchSelectorProps {}
+interface PageIndicatorProps {}
 
-export const SwitchSelector: FC<SwitchSelectorProps> = () => {
+export const PageIndicator: FC<PageIndicatorProps> = () => {
   return <View style={styles.switchSelectorBG}></View>;
 };
 

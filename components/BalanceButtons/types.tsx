@@ -12,7 +12,7 @@ export interface BudgetCardProps {
 //May need to update the type of icon
 //May want to make a custom enum type for flags
 export interface BalanceButtonProps {
-  id: string;
+  id: number;
   title: string;
   balance: number;
   emojiIcon: string;

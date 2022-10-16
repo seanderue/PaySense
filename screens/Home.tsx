@@ -6,9 +6,11 @@ import { textStyles } from "../components/shared/textStyles";
 
 import Ionicon from "react-native-vector-icons/Ionicons";
 import { BalanceButtonSection } from "../components/BalanceButtons/BalanceButtonSection";
-import { balanceData } from "../balanceData";
+import { balanceData } from "../components/shared/balanceData";
+import { SwitchSelector } from "../components/SwitchSelector/SwitchSelector";
+import { PageIndicator } from "../components/PageIndicator/PageIndicator";
 
-const CONTENT_WIDTH_PERCENTAGE = 0.8746;
+export const CONTENT_WIDTH_PERCENTAGE = 0.8746;
 const TOP_FOLD_HEIGHT_PERCENTAGE = 0.328;
 const BOTTOM_FOLD_HEIGHT_PERCENTAGE = 1 - TOP_FOLD_HEIGHT_PERCENTAGE;
 const SAFE_STATUS_BAR_HEIGHT = 44;
@@ -54,7 +56,13 @@ export const Home: FC<HomeProps> = () => {
           </Text>
         </View>
         <View style={styles.bottomFoldContainer}>
-          <BalanceButtonSection data={balanceData} page={0} />
+          <View style={styles.bottomFoldWrapper}>
+            <View style={styles.SwitchSelector}>
+              <SwitchSelector />
+            </View>
+            <BalanceButtonSection data={balanceData} page={0} />
+            <PageIndicator />
+          </View>
         </View>
       </View>
     </View>
@@ -87,11 +95,20 @@ const styles = StyleSheet.create({
   },
   bottomFoldContainer: {
     width: "100%",
+    // justifyContent: "center",
+    alignItems: "center",
     flex: BOTTOM_FOLD_HEIGHT_PERCENTAGE,
     backgroundColor: colors.white,
-    paddingTop: 60,
+    paddingTop: 21,
     borderTopEndRadius: 47,
     borderTopLeftRadius: 47,
+  },
+  bottomFoldWrapper: {
+    width: ScreenWidth * CONTENT_WIDTH_PERCENTAGE,
+    // flex: 0.8,
+    display: "flex",
+    flexDirection: "column",
+    height: "77%",
   },
   iconsContainer: {
     marginTop: SAFE_STATUS_BAR_HEIGHT,
@@ -111,5 +128,8 @@ const styles = StyleSheet.create({
     textShadowColor: "rgba(0, 0, 0, 0.25)",
     textShadowOffset: { width: 0, height: 4 },
     textShadowRadius: 4,
+  },
+  SwitchSelector: {
+    marginBottom: "5.688%",
   },
 });

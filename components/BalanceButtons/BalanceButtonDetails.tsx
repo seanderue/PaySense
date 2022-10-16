@@ -37,7 +37,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     width: 80,
-    marginBottom: 39,
   },
   percentageText: {
     textAlign: "right",

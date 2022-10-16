@@ -84,6 +84,8 @@ const styles = StyleSheet.create({
   container: {
     justifyContent: "center",
     alignItems: "center",
+    // flex: 0,
+    // flexShrink: 1,
   },
   BalanceButtonContainer: {
     height: RADIUS * 2,

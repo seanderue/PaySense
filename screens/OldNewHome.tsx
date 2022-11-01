@@ -5,18 +5,14 @@ import styled from "styled-components/native";
 // custom components
 import { Container } from "../components/shared/sizes";
 import { colors } from "../components/shared/colors";
-import BudgetCardSection from "../components/BalanceButtons/depreciated (delete me)/OldBudgetButtonSection";
 import TransactionSection from "../components/Transactions/TransactionsSection";
 
 // images
 import diningImg from "../assets/cards/dining-out.jpeg";
 
 // types
-import { RootStackParamList } from "../navigators/RootStack";
 import { StackScreenProps } from "@react-navigation/stack";
 import { BudgetCardProps as BudgetCard } from "../components/BalanceButtons/types";
-
-export type Props = StackScreenProps<RootStackParamList, "Home">;
 
 // GraphQL queries
 import { API, graphqlOperation } from "aws-amplify";
@@ -32,7 +28,7 @@ const HomeContainer = styled(Container)`
   width: 100%;
 `;
 
-const Home: FunctionComponent<Props> = () => {
+const Home: FunctionComponent = () => {
   const [budgets, setBudgets] = useState<BudgetCard[]>([]);
 
   useEffect(() => {
@@ -117,8 +113,6 @@ const Home: FunctionComponent<Props> = () => {
           uri: "https://cdn6.f-cdn.com/contestentries/1485199/27006121/5ca3e39ced7f1_thumb900.jpg",
         }}
       />
-      <BudgetCardSection data={budgets} />
-      <TransactionSection data={transactionData} />
     </HomeContainer>
   );
 };

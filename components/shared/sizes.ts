@@ -12,3 +12,4 @@ export const ScreenWidth = Dimensions.get("screen").width;
 export const ScreenHeight = Dimensions.get("screen").height;
 
 export const BALANCE_PAGE_MARGIN = 60;
+export const CONTENT_WIDTH_PERCENTAGE = 0.8746;

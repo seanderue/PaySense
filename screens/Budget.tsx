@@ -18,7 +18,7 @@ const BalanceContainer = styled(Container)`
 `;
 
 // types
-import { RootStackParamList } from "../navigators/RootStack";
+import { RootStackParamList } from "../navigators/Navigation";
 import { StackScreenProps } from "@react-navigation/stack";
 import AmountSection from "../components/Budget/AmountSection";
 type Props = StackScreenProps<RootStackParamList, "Budget">;

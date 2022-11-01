@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import { View, StyleSheet, Pressable, Text } from "react-native";
 import { colors } from "../components/shared/colors";
 import { ScreenHeight, ScreenWidth } from "../components/shared/sizes";
@@ -6,20 +6,27 @@ import { textStyles } from "../components/shared/textStyles";
 
 import Ionicon from "react-native-vector-icons/Ionicons";
 import { BalanceButtonSection } from "../components/BalanceButtons/BalanceButtonSection";
-import { balanceData } from "../components/shared/balanceData";
 import { SwitchSelector } from "../components/SwitchSelector/SwitchSelector";
-import { PageIndicator } from "../components/PageIndicator/PageIndicator";
 
-export const CONTENT_WIDTH_PERCENTAGE = 0.8746;
+import { CONTENT_WIDTH_PERCENTAGE } from "../components/shared/sizes";
+import { BarGraphic } from "../components/BarGraphic/BarGraphic";
+
+// Navigation types
+import { StackScreenProps } from "@react-navigation/stack";
+
 const TOP_FOLD_HEIGHT_PERCENTAGE = 0.328;
 const BOTTOM_FOLD_HEIGHT_PERCENTAGE = 1 - TOP_FOLD_HEIGHT_PERCENTAGE;
 const SAFE_STATUS_BAR_HEIGHT = 44;
 
-//Migrate some code to a screen for this
+const Home: FC = () => {
+  const [toggledRight, setToggleRight] = useState(false);
 
-interface HomeProps {}
+  const toggleSwitch = () => {
+    setToggleRight((prevState) => {
+      return !prevState;
+    });
+  };
 
-export const Home: FC<HomeProps> = () => {
   return (
     <View style={styles.background}>
       <View style={styles.wrapper}>
@@ -54,14 +61,22 @@ export const Home: FC<HomeProps> = () => {
           <Text style={[textStyles.Subtitle1, styles.heroText]}>
             Here's Your Month's Balance
           </Text>
+          <View style={styles.threeColumn}>
+            <BarGraphic amount={"500.00"} label={"Needs left"} currency={"$"} />
+            <BarGraphic amount={"300.00"} label={"Wants left"} currency={"$"} />
+            <BarGraphic
+              amount={"200.00"}
+              label={"Amount saved"}
+              currency={"$"}
+            />
+          </View>
         </View>
         <View style={styles.bottomFoldContainer}>
           <View style={styles.bottomFoldWrapper}>
-            <View style={styles.SwitchSelector}>
-              <SwitchSelector />
-            </View>
-            <BalanceButtonSection data={balanceData} page={0} />
-            <PageIndicator />
+            <Pressable onPress={toggleSwitch} style={styles.SwitchSelector}>
+              <SwitchSelector toggledRight={toggledRight} />
+            </Pressable>
+            <BalanceButtonSection goalsToggled={toggledRight} />
           </View>
         </View>
       </View>
@@ -92,6 +107,11 @@ const styles = StyleSheet.create({
       (ScreenWidth - ScreenWidth * CONTENT_WIDTH_PERCENTAGE) / 2,
     flex: TOP_FOLD_HEIGHT_PERCENTAGE,
     // paddingTop: SAFE_STATUS_BAR_HEIGHT,
+  },
+  threeColumn: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
   bottomFoldContainer: {
     width: "100%",
@@ -133,3 +153,5 @@ const styles = StyleSheet.create({
     marginBottom: "5.688%",
   },
 });
+
+export default Home;

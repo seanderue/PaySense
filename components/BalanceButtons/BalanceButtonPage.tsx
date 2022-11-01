@@ -5,51 +5,41 @@ import { BALANCE_PAGE_MARGIN, ScreenWidth as width } from "../shared/sizes";
 
 import { BalanceButtonPageProps, BalanceButtonProps } from "./types";
 import { NewBalance } from "./NewBalance";
-import { CONTENT_WIDTH_PERCENTAGE } from "../../screens/Home";
+import { CONTENT_WIDTH_PERCENTAGE } from "../shared/sizes";
+
+let bottomRowWidth;
 
 export const BalanceButtonPage: FC<BalanceButtonPageProps> = ({
   data,
   page,
+  goalsToggled,
 }) => {
   const sixDataElements = data.slice(page * 6, page * 6 + 6);
-
-  // const topRowElements: JSX.Element[] = [];
-  // for (let i = 0; i++; i < 3) {
-  //   let currentElement: any;
-  //   if (sixDataElements.length > 0) {
-  //     currentElement = sixDataElements.shift;
-  //     topRowElements.push(currentElement);
-  //   }
-  // }
-  // topRowElements.map((item) => {
-  //   return <BalanceButton key={item.id} {...item} />;
-  // });
-
-  // const topRowElements = sixDataElements.map((item) => {
-  //   sixDataElements.shift()
-  // })
-  // .map((item) => {
-  //   if (item.id === "1") return <NewBalance key={item.id} />;
-  //   else return <BalanceButton key={item.id} {...item} />;
-  // });
 
   const topRowElements = sixDataElements.slice(0, 3).map((item) => {
     if (item.id === 1) return <NewBalance key={item.id} />;
     else return <BalanceButton key={item.id} {...item} />;
   });
 
+  // Removing the elements from the array to prevent bottomRowElement duplication
+  for (let i = 0; i < 3; i++) {
+    sixDataElements.shift();
+  }
+
   const bottomRowElements = sixDataElements.slice(-3).map((item) => {
-    if (!topRowElements.includes(<BalanceButton key={item.id} {...item} />)) {
-      return <BalanceButton key={item.id} {...item} />;
-    }
-    return null;
+    return <BalanceButton key={item.id} {...item} />;
   });
+
+  // Altering bottomRow width so space-between results in correct alignment
+  bottomRowWidth = bottomRowElements.length < 3 ? "63.8%" : "100%";
 
   return (
     //Will probably turn the pageContainer View into a slideable view
     <View style={styles.pageContainer}>
       <View style={styles.pageTopRow}>{topRowElements}</View>
-      <View style={styles.pageBottomRow}>{bottomRowElements}</View>
+      <View style={[styles.pageBottomRow, { width: bottomRowWidth }]}>
+        {bottomRowElements}
+      </View>
     </View>
   );
 };
@@ -74,7 +64,6 @@ const styles = StyleSheet.create({
     // backgroundColor: "green",
     display: "flex",
     flexDirection: "row",
-    width: "100%",
     justifyContent: "space-between",
   },
 });

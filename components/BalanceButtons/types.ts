@@ -11,6 +11,7 @@ export interface BudgetCardProps {
 
 //May need to update the type of icon
 //May want to make a custom enum type for flags
+
 export interface BalanceButtonProps {
   id: number;
   title: string;
@@ -18,11 +19,17 @@ export interface BalanceButtonProps {
   emojiIcon: string;
   flag?: boolean;
   percentRemaining: number;
+  balanceType: string;
+}
+
+export interface BalanceButtonSectionProps {
+  goalsToggled: boolean;
 }
 
 export interface BalanceButtonPageProps {
   data: Array<BalanceButtonProps>;
   page: number;
+  goalsToggled: boolean;
 }
 
 export interface BalanceButtonDetailsProps {

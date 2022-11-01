@@ -12,7 +12,7 @@ import TransactionSection from "../components/Transactions/TransactionsSection";
 import diningImg from "../assets/cards/dining-out.jpeg";
 
 // types
-import { RootStackParamList } from "../navigators/RootStack";
+import { RootStackParamList } from "../navigators/Navigation";
 import { StackScreenProps } from "@react-navigation/stack";
 import { BudgetCardProps as BudgetCard } from "../components/BalanceButtons/types";
 

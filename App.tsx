@@ -1,10 +1,12 @@
 import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+
 // Custom font
 import AppLoading from "expo-app-loading";
 import { useFonts } from "expo-font";
 
 // React Navigation
-import RootStack from "./navigators/RootStack";
+import Navigation from "./navigators/Navigation";
 
 // Amplify
 import { Amplify } from "aws-amplify";
@@ -16,7 +18,8 @@ import { withAuthenticator } from "@aws-amplify/ui-react";
 import { BalanceButtonSection } from "./components/BalanceButtons/BalanceButtonSection";
 import { StyleSheet, Text, View } from "react-native";
 import { BalanceButtonPage } from "./components/BalanceButtons/BalanceButtonPage";
-import { Home } from "./screens/Home";
+import Home from "./screens/Home";
+import { BarGraphic } from "./components/BarGraphic/BarGraphic";
 
 function App() {
   let [fontsLoaded] = useFonts({
@@ -33,24 +36,7 @@ function App() {
     return <AppLoading />;
   }
 
-  return (
-    // <>
-    //   <View style={{ marginTop: 250 }}>
-    //     <Text>Testing the font 🍎👾🍗🛼🏡🥊</Text>
-    //     <Text style={{ fontFamily: "Poppins-Regular" }}>
-    //       Testing the font 🍎👾🍗🛼🏡🥊
-    //     </Text>
-    //   </View>
-    //   <View style={styles.container}>
-    //     <BalanceButtonSection data={balanceData} page={0} />
-    //   </View>
-    //   {/* <View style={styles.container}>
-    //     <BalanceButtonPage data={balanceData} page={0} />
-    //   </View> */}
-    // </>
-    // return <RootStack />;
-    <Home />
-  );
+  return <Navigation />;
 }
 
 //Migrate this code

@@ -1,11 +1,6 @@
-import {
-  Path,
-  Skia,
-  SkiaMutableValue,
-  SweepGradient,
-  vec,
-} from "@shopify/react-native-skia";
+import { Path, Skia, SweepGradient, vec } from "@shopify/react-native-skia";
 import React, { FC } from "react";
+import { colors } from "../shared/colors";
 
 // Prop types
 import { DonutGradientPathProps } from "./types";
@@ -42,7 +37,12 @@ export const DonutGradientPath: FC<DonutGradientPathProps> = ({
           c={vec(radius, radius)}
           start={0}
           //4 gradient colors to handle the coloring of the rounded strokecap
-          colors={["#FF9D43", "#44A5FF", "#E16AFF", "#FF9D43"]}
+          colors={[
+            colors.gradientOrange,
+            colors.gradientBlue,
+            colors.gradientMagenta,
+            colors.gradientOrange,
+          ]}
           positions={[0, 0.04, 0.6, 0.9]}
         />
       </Path>

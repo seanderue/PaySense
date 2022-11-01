@@ -85,4 +85,21 @@ export const textStyles = StyleSheet.create({
     lineHeight: 24,
     fontFamily: "Poppins-Medium",
   },
+  TinyLabel: {
+    fontSize: 8,
+    textAlign: "left",
+    letterSpacing: 0.8,
+    fontFamily: "Poppins-Medium",
+    textTransform: "uppercase",
+  },
+  Cap4: {
+    fontSize: 12,
+    textAlign: "left",
+    fontFamily: "Poppins-Medium",
+  },
+  Title3: {
+    fontSize: 16,
+    textAlign: "left",
+    fontFamily: "Poppins-SemiBold",
+  },
 });

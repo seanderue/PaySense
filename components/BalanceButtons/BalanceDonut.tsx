@@ -1,12 +1,4 @@
-import {
-  Canvas,
-  Path,
-  SkFont,
-  Skia,
-  SkiaMutableValue,
-  SweepGradient,
-  vec,
-} from "@shopify/react-native-skia";
+import { Canvas, SkiaMutableValue } from "@shopify/react-native-skia";
 import React, { FC } from "react";
 
 import { StyleSheet, View } from "react-native";

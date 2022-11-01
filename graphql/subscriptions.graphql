@@ -1,0 +1,286 @@
+# this is an auto generated file. This will be overwritten
+subscription OnCreateUser {
+  onCreateUser {
+    id
+    username
+    SavingGoals {
+      items {
+        id
+        name
+        percent_of_savings
+        img
+        date_created
+        date_affordable
+        userID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    email
+    income_distribution
+    Budgets {
+      items {
+        id
+        name
+        percent_of_category
+        category
+        img
+        userID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    is_premium
+    date_created
+    img
+    promo_code
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnUpdateUser {
+  onUpdateUser {
+    id
+    username
+    SavingGoals {
+      items {
+        id
+        name
+        percent_of_savings
+        img
+        date_created
+        date_affordable
+        userID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    email
+    income_distribution
+    Budgets {
+      items {
+        id
+        name
+        percent_of_category
+        category
+        img
+        userID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    is_premium
+    date_created
+    img
+    promo_code
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnDeleteUser {
+  onDeleteUser {
+    id
+    username
+    SavingGoals {
+      items {
+        id
+        name
+        percent_of_savings
+        img
+        date_created
+        date_affordable
+        userID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    email
+    income_distribution
+    Budgets {
+      items {
+        id
+        name
+        percent_of_category
+        category
+        img
+        userID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    is_premium
+    date_created
+    img
+    promo_code
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnCreateSavingGoal {
+  onCreateSavingGoal {
+    id
+    name
+    percent_of_savings
+    img
+    date_created
+    date_affordable
+    userID
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnUpdateSavingGoal {
+  onUpdateSavingGoal {
+    id
+    name
+    percent_of_savings
+    img
+    date_created
+    date_affordable
+    userID
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnDeleteSavingGoal {
+  onDeleteSavingGoal {
+    id
+    name
+    percent_of_savings
+    img
+    date_created
+    date_affordable
+    userID
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnCreateBudget {
+  onCreateBudget {
+    id
+    name
+    percent_of_category
+    category
+    img
+    transactions {
+      id
+      name
+      description
+      amount
+      date
+      is_sorted
+      budget_id
+      iso_currency_code
+      bank_account_name
+      bank_account_id
+    }
+    userID
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnUpdateBudget {
+  onUpdateBudget {
+    id
+    name
+    percent_of_category
+    category
+    img
+    transactions {
+      id
+      name
+      description
+      amount
+      date
+      is_sorted
+      budget_id
+      iso_currency_code
+      bank_account_name
+      bank_account_id
+    }
+    userID
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnDeleteBudget {
+  onDeleteBudget {
+    id
+    name
+    percent_of_category
+    category
+    img
+    transactions {
+      id
+      name
+      description
+      amount
+      date
+      is_sorted
+      budget_id
+      iso_currency_code
+      bank_account_name
+      bank_account_id
+    }
+    userID
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}

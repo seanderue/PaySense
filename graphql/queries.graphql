@@ -1,0 +1,298 @@
+# this is an auto generated file. This will be overwritten
+query GetUser($id: ID!) {
+  getUser(id: $id) {
+    id
+    username
+    SavingGoals {
+      items {
+        id
+        name
+        percent_of_savings
+        img
+        date_created
+        date_affordable
+        userID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    email
+    income_distribution
+    Budgets {
+      items {
+        id
+        name
+        percent_of_category
+        category
+        img
+        userID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    is_premium
+    date_created
+    img
+    promo_code
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+query ListUsers(
+  $filter: ModelUserFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      username
+      SavingGoals {
+        nextToken
+        startedAt
+      }
+      email
+      income_distribution
+      Budgets {
+        nextToken
+        startedAt
+      }
+      is_premium
+      date_created
+      img
+      promo_code
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query SyncUsers(
+  $filter: ModelUserFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncUsers(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      username
+      SavingGoals {
+        nextToken
+        startedAt
+      }
+      email
+      income_distribution
+      Budgets {
+        nextToken
+        startedAt
+      }
+      is_premium
+      date_created
+      img
+      promo_code
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query GetSavingGoal($id: ID!) {
+  getSavingGoal(id: $id) {
+    id
+    name
+    percent_of_savings
+    img
+    date_created
+    date_affordable
+    userID
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+query ListSavingGoals(
+  $filter: ModelSavingGoalFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listSavingGoals(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      name
+      percent_of_savings
+      img
+      date_created
+      date_affordable
+      userID
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query SyncSavingGoals(
+  $filter: ModelSavingGoalFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncSavingGoals(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      name
+      percent_of_savings
+      img
+      date_created
+      date_affordable
+      userID
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query GetBudget($id: ID!) {
+  getBudget(id: $id) {
+    id
+    name
+    percent_of_category
+    category
+    img
+    transactions {
+      id
+      name
+      description
+      amount
+      date
+      is_sorted
+      budget_id
+      iso_currency_code
+      bank_account_name
+      bank_account_id
+    }
+    userID
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+query ListBudgets(
+  $filter: ModelBudgetFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listBudgets(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      name
+      percent_of_category
+      category
+      img
+      transactions {
+        id
+        name
+        description
+        amount
+        date
+        is_sorted
+        budget_id
+        iso_currency_code
+        bank_account_name
+        bank_account_id
+      }
+      userID
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query SyncBudgets(
+  $filter: ModelBudgetFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncBudgets(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      name
+      percent_of_category
+      category
+      img
+      transactions {
+        id
+        name
+        description
+        amount
+        date
+        is_sorted
+        budget_id
+        iso_currency_code
+        bank_account_name
+        bank_account_id
+      }
+      userID
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
+  }
+}

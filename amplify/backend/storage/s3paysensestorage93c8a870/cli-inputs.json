@@ -1,0 +1,13 @@
+{
+  "resourceName": "s3paysensestorage93c8a870",
+  "bucketName": "paysense-storage-93c8a870",
+  "policyUUID": "fb927b5e",
+  "storageAccess": "authAndGuest",
+  "guestAccess": [
+    "READ"
+  ],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ"
+  ]
+}

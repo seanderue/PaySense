@@ -2,7 +2,7 @@ import React, { FunctionComponent } from "react";
 import styled from "styled-components/native";
 
 // components
-import { colors } from "../colors";
+import { colors } from "../shared/colors";
 import Cap1 from "../Texts/Cap1";
 import Body1 from "../Texts/Body1";
 import Title2 from "../Texts/Title2";

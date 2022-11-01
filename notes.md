@@ -5,3 +5,5 @@ In the BudgetCardItem file, I will have to find a png. overlay gradient to use i
 - Right now, everything is hard-coded in terms of the images & the data. I'm going to have to figure out how to use AWS Amplify to bring that data in.
 
 - In an attempt to speed up renders, I did away with inline styling. As a result, I declared a StyledText component in every font. I don't know yet if that would be better for it.
+
+- Consider using flashlists down the line

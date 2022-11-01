@@ -1,12 +1,11 @@
-import React, { FunctionComponent } from "react";
+import React, { FC } from "react";
 import { StatusBar } from "expo-status-bar";
+import { Text } from "react-native";
 import styled from "styled-components/native";
 
 // custom components
-import { Container } from "../components/shared";
-import { colors } from "../components/colors";
-import H1 from "../components/Texts/H1";
-import Body1 from "../components/Texts/Body1";
+import { Container } from "../components/shared/sizes";
+import { colors } from "../components/shared/colors";
 import RegularButton from "../components/Buttons/RegularButton";
 
 const WelcomeContainer = styled(Container)`
@@ -39,11 +38,12 @@ const BottomSection = styled.View`
 import background from "./../assets/bgs/Cookies1.jpeg";
 
 // types
-import { RootStackParamList } from "../navigators/RootStack";
+import { RootStackParamList } from "../navigators/Navigation";
 import { StackScreenProps } from "@react-navigation/stack";
-type Props = StackScreenProps<RootStackParamList, "Welcome">;
+// type Props = StackScreenProps<RootStackParamList, "Welcome">;
 
-const Welcome: FunctionComponent<Props> = ({ navigation }) => {
+// const Welcome: FC = ({ navigation }) => {
+const Welcome: FC = () => {
   return (
     <>
       <StatusBar style="light" />
@@ -52,20 +52,20 @@ const Welcome: FunctionComponent<Props> = ({ navigation }) => {
           <TopImage source={background} />
         </TopSection>
         <BottomSection>
-          <H1 textStyles={{ width: "70%", marginBottom: 25 }}>
+          <Text style={{ width: "70%", marginBottom: 25 }}>
             Best way to track your money
-          </H1>
-          <Body1>
+          </Text>
+          <Text>
             Best way to track your spending, budget hard, and see pretty charts
-          </Body1>
-          <RegularButton
+          </Text>
+          {/* <RegularButton
             onPress={() => {
               navigation.navigate("Home");
             }}
             textStyles={{ color: colors.neutral8 }}
           >
             Get Started
-          </RegularButton>
+          </RegularButton> */}
         </BottomSection>
       </WelcomeContainer>
     </>

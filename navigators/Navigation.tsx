@@ -86,16 +86,6 @@ const AnimatedTabBar = ({
           duration: 500,
           easing: Easing.bezier(0, 0, 0.6, 1),
         });
-
-    // addButtonYOffset.value = toggledOpen
-    //   ? withTiming(-285, {
-    //       duration: 500,
-    //       easing: Easing.bezier(0, 0, 0.6, 1),
-    //     })
-    //   : withTiming(-30, {
-    //       duration: 500,
-    //       easing: Easing.bezier(0, 0, 0.6, 1),
-    //     });
   }, [toggledOpen]);
 
   const animatedHeightStyles = useAnimatedStyle(() => {

@@ -29,7 +29,6 @@ export interface BalanceButtonSectionProps {
 export interface BalanceButtonPageProps {
   data: Array<BalanceButtonProps>;
   page: number;
-  goalsToggled: boolean;
 }
 
 export interface BalanceButtonDetailsProps {
@@ -47,4 +46,7 @@ export interface DonutGradientPathProps {
 export interface BalanceIconProps {
   emoji: string;
   percentRemaining: SkiaMutableValue<number>;
+  strokeWidth: number;
+  iconFontSize: number;
+  radius: number;
 }

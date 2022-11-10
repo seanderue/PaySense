@@ -16,10 +16,10 @@ export const BalanceDonut: FC<BalanceDonutProps> = ({
   percentRemaining,
 }) => {
   return (
-    <View style={styles.container}>
+    <View style={{ width: radius * 2.05, height: radius * 2.05 }}>
       <Canvas
         style={[
-          styles.container,
+          { width: radius * 2.05, height: radius * 2.05 },
           {
             transform: [{ rotate: "-90deg" }],
           },
@@ -34,7 +34,3 @@ export const BalanceDonut: FC<BalanceDonutProps> = ({
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {},
-});

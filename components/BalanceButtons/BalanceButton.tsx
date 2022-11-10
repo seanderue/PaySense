@@ -15,12 +15,17 @@ import Animated, {
   withTiming,
   Easing as ReEasing,
 } from "react-native-reanimated";
+import { useNavigation } from "@react-navigation/native";
 
 const RADIUS = PixelRatio.roundToNearestPixel(79.32 / 2);
 const ANIMATION_DURATION = 500;
+const BUTTON_STROKE_WIDTH = 3;
+const FONT_SIZE = 30;
 
 // prop types
 import { BalanceButtonProps } from "./types";
+import { RootStackParams } from "../../navigators/Navigation";
+import { StackNavigationProp } from "@react-navigation/stack";
 
 export const BalanceButton: FC<BalanceButtonProps> = ({
   title,
@@ -30,6 +35,7 @@ export const BalanceButton: FC<BalanceButtonProps> = ({
   id,
   balanceType,
 }) => {
+  const navigation = useNavigation<StackNavigationProp<RootStackParams>>();
   const chartAnimationState = useValue(0);
   const opacity = useSharedValue(0);
   const scale = useSharedValue(0);
@@ -63,7 +69,7 @@ export const BalanceButton: FC<BalanceButtonProps> = ({
     scale.value = withDelay(
       DELAY,
       withTiming(1, {
-        duration: 500,
+        duration: ANIMATION_DURATION,
         easing: ReEasing.bezier(0.25, 0.1, 0.25, 1),
       })
     );
@@ -79,11 +85,32 @@ export const BalanceButton: FC<BalanceButtonProps> = ({
   if (!font || !smallerFont) {
     return null;
   }
+  const nav = () => {
+    navigation.navigate("BalanceDetails", {
+      title: title,
+      emojiIcon: emojiIcon,
+      balance: balance,
+      percentRemaining: percentRemaining,
+      id: id,
+      balanceType: balanceType,
+    });
+  };
 
   return (
     <Animated.View style={[styles.container, animatedStyles]}>
-      <Pressable onPress={animateChart} style={styles.BalanceButtonContainer}>
-        <BalanceIcon emoji={emojiIcon} percentRemaining={chartAnimationState} />
+      <Pressable
+        onPress={() => {
+          nav();
+        }}
+        style={styles.BalanceButtonContainer}
+      >
+        <BalanceIcon
+          emoji={emojiIcon}
+          percentRemaining={chartAnimationState}
+          strokeWidth={BUTTON_STROKE_WIDTH}
+          iconFontSize={FONT_SIZE}
+          radius={RADIUS}
+        />
       </Pressable>
       <BalanceButtonDetails
         title={title}

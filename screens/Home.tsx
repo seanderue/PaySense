@@ -12,13 +12,16 @@ import { CONTENT_WIDTH_PERCENTAGE } from "../components/shared/sizes";
 import { BarGraphic } from "../components/BarGraphic/BarGraphic";
 
 // Navigation types
-import { StackScreenProps } from "@react-navigation/stack";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { RootStackParams } from "../navigators/Navigation";
 
 const TOP_FOLD_HEIGHT_PERCENTAGE = 0.328;
 const BOTTOM_FOLD_HEIGHT_PERCENTAGE = 1 - TOP_FOLD_HEIGHT_PERCENTAGE;
 const SAFE_STATUS_BAR_HEIGHT = 44;
 
-const Home: FC = () => {
+const Home: FC<NativeStackScreenProps<RootStackParams, "Home">> = ({
+  navigation,
+}) => {
   const [toggledRight, setToggleRight] = useState(false);
 
   const toggleSwitch = () => {
@@ -34,6 +37,7 @@ const Home: FC = () => {
           <View style={styles.iconsContainer}>
             <Pressable
               onPress={() => {
+                navigation.push("Settings");
                 console.log("cog pressed");
               }}
             >
@@ -91,7 +95,7 @@ const styles = StyleSheet.create({
     left: 0,
     bottom: 0,
     right: 0,
-    backgroundColor: "#33404F",
+    backgroundColor: colors.backgroundBlue,
   },
   wrapper: {
     height: ScreenHeight,

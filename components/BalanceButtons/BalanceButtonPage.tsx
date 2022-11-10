@@ -12,7 +12,6 @@ let bottomRowWidth;
 export const BalanceButtonPage: FC<BalanceButtonPageProps> = ({
   data,
   page,
-  goalsToggled,
 }) => {
   const sixDataElements = data.slice(page * 6, page * 6 + 6);
 

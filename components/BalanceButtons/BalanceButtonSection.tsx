@@ -20,7 +20,7 @@ export const BalanceButtonSection: FC<BalanceButtonSectionProps> = ({
   const [pageCount, setPageCount] = useState(0);
 
   const [BalanceButtonPageElements, setBalanceButtonPageElements] = useState([
-    <BalanceButtonPage data={data} key={0} page={0} goalsToggled />,
+    <BalanceButtonPage data={data} key={0} page={0} />,
   ]);
   const scrollRef = useRef<Animated.ScrollView>(null);
 
@@ -31,9 +31,7 @@ export const BalanceButtonSection: FC<BalanceButtonSectionProps> = ({
   const populatePages = (data: BalanceButtonProps[]) => {
     const pages = [];
     for (let i = 0; i < Math.ceil(data.length / 6); i++) {
-      pages.push(
-        <BalanceButtonPage data={data} key={i} page={i} goalsToggled />
-      );
+      pages.push(<BalanceButtonPage data={data} key={i} page={i} />);
     }
     setPageCount(pages.length);
     return pages;

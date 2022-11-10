@@ -97,7 +97,7 @@ export const budgetData = [
   },
   {
     id: 13,
-    title: "Dookie",
+    title: "Template",
     balance: 140,
     emojiIcon: "🛟",
     percentRemaining: 0.8,
@@ -105,7 +105,7 @@ export const budgetData = [
   },
   {
     id: 14,
-    title: "Dookie",
+    title: "Template",
     balance: 140,
     emojiIcon: "🛟",
     percentRemaining: 0.8,
@@ -113,7 +113,7 @@ export const budgetData = [
   },
   {
     id: 15,
-    title: "Dookie",
+    title: "Template",
     balance: 140,
     emojiIcon: "🛟",
     percentRemaining: 0.8,
@@ -121,7 +121,7 @@ export const budgetData = [
   },
   {
     id: 16,
-    title: "Dookie",
+    title: "Template",
     balance: 140,
     emojiIcon: "🛟",
     percentRemaining: 0.8,

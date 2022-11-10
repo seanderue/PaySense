@@ -15,8 +15,14 @@ export const colors = {
   neutral1: "#141416",
   // Grays
   gray1: "#F4F5F6",
+  gray2: "#EEF2F6",
   gray3: "#A1B2C8",
+  darkGray1: "#33404F",
   //Secondary
+  backgroundBlue: "#33404F",
+  backgroundBlueFaded: "#3D4C5B",
+  accentBlue: "#D4EBFF",
+  accentGreen: "#00DDA3",
   red: "#FA4F64",
   redDark: "#835F63",
   yellow: "#FBD166",

@@ -18,7 +18,7 @@ export const NewBalance: FC<NewBalanceProps> = () => {
         <Text style={styles.plusIcon}>+</Text>
       </View>
       <View style={styles.textContainer}>
-        <Text style={textStyles.Body1}>Add New</Text>
+        <Text style={textStyles.Body2}>Add New</Text>
       </View>
     </Pressable>
   );

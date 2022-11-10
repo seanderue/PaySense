@@ -1,13 +1,9 @@
 export interface TransactionProps {
   id: number;
   title: string;
-  subtitle: string;
-  amount: string;
+  amount: number;
   date: string;
-  art: {
-    icon: string;
-    background: string;
-  };
+  percentMissing: number;
 }
 
 export interface TransactionSectionProps {

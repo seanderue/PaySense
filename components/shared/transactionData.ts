@@ -1,0 +1,42 @@
+export const transactionData = [
+  {
+    id: 0,
+    title: "Charlestons #413239",
+    amount: 400,
+    date: "2017-01-27",
+    percentMissing: 0.4,
+    fund: "Dining Out",
+  },
+  {
+    id: 2,
+    title: "Home Depot #413243239",
+    amount: 200,
+    date: "2017-01-27",
+    percentMissing: 0.1,
+    fund: "Golf",
+  },
+  {
+    id: 3,
+    title: "Krusty Krab #413239",
+    amount: 68,
+    date: "2017-01-27",
+    percentMissing: 0.4,
+    fund: "Dining Out",
+  },
+  {
+    id: 4,
+    title: "Mr. Megorium's wonder emporium #413239",
+    amount: 420,
+    date: "2017-01-27",
+    percentMissing: 0.69,
+    fund: "Gift Fund",
+  },
+  {
+    id: 5,
+    title: "Cheese Cake Factory",
+    amount: 957,
+    date: "2017-01-27",
+    percentMissing: 0.9,
+    fund: "Dining Out",
+  },
+];

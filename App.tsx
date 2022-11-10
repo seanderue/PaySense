@@ -32,8 +32,9 @@ function App() {
     "NotoColorEmoji-Regular": require("./assets/fonts/NotoColorEmoji-Regular.ttf"),
   });
 
+  // Eventually use an update AppLoading
   if (!fontsLoaded) {
-    return <AppLoading />;
+    return <></>;
   }
 
   return <Navigation />;

@@ -1,9 +1,10 @@
 import React, { FunctionComponent } from "react";
+import { TouchableOpacity, StyleSheet, Text } from "react-native";
 import styled from "styled-components/native";
 
 // components
 import { colors } from "../shared/colors";
-import Cap1 from "../Texts/Cap1";
+import { textStyles } from "../shared/textStyles";
 
 const ButtonView = styled.TouchableOpacity`
   align-items: center;
@@ -19,10 +20,21 @@ import { ButtonProps } from "./types";
 
 const Button: FunctionComponent<ButtonProps> = (props) => {
   return (
-    <ButtonView onPress={props.onPress} style={props.btnStyles}>
-      <Cap1 textStyles={props.textStyles}>{props.children}</Cap1>
-    </ButtonView>
+    <TouchableOpacity onPress={props.onPress} style={styles.buttonView}>
+      <Text style={textStyles.Cap1}>{props.children}</Text>
+    </TouchableOpacity>
   );
 };
 
 export default Button;
+
+const styles = StyleSheet.create({
+  buttonView: {
+    alignItems: "center",
+    backgroundColor: colors.primary,
+    width: "100%",
+    padding: 20,
+    borderRadius: 8,
+    color: colors.neutral8,
+  },
+});

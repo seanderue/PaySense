@@ -5,20 +5,19 @@ import {
   useFont,
 } from "@shopify/react-native-skia";
 import React, { FC } from "react";
-import { PixelRatio, StyleSheet, View, Text } from "react-native";
-import { BalanceDonut } from "./BalanceDonut";
+import { StyleSheet, View, Text } from "react-native";
 import { DonutGradientPath } from "./DonutGradientPath";
 
-const RADIUS = PixelRatio.roundToNearestPixel(79.32 / 2);
-const STROKE_WIDTH = 3;
 const FONT_SIZE = 30;
-const innerRadius = RADIUS - STROKE_WIDTH / 2;
 
 import { BalanceIconProps } from "./types";
 
 export const BalanceIcon: FC<BalanceIconProps> = ({
   emoji,
   percentRemaining,
+  strokeWidth,
+  iconFontSize,
+  radius,
 }) => {
   //Will this have to load for every component?
   //It is really heavy and prevents quick loading
@@ -32,6 +31,27 @@ export const BalanceIcon: FC<BalanceIconProps> = ({
   }
 
   const iconWidth = FONT_SIZE;
+  const innerRadius = radius - strokeWidth / 2;
+
+  const styles = StyleSheet.create({
+    container: {
+      flexGrow: 1,
+    },
+    canvas: {
+      height: radius * 2,
+      width: radius * 2,
+      display: "flex",
+      justifyContent: "center",
+      marginLeft: "auto",
+    },
+    emojiIcon: {
+      position: "absolute",
+      fontSize: iconFontSize,
+      zIndex: 2,
+      left: innerRadius - iconFontSize / 2 - 0.5,
+      top: innerRadius - iconFontSize / 2 - 0.5,
+    },
+  });
 
   return (
     <View style={styles.container}>
@@ -39,11 +59,11 @@ export const BalanceIcon: FC<BalanceIconProps> = ({
       <Canvas style={[styles.canvas]}>
         <Group
           transform={[{ rotate: Math.PI * 1.5 }]}
-          origin={{ x: RADIUS, y: RADIUS }}
+          origin={{ x: radius, y: radius }}
         >
           <DonutGradientPath
-            strokeWidth={STROKE_WIDTH}
-            radius={RADIUS}
+            strokeWidth={strokeWidth}
+            radius={radius}
             percentRemaining={percentRemaining}
           />
         </Group>
@@ -51,23 +71,3 @@ export const BalanceIcon: FC<BalanceIconProps> = ({
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flexGrow: 1,
-  },
-  canvas: {
-    height: RADIUS * 2,
-    width: RADIUS * 2,
-    display: "flex",
-    justifyContent: "center",
-    marginLeft: "auto",
-  },
-  emojiIcon: {
-    position: "absolute",
-    fontSize: FONT_SIZE,
-    zIndex: 2,
-    left: innerRadius - FONT_SIZE / 2 - 0.5,
-    top: innerRadius - FONT_SIZE / 2 - 0.5,
-  },
-});

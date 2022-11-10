@@ -14,7 +14,7 @@ export const BalanceButtonDetails: FC<BalanceButtonDetailsProps> = ({
   return (
     <>
       <View style={styles.container}>
-        <Text style={textStyles.Body1}>{title}</Text>
+        <Text style={textStyles.Body2}>{title}</Text>
       </View>
       <View style={styles.lowerContainer}>
         <Text style={textStyles.Overline}>{`$${balance}`}</Text>

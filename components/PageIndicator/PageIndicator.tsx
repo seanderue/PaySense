@@ -62,19 +62,20 @@ export const PageIndicator: FC<PageIndicatorProps> = ({
     progress.value = 0;
 
     // Running animation
-    progress.value = withDelay(
-      DELAY,
+    progress.value =
+      // withDelay(
+      //   DELAY,
       withTiming(1, {
-        duration: 300,
+        duration: 700,
         easing: Easing.bezier(0.25, 0.1, 0.25, 1),
-      })
-    );
+      });
+    // );
   }, [activePageIndex]);
 
   //Debugging
   useEffect(() => {
-    console.log(`activePageIndex: ${activePageIndex}`);
-    console.log(`lastActive.current: ${lastActive.current}`);
+    // console.log(`activePageIndex: ${activePageIndex}`);
+    // console.log(`lastActive.current: ${lastActive.current}`);
   }, [activePageIndex]);
 
   const animatedStyles = useAnimatedStyle(() => {

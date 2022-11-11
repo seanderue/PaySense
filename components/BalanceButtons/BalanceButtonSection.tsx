@@ -58,17 +58,35 @@ export const BalanceButtonSection: FC<BalanceButtonSectionProps> = ({
     nativeEvent: { contentOffset: { x: any } };
   }) => {
     let x = event.nativeEvent.contentOffset.x;
-    // console.log(`x: ${x}`);
-    // console.log(`activePage: ${activePage}`);
+    // // console.log(`x: ${x}`);
+    // // console.log(`activePage: ${activePage}`);
+    // console.log(activePage);
+    setActivePage(
+      Math.round(x / (width * CONTENT_WIDTH_PERCENTAGE + BALANCE_PAGE_MARGIN))
+    );
   };
 
   const handleScrollEnd = (event: {
     nativeEvent: { contentOffset: { x: any } };
   }) => {
     let x = event.nativeEvent.contentOffset.x;
+    // console.log(`x: ${x}`);
+    // console.log(
+    //   `calc: ${x / (width * CONTENT_WIDTH_PERCENTAGE + BALANCE_PAGE_MARGIN)}`
+    // );
+    // console.log(
+    //   `rounded calc: ${Math.round(
+    //     x / (width * CONTENT_WIDTH_PERCENTAGE + BALANCE_PAGE_MARGIN)
+    //   )}`
+    // );
     setActivePage(
       Math.round(x / (width * CONTENT_WIDTH_PERCENTAGE + BALANCE_PAGE_MARGIN))
     );
+  };
+
+  const handleTabSwitch = () => {
+    scrollToStart();
+    setActivePage(0);
   };
 
   return (
@@ -80,16 +98,14 @@ export const BalanceButtonSection: FC<BalanceButtonSectionProps> = ({
             snapToInterval={
               width * CONTENT_WIDTH_PERCENTAGE + BALANCE_PAGE_MARGIN
             }
-            // onScroll={handleScroll}
-            onMomentumScrollBegin={handleScrollEnd}
+            onScroll={handleScroll}
+            // onMomentumScrollEnd={handleScrollEnd}
             decelerationRate={"fast"}
             showsHorizontalScrollIndicator={false}
             bounces={false}
             scrollEventThrottle={1}
             style={styles.ScrollView}
-            onContentSizeChange={() => {
-              scrollToStart();
-            }}
+            onContentSizeChange={handleTabSwitch}
             ref={scrollRef}
           >
             {BalanceButtonPageElements}

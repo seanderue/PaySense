@@ -17,7 +17,7 @@ import Stats from "../screens/Stats";
 import { colors } from "../components/shared/colors";
 
 // React Navigation
-import { NavigationContainer } from "@react-navigation/native";
+import { NavigationContainer, useNavigation } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
@@ -27,6 +27,11 @@ import { Ionicons } from "@expo/vector-icons";
 import { AnimatedTabBar } from "./tabBarComponents/AnimatedTabBar";
 import Settings from "../screens/Settings";
 import BalanceDetails from "../screens/BalanceDetails";
+import { EditBudget } from "../screens/EditBudget";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import { ScreenHeight } from "../components/shared/sizes";
+import { textStyles } from "../components/shared/textStyles";
+import { BackIconButton } from "../components/IconButtons/BackIconButton";
 
 export type RootStackParams = {
   Home: undefined;
@@ -40,6 +45,7 @@ export type RootStackParams = {
     id: number;
     balanceType: string;
   };
+  EditBudget: undefined;
 };
 
 export type TabStackParams = {
@@ -66,6 +72,8 @@ const TabsScreen = () => {
 };
 
 const HomeStack = () => {
+  const navigation = useNavigation();
+
   return (
     <Stack.Navigator>
       <Stack.Screen
@@ -78,6 +86,32 @@ const HomeStack = () => {
         name="BalanceDetails"
         component={BalanceDetails}
         options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="EditBudget"
+        component={EditBudget}
+        options={{
+          headerShown: true,
+          headerTitle: "Edit Budget",
+          headerShadowVisible: false,
+          headerStyle: {
+            height: ScreenHeight * 0.13547,
+          },
+          headerTitleStyle: [textStyles.LogoBig, textStyles.textColorDark],
+          headerLeft: (props) => (
+            <BackIconButton
+              {...props}
+              onPress={() => {
+                navigation.goBack();
+              }}
+            />
+          ),
+          headerLeftContainerStyle: {
+            justifyContent: "space-around",
+            alignItems: "center",
+            flexDirection: "column",
+          },
+        }}
       />
     </Stack.Navigator>
   );
@@ -104,9 +138,11 @@ const Navigation: FunctionComponent = () => {
   }, [tab]);
 
   return (
-    <NavigationContainer>
-      <TabsScreen />
-    </NavigationContainer>
+    <SafeAreaProvider>
+      <NavigationContainer>
+        <TabsScreen />
+      </NavigationContainer>
+    </SafeAreaProvider>
   );
 };
 

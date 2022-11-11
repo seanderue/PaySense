@@ -22,13 +22,14 @@ import {
 import { DonutGradientPath } from "../components/BalanceButtons/DonutGradientPath";
 import { textStyles } from "../components/shared/textStyles";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import EIcon from "react-native-vector-icons/Entypo";
 import MIcon from "react-native-vector-icons/MaterialIcons";
 import { FlashList } from "@shopify/flash-list";
 import { shadowStyles } from "../components/shared/shadowStyles";
 import { BalanceDonut } from "../components/BalanceButtons/BalanceDonut";
 import TransactionItem from "../components/Transactions/TransactionItem";
 import { transactionData } from "../components/shared/transactionData";
+import { BackIconButton } from "../components/IconButtons/BackIconButton";
+import { EditIconButton } from "../components/IconButtons/EditIconButton";
 
 type DetailsScreenRouteProp = RouteProp<RootStackParams, "BalanceDetails">;
 
@@ -100,18 +101,11 @@ const BalanceDetails: FC<
           </View>
         </View>
         <View style={styles.buttonContainer}>
-          <TouchableOpacity
+          <BackIconButton
             onPress={() => {
               navigation.pop();
             }}
-            style={styles.button}
-          >
-            <EIcon
-              name="chevron-left"
-              color={colors.gray3}
-              size={ScreenWidth * 0.08}
-            />
-          </TouchableOpacity>
+          />
         </View>
         <Canvas style={[styles.balanceIconContainer]}>
           <Group
@@ -126,19 +120,11 @@ const BalanceDetails: FC<
           </Group>
         </Canvas>
         <View style={styles.buttonContainer}>
-          <TouchableOpacity
+          <EditIconButton
             onPress={() => {
-              console.log("back");
+              navigation.push("EditBudget");
             }}
-            style={styles.button}
-          >
-            <MIcon
-              name="edit"
-              color={colors.gray3}
-              size={ScreenWidth * 0.06}
-              style={styles.iconPaddingAdjustment}
-            />
-          </TouchableOpacity>
+          />
         </View>
         {/* </View> */}
       </View>
@@ -232,23 +218,23 @@ const styles = StyleSheet.create({
     zIndex: 6,
     backgroundColor: colors.yellowDark,
   },
-  button: {
-    borderColor: colors.gray2,
-    borderWidth: 2,
-    borderStyle: "solid",
-    justifyContent: "center",
-    alignItems: "center",
-    borderRadius: ScreenWidth * 0.13333,
-    width: ScreenWidth * 0.13333,
-    height: ScreenWidth * 0.13333,
-  },
-  buttonContainer: {
-    width: 100,
-    height: 100,
-    display: "flex",
-    justifyContent: "flex-end",
-    alignItems: "center",
-  },
+  // button: {
+  //   borderColor: colors.gray2,
+  //   borderWidth: 2,
+  //   borderStyle: "solid",
+  //   justifyContent: "center",
+  //   alignItems: "center",
+  //   borderRadius: ScreenWidth * 0.13333,
+  //   width: ScreenWidth * 0.13333,
+  //   height: ScreenWidth * 0.13333,
+  // },
+  // buttonContainer: {
+  //   width: 100,
+  //   height: 100,
+  //   display: "flex",
+  //   justifyContent: "flex-end",
+  //   alignItems: "center",
+  // },
   background: {
     backgroundColor: colors.gray3,
   },
@@ -306,9 +292,6 @@ const styles = StyleSheet.create({
     alignItems: "baseline",
     height: 50,
   },
-  iconPaddingAdjustment: {
-    paddingLeft: ScreenWidth * 0.0053,
-  },
   subtitleContainer: {
     display: "flex",
     flexDirection: "row",
@@ -318,5 +301,12 @@ const styles = StyleSheet.create({
   },
   activityLabel: {
     marginBottom: ScreenHeight * 0.03075,
+  },
+  buttonContainer: {
+    width: ScreenWidth * 0.26667,
+    // display: "flex",
+    // justifyContent: "flex-end",
+    // alignItems: "center",
+    // backgroundColor: "pink",
   },
 });

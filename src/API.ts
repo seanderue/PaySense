@@ -3,44 +3,42 @@
 //  This file was automatically generated and should not be edited.
 
 export type CreateTransactionInput = {
-  id?: string | null;
-  name: string;
-  amount: number;
-  date: string;
-  memo?: string | null;
-  is_sorted: boolean;
-  iso_currency_code: string;
-  budgetID: string;
-  _version?: number | null;
+  id?: string | null,
+  name: string,
+  amount: number,
+  date?: string | null,
+  memo?: string | null,
+  iso_currency_code?: string | null,
+  balanceID: string,
+  _version?: number | null,
 };
 
 export type ModelTransactionConditionInput = {
-  name?: ModelStringInput | null;
-  amount?: ModelFloatInput | null;
-  date?: ModelStringInput | null;
-  memo?: ModelStringInput | null;
-  is_sorted?: ModelBooleanInput | null;
-  iso_currency_code?: ModelStringInput | null;
-  budgetID?: ModelIDInput | null;
-  and?: Array<ModelTransactionConditionInput | null> | null;
-  or?: Array<ModelTransactionConditionInput | null> | null;
-  not?: ModelTransactionConditionInput | null;
+  name?: ModelStringInput | null,
+  amount?: ModelFloatInput | null,
+  date?: ModelStringInput | null,
+  memo?: ModelStringInput | null,
+  iso_currency_code?: ModelStringInput | null,
+  balanceID?: ModelIDInput | null,
+  and?: Array< ModelTransactionConditionInput | null > | null,
+  or?: Array< ModelTransactionConditionInput | null > | null,
+  not?: ModelTransactionConditionInput | null,
 };
 
 export type ModelStringInput = {
-  ne?: string | null;
-  eq?: string | null;
-  le?: string | null;
-  lt?: string | null;
-  ge?: string | null;
-  gt?: string | null;
-  contains?: string | null;
-  notContains?: string | null;
-  between?: Array<string | null> | null;
-  beginsWith?: string | null;
-  attributeExists?: boolean | null;
-  attributeType?: ModelAttributeTypes | null;
-  size?: ModelSizeInput | null;
+  ne?: string | null,
+  eq?: string | null,
+  le?: string | null,
+  lt?: string | null,
+  ge?: string | null,
+  gt?: string | null,
+  contains?: string | null,
+  notContains?: string | null,
+  between?: Array< string | null > | null,
+  beginsWith?: string | null,
+  attributeExists?: boolean | null,
+  attributeType?: ModelAttributeTypes | null,
+  size?: ModelSizeInput | null,
 };
 
 export enum ModelAttributeTypes {
@@ -56,231 +54,85 @@ export enum ModelAttributeTypes {
   _null = "_null",
 }
 
+
 export type ModelSizeInput = {
-  ne?: number | null;
-  eq?: number | null;
-  le?: number | null;
-  lt?: number | null;
-  ge?: number | null;
-  gt?: number | null;
-  between?: Array<number | null> | null;
+  ne?: number | null,
+  eq?: number | null,
+  le?: number | null,
+  lt?: number | null,
+  ge?: number | null,
+  gt?: number | null,
+  between?: Array< number | null > | null,
 };
 
 export type ModelFloatInput = {
-  ne?: number | null;
-  eq?: number | null;
-  le?: number | null;
-  lt?: number | null;
-  ge?: number | null;
-  gt?: number | null;
-  between?: Array<number | null> | null;
-  attributeExists?: boolean | null;
-  attributeType?: ModelAttributeTypes | null;
-};
-
-export type ModelBooleanInput = {
-  ne?: boolean | null;
-  eq?: boolean | null;
-  attributeExists?: boolean | null;
-  attributeType?: ModelAttributeTypes | null;
+  ne?: number | null,
+  eq?: number | null,
+  le?: number | null,
+  lt?: number | null,
+  ge?: number | null,
+  gt?: number | null,
+  between?: Array< number | null > | null,
+  attributeExists?: boolean | null,
+  attributeType?: ModelAttributeTypes | null,
 };
 
 export type ModelIDInput = {
-  ne?: string | null;
-  eq?: string | null;
-  le?: string | null;
-  lt?: string | null;
-  ge?: string | null;
-  gt?: string | null;
-  contains?: string | null;
-  notContains?: string | null;
-  between?: Array<string | null> | null;
-  beginsWith?: string | null;
-  attributeExists?: boolean | null;
-  attributeType?: ModelAttributeTypes | null;
-  size?: ModelSizeInput | null;
+  ne?: string | null,
+  eq?: string | null,
+  le?: string | null,
+  lt?: string | null,
+  ge?: string | null,
+  gt?: string | null,
+  contains?: string | null,
+  notContains?: string | null,
+  between?: Array< string | null > | null,
+  beginsWith?: string | null,
+  attributeExists?: boolean | null,
+  attributeType?: ModelAttributeTypes | null,
+  size?: ModelSizeInput | null,
 };
 
 export type Transaction = {
-  __typename: "Transaction";
-  id: string;
-  name: string;
-  amount: number;
-  date: string;
-  memo?: string | null;
-  is_sorted: boolean;
-  iso_currency_code: string;
-  budgetID: string;
-  createdAt: string;
-  updatedAt: string;
-  _version: number;
-  _deleted?: boolean | null;
-  _lastChangedAt: number;
+  __typename: "Transaction",
+  id: string,
+  name: string,
+  amount: number,
+  date?: string | null,
+  memo?: string | null,
+  iso_currency_code?: string | null,
+  balanceID: string,
+  createdAt: string,
+  updatedAt: string,
+  _version: number,
+  _deleted?: boolean | null,
+  _lastChangedAt: number,
+  owner?: string | null,
 };
 
 export type UpdateTransactionInput = {
-  id: string;
-  name?: string | null;
-  amount?: number | null;
-  date?: string | null;
-  memo?: string | null;
-  is_sorted?: boolean | null;
-  iso_currency_code?: string | null;
-  budgetID?: string | null;
-  _version?: number | null;
+  id: string,
+  name?: string | null,
+  amount?: number | null,
+  date?: string | null,
+  memo?: string | null,
+  iso_currency_code?: string | null,
+  balanceID?: string | null,
+  _version?: number | null,
 };
 
 export type DeleteTransactionInput = {
-  id: string;
-  _version?: number | null;
+  id: string,
+  _version?: number | null,
 };
 
-export type CreateSavingGoalInput = {
-  id?: string | null;
-  name: string;
-  percent_of_income: number;
-  date_created: string;
-  date_affordable: string;
-  is_paused?: boolean | null;
-  pause_duration_hour?: number | null;
-  userID: string;
-  _version?: number | null;
-};
-
-export type ModelSavingGoalConditionInput = {
-  name?: ModelStringInput | null;
-  percent_of_income?: ModelFloatInput | null;
-  date_created?: ModelStringInput | null;
-  date_affordable?: ModelStringInput | null;
-  is_paused?: ModelBooleanInput | null;
-  pause_duration_hour?: ModelIntInput | null;
-  userID?: ModelIDInput | null;
-  and?: Array<ModelSavingGoalConditionInput | null> | null;
-  or?: Array<ModelSavingGoalConditionInput | null> | null;
-  not?: ModelSavingGoalConditionInput | null;
-};
-
-export type ModelIntInput = {
-  ne?: number | null;
-  eq?: number | null;
-  le?: number | null;
-  lt?: number | null;
-  ge?: number | null;
-  gt?: number | null;
-  between?: Array<number | null> | null;
-  attributeExists?: boolean | null;
-  attributeType?: ModelAttributeTypes | null;
-};
-
-export type SavingGoal = {
-  __typename: "SavingGoal";
-  id: string;
-  name: string;
-  percent_of_income: number;
-  date_created: string;
-  date_affordable: string;
-  is_paused?: boolean | null;
-  pause_duration_hour?: number | null;
-  userID: string;
-  createdAt: string;
-  updatedAt: string;
-  _version: number;
-  _deleted?: boolean | null;
-  _lastChangedAt: number;
-  owner?: string | null;
-};
-
-export type UpdateSavingGoalInput = {
-  id: string;
-  name?: string | null;
-  percent_of_income?: number | null;
-  date_created?: string | null;
-  date_affordable?: string | null;
-  is_paused?: boolean | null;
-  pause_duration_hour?: number | null;
-  userID?: string | null;
-  _version?: number | null;
-};
-
-export type DeleteSavingGoalInput = {
-  id: string;
-  _version?: number | null;
-};
-
-export type CreateUserInput = {
-  id?: string | null;
-  username: string;
-  email: string;
-  income_distribution: Array<string>;
-  is_premium: boolean;
-  img?: string | null;
-  promo_code?: string | null;
-  _version?: number | null;
-};
-
-export type ModelUserConditionInput = {
-  username?: ModelStringInput | null;
-  email?: ModelStringInput | null;
-  income_distribution?: ModelStringInput | null;
-  is_premium?: ModelBooleanInput | null;
-  img?: ModelStringInput | null;
-  promo_code?: ModelStringInput | null;
-  and?: Array<ModelUserConditionInput | null> | null;
-  or?: Array<ModelUserConditionInput | null> | null;
-  not?: ModelUserConditionInput | null;
-};
-
-export type User = {
-  __typename: "User";
-  id: string;
-  username: string;
-  Budgets?: ModelSavingGoalConnection | null;
-  email: string;
-  income_distribution: Array<string>;
-  is_premium: boolean;
-  img?: string | null;
-  promo_code?: string | null;
-  SavingGoals?: ModelSavingGoalConnection | null;
-  createdAt: string;
-  updatedAt: string;
-  _version: number;
-  _deleted?: boolean | null;
-  _lastChangedAt: number;
-  owner?: string | null;
-};
-
-export type ModelSavingGoalConnection = {
-  __typename: "ModelSavingGoalConnection";
-  items: Array<SavingGoal | null>;
-  nextToken?: string | null;
-  startedAt?: number | null;
-};
-
-export type UpdateUserInput = {
-  id: string;
-  username?: string | null;
-  email?: string | null;
-  income_distribution?: Array<string> | null;
-  is_premium?: boolean | null;
-  img?: string | null;
-  promo_code?: string | null;
-  _version?: number | null;
-};
-
-export type DeleteUserInput = {
-  id: string;
-  _version?: number | null;
-};
-
-export type CreateBudgetInput = {
-  id?: string | null;
-  name: string;
-  percent_of_income: number;
-  balance: number;
-  img?: string | null;
-  userID: string;
-  category?: Categories | null;
-  _version?: number | null;
+export type CreateBalanceOptionsInput = {
+  id?: string | null,
+  monthly_allocation?: number | null,
+  is_paused?: boolean | null,
+  pause_duration_hours?: number | null,
+  category?: Categories | null,
+  _version?: number | null,
 };
 
 export enum Categories {
@@ -289,1510 +141,1760 @@ export enum Categories {
   WANT = "WANT",
 }
 
-export type ModelBudgetConditionInput = {
-  name?: ModelStringInput | null;
-  percent_of_income?: ModelFloatInput | null;
-  balance?: ModelFloatInput | null;
-  img?: ModelStringInput | null;
-  userID?: ModelIDInput | null;
-  category?: ModelCategoriesInput | null;
-  and?: Array<ModelBudgetConditionInput | null> | null;
-  or?: Array<ModelBudgetConditionInput | null> | null;
-  not?: ModelBudgetConditionInput | null;
+
+export type ModelBalanceOptionsConditionInput = {
+  monthly_allocation?: ModelFloatInput | null,
+  is_paused?: ModelBooleanInput | null,
+  pause_duration_hours?: ModelFloatInput | null,
+  category?: ModelCategoriesInput | null,
+  and?: Array< ModelBalanceOptionsConditionInput | null > | null,
+  or?: Array< ModelBalanceOptionsConditionInput | null > | null,
+  not?: ModelBalanceOptionsConditionInput | null,
+};
+
+export type ModelBooleanInput = {
+  ne?: boolean | null,
+  eq?: boolean | null,
+  attributeExists?: boolean | null,
+  attributeType?: ModelAttributeTypes | null,
 };
 
 export type ModelCategoriesInput = {
-  eq?: Categories | null;
-  ne?: Categories | null;
+  eq?: Categories | null,
+  ne?: Categories | null,
 };
 
-export type Budget = {
-  __typename: "Budget";
-  id: string;
-  name: string;
-  percent_of_income: number;
-  balance: number;
-  img?: string | null;
-  userID: string;
-  category?: Categories | null;
-  Transactions?: ModelTransactionConnection | null;
-  createdAt: string;
-  updatedAt: string;
-  _version: number;
-  _deleted?: boolean | null;
-  _lastChangedAt: number;
-  owner?: string | null;
+export type BalanceOptions = {
+  __typename: "BalanceOptions",
+  id: string,
+  monthly_allocation?: number | null,
+  is_paused?: boolean | null,
+  pause_duration_hours?: number | null,
+  category?: Categories | null,
+  BalanceRules?: ModelBalanceRuleConnection | null,
+  createdAt: string,
+  updatedAt: string,
+  _version: number,
+  _deleted?: boolean | null,
+  _lastChangedAt: number,
+  owner?: string | null,
+};
+
+export type ModelBalanceRuleConnection = {
+  __typename: "ModelBalanceRuleConnection",
+  items:  Array<BalanceRule | null >,
+  nextToken?: string | null,
+  startedAt?: number | null,
+};
+
+export type BalanceRule = {
+  __typename: "BalanceRule",
+  id: string,
+  name: string,
+  description?: string | null,
+  balance_optionsID: string,
+  createdAt: string,
+  updatedAt: string,
+  _version: number,
+  _deleted?: boolean | null,
+  _lastChangedAt: number,
+  owner?: string | null,
+};
+
+export type UpdateBalanceOptionsInput = {
+  id: string,
+  monthly_allocation?: number | null,
+  is_paused?: boolean | null,
+  pause_duration_hours?: number | null,
+  category?: Categories | null,
+  _version?: number | null,
+};
+
+export type DeleteBalanceOptionsInput = {
+  id: string,
+  _version?: number | null,
+};
+
+export type CreateBalanceRuleInput = {
+  id?: string | null,
+  name: string,
+  description?: string | null,
+  balance_optionsID: string,
+  _version?: number | null,
+};
+
+export type ModelBalanceRuleConditionInput = {
+  name?: ModelStringInput | null,
+  description?: ModelStringInput | null,
+  balance_optionsID?: ModelIDInput | null,
+  and?: Array< ModelBalanceRuleConditionInput | null > | null,
+  or?: Array< ModelBalanceRuleConditionInput | null > | null,
+  not?: ModelBalanceRuleConditionInput | null,
+};
+
+export type UpdateBalanceRuleInput = {
+  id: string,
+  name?: string | null,
+  description?: string | null,
+  balance_optionsID?: string | null,
+  _version?: number | null,
+};
+
+export type DeleteBalanceRuleInput = {
+  id: string,
+  _version?: number | null,
+};
+
+export type CreateBalanceInput = {
+  id?: string | null,
+  title: string,
+  icon: string,
+  fund_balance: number,
+  total_fund_size: number,
+  placement_index: number,
+  type: BalanceTypes,
+  _version?: number | null,
+  balanceBalanceOptionsId?: string | null,
+};
+
+export enum BalanceTypes {
+  GOAL = "GOAL",
+  BUDGET = "BUDGET",
+}
+
+
+export type ModelBalanceConditionInput = {
+  title?: ModelStringInput | null,
+  icon?: ModelStringInput | null,
+  fund_balance?: ModelFloatInput | null,
+  total_fund_size?: ModelFloatInput | null,
+  placement_index?: ModelIntInput | null,
+  type?: ModelBalanceTypesInput | null,
+  and?: Array< ModelBalanceConditionInput | null > | null,
+  or?: Array< ModelBalanceConditionInput | null > | null,
+  not?: ModelBalanceConditionInput | null,
+  balanceBalanceOptionsId?: ModelIDInput | null,
+};
+
+export type ModelIntInput = {
+  ne?: number | null,
+  eq?: number | null,
+  le?: number | null,
+  lt?: number | null,
+  ge?: number | null,
+  gt?: number | null,
+  between?: Array< number | null > | null,
+  attributeExists?: boolean | null,
+  attributeType?: ModelAttributeTypes | null,
+};
+
+export type ModelBalanceTypesInput = {
+  eq?: BalanceTypes | null,
+  ne?: BalanceTypes | null,
+};
+
+export type Balance = {
+  __typename: "Balance",
+  id: string,
+  title: string,
+  icon: string,
+  fund_balance: number,
+  total_fund_size: number,
+  placement_index: number,
+  type: BalanceTypes,
+  BalanceOptions?: BalanceOptions | null,
+  Transactions?: ModelTransactionConnection | null,
+  createdAt: string,
+  updatedAt: string,
+  _version: number,
+  _deleted?: boolean | null,
+  _lastChangedAt: number,
+  balanceBalanceOptionsId?: string | null,
+  owner?: string | null,
 };
 
 export type ModelTransactionConnection = {
-  __typename: "ModelTransactionConnection";
-  items: Array<Transaction | null>;
-  nextToken?: string | null;
-  startedAt?: number | null;
+  __typename: "ModelTransactionConnection",
+  items:  Array<Transaction | null >,
+  nextToken?: string | null,
+  startedAt?: number | null,
 };
 
-export type UpdateBudgetInput = {
-  id: string;
-  name?: string | null;
-  percent_of_income?: number | null;
-  balance?: number | null;
-  img?: string | null;
-  userID?: string | null;
-  category?: Categories | null;
-  _version?: number | null;
+export type UpdateBalanceInput = {
+  id: string,
+  title?: string | null,
+  icon?: string | null,
+  fund_balance?: number | null,
+  total_fund_size?: number | null,
+  placement_index?: number | null,
+  type?: BalanceTypes | null,
+  _version?: number | null,
+  balanceBalanceOptionsId?: string | null,
 };
 
-export type DeleteBudgetInput = {
-  id: string;
-  _version?: number | null;
+export type DeleteBalanceInput = {
+  id: string,
+  _version?: number | null,
 };
 
 export type ModelTransactionFilterInput = {
-  id?: ModelIDInput | null;
-  name?: ModelStringInput | null;
-  amount?: ModelFloatInput | null;
-  date?: ModelStringInput | null;
-  memo?: ModelStringInput | null;
-  is_sorted?: ModelBooleanInput | null;
-  iso_currency_code?: ModelStringInput | null;
-  budgetID?: ModelIDInput | null;
-  and?: Array<ModelTransactionFilterInput | null> | null;
-  or?: Array<ModelTransactionFilterInput | null> | null;
-  not?: ModelTransactionFilterInput | null;
+  id?: ModelIDInput | null,
+  name?: ModelStringInput | null,
+  amount?: ModelFloatInput | null,
+  date?: ModelStringInput | null,
+  memo?: ModelStringInput | null,
+  iso_currency_code?: ModelStringInput | null,
+  balanceID?: ModelIDInput | null,
+  and?: Array< ModelTransactionFilterInput | null > | null,
+  or?: Array< ModelTransactionFilterInput | null > | null,
+  not?: ModelTransactionFilterInput | null,
 };
 
-export type ModelSavingGoalFilterInput = {
-  id?: ModelIDInput | null;
-  name?: ModelStringInput | null;
-  percent_of_income?: ModelFloatInput | null;
-  date_created?: ModelStringInput | null;
-  date_affordable?: ModelStringInput | null;
-  is_paused?: ModelBooleanInput | null;
-  pause_duration_hour?: ModelIntInput | null;
-  userID?: ModelIDInput | null;
-  and?: Array<ModelSavingGoalFilterInput | null> | null;
-  or?: Array<ModelSavingGoalFilterInput | null> | null;
-  not?: ModelSavingGoalFilterInput | null;
+export type ModelBalanceOptionsFilterInput = {
+  id?: ModelIDInput | null,
+  monthly_allocation?: ModelFloatInput | null,
+  is_paused?: ModelBooleanInput | null,
+  pause_duration_hours?: ModelFloatInput | null,
+  category?: ModelCategoriesInput | null,
+  and?: Array< ModelBalanceOptionsFilterInput | null > | null,
+  or?: Array< ModelBalanceOptionsFilterInput | null > | null,
+  not?: ModelBalanceOptionsFilterInput | null,
 };
 
-export type ModelUserFilterInput = {
-  id?: ModelIDInput | null;
-  username?: ModelStringInput | null;
-  email?: ModelStringInput | null;
-  income_distribution?: ModelStringInput | null;
-  is_premium?: ModelBooleanInput | null;
-  img?: ModelStringInput | null;
-  promo_code?: ModelStringInput | null;
-  and?: Array<ModelUserFilterInput | null> | null;
-  or?: Array<ModelUserFilterInput | null> | null;
-  not?: ModelUserFilterInput | null;
+export type ModelBalanceOptionsConnection = {
+  __typename: "ModelBalanceOptionsConnection",
+  items:  Array<BalanceOptions | null >,
+  nextToken?: string | null,
+  startedAt?: number | null,
 };
 
-export type ModelUserConnection = {
-  __typename: "ModelUserConnection";
-  items: Array<User | null>;
-  nextToken?: string | null;
-  startedAt?: number | null;
+export type ModelBalanceRuleFilterInput = {
+  id?: ModelIDInput | null,
+  name?: ModelStringInput | null,
+  description?: ModelStringInput | null,
+  balance_optionsID?: ModelIDInput | null,
+  and?: Array< ModelBalanceRuleFilterInput | null > | null,
+  or?: Array< ModelBalanceRuleFilterInput | null > | null,
+  not?: ModelBalanceRuleFilterInput | null,
 };
 
-export type ModelBudgetFilterInput = {
-  id?: ModelIDInput | null;
-  name?: ModelStringInput | null;
-  percent_of_income?: ModelFloatInput | null;
-  balance?: ModelFloatInput | null;
-  img?: ModelStringInput | null;
-  userID?: ModelIDInput | null;
-  category?: ModelCategoriesInput | null;
-  and?: Array<ModelBudgetFilterInput | null> | null;
-  or?: Array<ModelBudgetFilterInput | null> | null;
-  not?: ModelBudgetFilterInput | null;
+export type ModelBalanceFilterInput = {
+  id?: ModelIDInput | null,
+  title?: ModelStringInput | null,
+  icon?: ModelStringInput | null,
+  fund_balance?: ModelFloatInput | null,
+  total_fund_size?: ModelFloatInput | null,
+  placement_index?: ModelIntInput | null,
+  type?: ModelBalanceTypesInput | null,
+  and?: Array< ModelBalanceFilterInput | null > | null,
+  or?: Array< ModelBalanceFilterInput | null > | null,
+  not?: ModelBalanceFilterInput | null,
+  balanceBalanceOptionsId?: ModelIDInput | null,
 };
 
-export type ModelBudgetConnection = {
-  __typename: "ModelBudgetConnection";
-  items: Array<Budget | null>;
-  nextToken?: string | null;
-  startedAt?: number | null;
+export type ModelBalanceConnection = {
+  __typename: "ModelBalanceConnection",
+  items:  Array<Balance | null >,
+  nextToken?: string | null,
+  startedAt?: number | null,
+};
+
+export type ModelIntKeyConditionInput = {
+  eq?: number | null,
+  le?: number | null,
+  lt?: number | null,
+  ge?: number | null,
+  gt?: number | null,
+  between?: Array< number | null > | null,
+};
+
+export enum ModelSortDirection {
+  ASC = "ASC",
+  DESC = "DESC",
+}
+
+
+export type ModelSubscriptionTransactionFilterInput = {
+  id?: ModelSubscriptionIDInput | null,
+  name?: ModelSubscriptionStringInput | null,
+  amount?: ModelSubscriptionFloatInput | null,
+  date?: ModelSubscriptionStringInput | null,
+  memo?: ModelSubscriptionStringInput | null,
+  iso_currency_code?: ModelSubscriptionStringInput | null,
+  balanceID?: ModelSubscriptionIDInput | null,
+  and?: Array< ModelSubscriptionTransactionFilterInput | null > | null,
+  or?: Array< ModelSubscriptionTransactionFilterInput | null > | null,
+};
+
+export type ModelSubscriptionIDInput = {
+  ne?: string | null,
+  eq?: string | null,
+  le?: string | null,
+  lt?: string | null,
+  ge?: string | null,
+  gt?: string | null,
+  contains?: string | null,
+  notContains?: string | null,
+  between?: Array< string | null > | null,
+  beginsWith?: string | null,
+  in?: Array< string | null > | null,
+  notIn?: Array< string | null > | null,
+};
+
+export type ModelSubscriptionStringInput = {
+  ne?: string | null,
+  eq?: string | null,
+  le?: string | null,
+  lt?: string | null,
+  ge?: string | null,
+  gt?: string | null,
+  contains?: string | null,
+  notContains?: string | null,
+  between?: Array< string | null > | null,
+  beginsWith?: string | null,
+  in?: Array< string | null > | null,
+  notIn?: Array< string | null > | null,
+};
+
+export type ModelSubscriptionFloatInput = {
+  ne?: number | null,
+  eq?: number | null,
+  le?: number | null,
+  lt?: number | null,
+  ge?: number | null,
+  gt?: number | null,
+  between?: Array< number | null > | null,
+  in?: Array< number | null > | null,
+  notIn?: Array< number | null > | null,
+};
+
+export type ModelSubscriptionBalanceOptionsFilterInput = {
+  id?: ModelSubscriptionIDInput | null,
+  monthly_allocation?: ModelSubscriptionFloatInput | null,
+  is_paused?: ModelSubscriptionBooleanInput | null,
+  pause_duration_hours?: ModelSubscriptionFloatInput | null,
+  category?: ModelSubscriptionStringInput | null,
+  and?: Array< ModelSubscriptionBalanceOptionsFilterInput | null > | null,
+  or?: Array< ModelSubscriptionBalanceOptionsFilterInput | null > | null,
+};
+
+export type ModelSubscriptionBooleanInput = {
+  ne?: boolean | null,
+  eq?: boolean | null,
+};
+
+export type ModelSubscriptionBalanceRuleFilterInput = {
+  id?: ModelSubscriptionIDInput | null,
+  name?: ModelSubscriptionStringInput | null,
+  description?: ModelSubscriptionStringInput | null,
+  balance_optionsID?: ModelSubscriptionIDInput | null,
+  and?: Array< ModelSubscriptionBalanceRuleFilterInput | null > | null,
+  or?: Array< ModelSubscriptionBalanceRuleFilterInput | null > | null,
+};
+
+export type ModelSubscriptionBalanceFilterInput = {
+  id?: ModelSubscriptionIDInput | null,
+  title?: ModelSubscriptionStringInput | null,
+  icon?: ModelSubscriptionStringInput | null,
+  fund_balance?: ModelSubscriptionFloatInput | null,
+  total_fund_size?: ModelSubscriptionFloatInput | null,
+  placement_index?: ModelSubscriptionIntInput | null,
+  type?: ModelSubscriptionStringInput | null,
+  and?: Array< ModelSubscriptionBalanceFilterInput | null > | null,
+  or?: Array< ModelSubscriptionBalanceFilterInput | null > | null,
+};
+
+export type ModelSubscriptionIntInput = {
+  ne?: number | null,
+  eq?: number | null,
+  le?: number | null,
+  lt?: number | null,
+  ge?: number | null,
+  gt?: number | null,
+  between?: Array< number | null > | null,
+  in?: Array< number | null > | null,
+  notIn?: Array< number | null > | null,
 };
 
 export type CreateTransactionMutationVariables = {
-  input: CreateTransactionInput;
-  condition?: ModelTransactionConditionInput | null;
+  input: CreateTransactionInput,
+  condition?: ModelTransactionConditionInput | null,
 };
 
 export type CreateTransactionMutation = {
-  createTransaction?: {
-    __typename: "Transaction";
-    id: string;
-    name: string;
-    amount: number;
-    date: string;
-    memo?: string | null;
-    is_sorted: boolean;
-    iso_currency_code: string;
-    budgetID: string;
-    createdAt: string;
-    updatedAt: string;
-    _version: number;
-    _deleted?: boolean | null;
-    _lastChangedAt: number;
-  } | null;
+  createTransaction?:  {
+    __typename: "Transaction",
+    id: string,
+    name: string,
+    amount: number,
+    date?: string | null,
+    memo?: string | null,
+    iso_currency_code?: string | null,
+    balanceID: string,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+    owner?: string | null,
+  } | null,
 };
 
 export type UpdateTransactionMutationVariables = {
-  input: UpdateTransactionInput;
-  condition?: ModelTransactionConditionInput | null;
+  input: UpdateTransactionInput,
+  condition?: ModelTransactionConditionInput | null,
 };
 
 export type UpdateTransactionMutation = {
-  updateTransaction?: {
-    __typename: "Transaction";
-    id: string;
-    name: string;
-    amount: number;
-    date: string;
-    memo?: string | null;
-    is_sorted: boolean;
-    iso_currency_code: string;
-    budgetID: string;
-    createdAt: string;
-    updatedAt: string;
-    _version: number;
-    _deleted?: boolean | null;
-    _lastChangedAt: number;
-  } | null;
+  updateTransaction?:  {
+    __typename: "Transaction",
+    id: string,
+    name: string,
+    amount: number,
+    date?: string | null,
+    memo?: string | null,
+    iso_currency_code?: string | null,
+    balanceID: string,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+    owner?: string | null,
+  } | null,
 };
 
 export type DeleteTransactionMutationVariables = {
-  input: DeleteTransactionInput;
-  condition?: ModelTransactionConditionInput | null;
+  input: DeleteTransactionInput,
+  condition?: ModelTransactionConditionInput | null,
 };
 
 export type DeleteTransactionMutation = {
-  deleteTransaction?: {
-    __typename: "Transaction";
-    id: string;
-    name: string;
-    amount: number;
-    date: string;
-    memo?: string | null;
-    is_sorted: boolean;
-    iso_currency_code: string;
-    budgetID: string;
-    createdAt: string;
-    updatedAt: string;
-    _version: number;
-    _deleted?: boolean | null;
-    _lastChangedAt: number;
-  } | null;
+  deleteTransaction?:  {
+    __typename: "Transaction",
+    id: string,
+    name: string,
+    amount: number,
+    date?: string | null,
+    memo?: string | null,
+    iso_currency_code?: string | null,
+    balanceID: string,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+    owner?: string | null,
+  } | null,
 };
 
-export type CreateSavingGoalMutationVariables = {
-  input: CreateSavingGoalInput;
-  condition?: ModelSavingGoalConditionInput | null;
+export type CreateBalanceOptionsMutationVariables = {
+  input: CreateBalanceOptionsInput,
+  condition?: ModelBalanceOptionsConditionInput | null,
 };
 
-export type CreateSavingGoalMutation = {
-  createSavingGoal?: {
-    __typename: "SavingGoal";
-    id: string;
-    name: string;
-    percent_of_income: number;
-    date_created: string;
-    date_affordable: string;
-    is_paused?: boolean | null;
-    pause_duration_hour?: number | null;
-    userID: string;
-    createdAt: string;
-    updatedAt: string;
-    _version: number;
-    _deleted?: boolean | null;
-    _lastChangedAt: number;
-    owner?: string | null;
-  } | null;
+export type CreateBalanceOptionsMutation = {
+  createBalanceOptions?:  {
+    __typename: "BalanceOptions",
+    id: string,
+    monthly_allocation?: number | null,
+    is_paused?: boolean | null,
+    pause_duration_hours?: number | null,
+    category?: Categories | null,
+    BalanceRules?:  {
+      __typename: "ModelBalanceRuleConnection",
+      items:  Array< {
+        __typename: "BalanceRule",
+        id: string,
+        name: string,
+        description?: string | null,
+        balance_optionsID: string,
+        createdAt: string,
+        updatedAt: string,
+        _version: number,
+        _deleted?: boolean | null,
+        _lastChangedAt: number,
+        owner?: string | null,
+      } | null >,
+      nextToken?: string | null,
+      startedAt?: number | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+    owner?: string | null,
+  } | null,
 };
 
-export type UpdateSavingGoalMutationVariables = {
-  input: UpdateSavingGoalInput;
-  condition?: ModelSavingGoalConditionInput | null;
+export type UpdateBalanceOptionsMutationVariables = {
+  input: UpdateBalanceOptionsInput,
+  condition?: ModelBalanceOptionsConditionInput | null,
 };
 
-export type UpdateSavingGoalMutation = {
-  updateSavingGoal?: {
-    __typename: "SavingGoal";
-    id: string;
-    name: string;
-    percent_of_income: number;
-    date_created: string;
-    date_affordable: string;
-    is_paused?: boolean | null;
-    pause_duration_hour?: number | null;
-    userID: string;
-    createdAt: string;
-    updatedAt: string;
-    _version: number;
-    _deleted?: boolean | null;
-    _lastChangedAt: number;
-    owner?: string | null;
-  } | null;
+export type UpdateBalanceOptionsMutation = {
+  updateBalanceOptions?:  {
+    __typename: "BalanceOptions",
+    id: string,
+    monthly_allocation?: number | null,
+    is_paused?: boolean | null,
+    pause_duration_hours?: number | null,
+    category?: Categories | null,
+    BalanceRules?:  {
+      __typename: "ModelBalanceRuleConnection",
+      items:  Array< {
+        __typename: "BalanceRule",
+        id: string,
+        name: string,
+        description?: string | null,
+        balance_optionsID: string,
+        createdAt: string,
+        updatedAt: string,
+        _version: number,
+        _deleted?: boolean | null,
+        _lastChangedAt: number,
+        owner?: string | null,
+      } | null >,
+      nextToken?: string | null,
+      startedAt?: number | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+    owner?: string | null,
+  } | null,
 };
 
-export type DeleteSavingGoalMutationVariables = {
-  input: DeleteSavingGoalInput;
-  condition?: ModelSavingGoalConditionInput | null;
+export type DeleteBalanceOptionsMutationVariables = {
+  input: DeleteBalanceOptionsInput,
+  condition?: ModelBalanceOptionsConditionInput | null,
 };
 
-export type DeleteSavingGoalMutation = {
-  deleteSavingGoal?: {
-    __typename: "SavingGoal";
-    id: string;
-    name: string;
-    percent_of_income: number;
-    date_created: string;
-    date_affordable: string;
-    is_paused?: boolean | null;
-    pause_duration_hour?: number | null;
-    userID: string;
-    createdAt: string;
-    updatedAt: string;
-    _version: number;
-    _deleted?: boolean | null;
-    _lastChangedAt: number;
-    owner?: string | null;
-  } | null;
+export type DeleteBalanceOptionsMutation = {
+  deleteBalanceOptions?:  {
+    __typename: "BalanceOptions",
+    id: string,
+    monthly_allocation?: number | null,
+    is_paused?: boolean | null,
+    pause_duration_hours?: number | null,
+    category?: Categories | null,
+    BalanceRules?:  {
+      __typename: "ModelBalanceRuleConnection",
+      items:  Array< {
+        __typename: "BalanceRule",
+        id: string,
+        name: string,
+        description?: string | null,
+        balance_optionsID: string,
+        createdAt: string,
+        updatedAt: string,
+        _version: number,
+        _deleted?: boolean | null,
+        _lastChangedAt: number,
+        owner?: string | null,
+      } | null >,
+      nextToken?: string | null,
+      startedAt?: number | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+    owner?: string | null,
+  } | null,
 };
 
-export type CreateUserMutationVariables = {
-  input: CreateUserInput;
-  condition?: ModelUserConditionInput | null;
+export type CreateBalanceRuleMutationVariables = {
+  input: CreateBalanceRuleInput,
+  condition?: ModelBalanceRuleConditionInput | null,
 };
 
-export type CreateUserMutation = {
-  createUser?: {
-    __typename: "User";
-    id: string;
-    username: string;
-    Budgets?: {
-      __typename: "ModelSavingGoalConnection";
-      items: Array<{
-        __typename: "SavingGoal";
-        id: string;
-        name: string;
-        percent_of_income: number;
-        date_created: string;
-        date_affordable: string;
-        is_paused?: boolean | null;
-        pause_duration_hour?: number | null;
-        userID: string;
-        createdAt: string;
-        updatedAt: string;
-        _version: number;
-        _deleted?: boolean | null;
-        _lastChangedAt: number;
-        owner?: string | null;
-      } | null>;
-      nextToken?: string | null;
-      startedAt?: number | null;
-    } | null;
-    email: string;
-    income_distribution: Array<string>;
-    is_premium: boolean;
-    img?: string | null;
-    promo_code?: string | null;
-    SavingGoals?: {
-      __typename: "ModelSavingGoalConnection";
-      items: Array<{
-        __typename: "SavingGoal";
-        id: string;
-        name: string;
-        percent_of_income: number;
-        date_created: string;
-        date_affordable: string;
-        is_paused?: boolean | null;
-        pause_duration_hour?: number | null;
-        userID: string;
-        createdAt: string;
-        updatedAt: string;
-        _version: number;
-        _deleted?: boolean | null;
-        _lastChangedAt: number;
-        owner?: string | null;
-      } | null>;
-      nextToken?: string | null;
-      startedAt?: number | null;
-    } | null;
-    createdAt: string;
-    updatedAt: string;
-    _version: number;
-    _deleted?: boolean | null;
-    _lastChangedAt: number;
-    owner?: string | null;
-  } | null;
+export type CreateBalanceRuleMutation = {
+  createBalanceRule?:  {
+    __typename: "BalanceRule",
+    id: string,
+    name: string,
+    description?: string | null,
+    balance_optionsID: string,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+    owner?: string | null,
+  } | null,
 };
 
-export type UpdateUserMutationVariables = {
-  input: UpdateUserInput;
-  condition?: ModelUserConditionInput | null;
+export type UpdateBalanceRuleMutationVariables = {
+  input: UpdateBalanceRuleInput,
+  condition?: ModelBalanceRuleConditionInput | null,
 };
 
-export type UpdateUserMutation = {
-  updateUser?: {
-    __typename: "User";
-    id: string;
-    username: string;
-    Budgets?: {
-      __typename: "ModelSavingGoalConnection";
-      items: Array<{
-        __typename: "SavingGoal";
-        id: string;
-        name: string;
-        percent_of_income: number;
-        date_created: string;
-        date_affordable: string;
-        is_paused?: boolean | null;
-        pause_duration_hour?: number | null;
-        userID: string;
-        createdAt: string;
-        updatedAt: string;
-        _version: number;
-        _deleted?: boolean | null;
-        _lastChangedAt: number;
-        owner?: string | null;
-      } | null>;
-      nextToken?: string | null;
-      startedAt?: number | null;
-    } | null;
-    email: string;
-    income_distribution: Array<string>;
-    is_premium: boolean;
-    img?: string | null;
-    promo_code?: string | null;
-    SavingGoals?: {
-      __typename: "ModelSavingGoalConnection";
-      items: Array<{
-        __typename: "SavingGoal";
-        id: string;
-        name: string;
-        percent_of_income: number;
-        date_created: string;
-        date_affordable: string;
-        is_paused?: boolean | null;
-        pause_duration_hour?: number | null;
-        userID: string;
-        createdAt: string;
-        updatedAt: string;
-        _version: number;
-        _deleted?: boolean | null;
-        _lastChangedAt: number;
-        owner?: string | null;
-      } | null>;
-      nextToken?: string | null;
-      startedAt?: number | null;
-    } | null;
-    createdAt: string;
-    updatedAt: string;
-    _version: number;
-    _deleted?: boolean | null;
-    _lastChangedAt: number;
-    owner?: string | null;
-  } | null;
+export type UpdateBalanceRuleMutation = {
+  updateBalanceRule?:  {
+    __typename: "BalanceRule",
+    id: string,
+    name: string,
+    description?: string | null,
+    balance_optionsID: string,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+    owner?: string | null,
+  } | null,
 };
 
-export type DeleteUserMutationVariables = {
-  input: DeleteUserInput;
-  condition?: ModelUserConditionInput | null;
+export type DeleteBalanceRuleMutationVariables = {
+  input: DeleteBalanceRuleInput,
+  condition?: ModelBalanceRuleConditionInput | null,
 };
 
-export type DeleteUserMutation = {
-  deleteUser?: {
-    __typename: "User";
-    id: string;
-    username: string;
-    Budgets?: {
-      __typename: "ModelSavingGoalConnection";
-      items: Array<{
-        __typename: "SavingGoal";
-        id: string;
-        name: string;
-        percent_of_income: number;
-        date_created: string;
-        date_affordable: string;
-        is_paused?: boolean | null;
-        pause_duration_hour?: number | null;
-        userID: string;
-        createdAt: string;
-        updatedAt: string;
-        _version: number;
-        _deleted?: boolean | null;
-        _lastChangedAt: number;
-        owner?: string | null;
-      } | null>;
-      nextToken?: string | null;
-      startedAt?: number | null;
-    } | null;
-    email: string;
-    income_distribution: Array<string>;
-    is_premium: boolean;
-    img?: string | null;
-    promo_code?: string | null;
-    SavingGoals?: {
-      __typename: "ModelSavingGoalConnection";
-      items: Array<{
-        __typename: "SavingGoal";
-        id: string;
-        name: string;
-        percent_of_income: number;
-        date_created: string;
-        date_affordable: string;
-        is_paused?: boolean | null;
-        pause_duration_hour?: number | null;
-        userID: string;
-        createdAt: string;
-        updatedAt: string;
-        _version: number;
-        _deleted?: boolean | null;
-        _lastChangedAt: number;
-        owner?: string | null;
-      } | null>;
-      nextToken?: string | null;
-      startedAt?: number | null;
-    } | null;
-    createdAt: string;
-    updatedAt: string;
-    _version: number;
-    _deleted?: boolean | null;
-    _lastChangedAt: number;
-    owner?: string | null;
-  } | null;
+export type DeleteBalanceRuleMutation = {
+  deleteBalanceRule?:  {
+    __typename: "BalanceRule",
+    id: string,
+    name: string,
+    description?: string | null,
+    balance_optionsID: string,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+    owner?: string | null,
+  } | null,
 };
 
-export type CreateBudgetMutationVariables = {
-  input: CreateBudgetInput;
-  condition?: ModelBudgetConditionInput | null;
+export type CreateBalanceMutationVariables = {
+  input: CreateBalanceInput,
+  condition?: ModelBalanceConditionInput | null,
 };
 
-export type CreateBudgetMutation = {
-  createBudget?: {
-    __typename: "Budget";
-    id: string;
-    name: string;
-    percent_of_income: number;
-    balance: number;
-    img?: string | null;
-    userID: string;
-    category?: Categories | null;
-    Transactions?: {
-      __typename: "ModelTransactionConnection";
-      items: Array<{
-        __typename: "Transaction";
-        id: string;
-        name: string;
-        amount: number;
-        date: string;
-        memo?: string | null;
-        is_sorted: boolean;
-        iso_currency_code: string;
-        budgetID: string;
-        createdAt: string;
-        updatedAt: string;
-        _version: number;
-        _deleted?: boolean | null;
-        _lastChangedAt: number;
-      } | null>;
-      nextToken?: string | null;
-      startedAt?: number | null;
-    } | null;
-    createdAt: string;
-    updatedAt: string;
-    _version: number;
-    _deleted?: boolean | null;
-    _lastChangedAt: number;
-    owner?: string | null;
-  } | null;
+export type CreateBalanceMutation = {
+  createBalance?:  {
+    __typename: "Balance",
+    id: string,
+    title: string,
+    icon: string,
+    fund_balance: number,
+    total_fund_size: number,
+    placement_index: number,
+    type: BalanceTypes,
+    BalanceOptions?:  {
+      __typename: "BalanceOptions",
+      id: string,
+      monthly_allocation?: number | null,
+      is_paused?: boolean | null,
+      pause_duration_hours?: number | null,
+      category?: Categories | null,
+      BalanceRules?:  {
+        __typename: "ModelBalanceRuleConnection",
+        nextToken?: string | null,
+        startedAt?: number | null,
+      } | null,
+      createdAt: string,
+      updatedAt: string,
+      _version: number,
+      _deleted?: boolean | null,
+      _lastChangedAt: number,
+      owner?: string | null,
+    } | null,
+    Transactions?:  {
+      __typename: "ModelTransactionConnection",
+      items:  Array< {
+        __typename: "Transaction",
+        id: string,
+        name: string,
+        amount: number,
+        date?: string | null,
+        memo?: string | null,
+        iso_currency_code?: string | null,
+        balanceID: string,
+        createdAt: string,
+        updatedAt: string,
+        _version: number,
+        _deleted?: boolean | null,
+        _lastChangedAt: number,
+        owner?: string | null,
+      } | null >,
+      nextToken?: string | null,
+      startedAt?: number | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+    balanceBalanceOptionsId?: string | null,
+    owner?: string | null,
+  } | null,
 };
 
-export type UpdateBudgetMutationVariables = {
-  input: UpdateBudgetInput;
-  condition?: ModelBudgetConditionInput | null;
+export type UpdateBalanceMutationVariables = {
+  input: UpdateBalanceInput,
+  condition?: ModelBalanceConditionInput | null,
 };
 
-export type UpdateBudgetMutation = {
-  updateBudget?: {
-    __typename: "Budget";
-    id: string;
-    name: string;
-    percent_of_income: number;
-    balance: number;
-    img?: string | null;
-    userID: string;
-    category?: Categories | null;
-    Transactions?: {
-      __typename: "ModelTransactionConnection";
-      items: Array<{
-        __typename: "Transaction";
-        id: string;
-        name: string;
-        amount: number;
-        date: string;
-        memo?: string | null;
-        is_sorted: boolean;
-        iso_currency_code: string;
-        budgetID: string;
-        createdAt: string;
-        updatedAt: string;
-        _version: number;
-        _deleted?: boolean | null;
-        _lastChangedAt: number;
-      } | null>;
-      nextToken?: string | null;
-      startedAt?: number | null;
-    } | null;
-    createdAt: string;
-    updatedAt: string;
-    _version: number;
-    _deleted?: boolean | null;
-    _lastChangedAt: number;
-    owner?: string | null;
-  } | null;
+export type UpdateBalanceMutation = {
+  updateBalance?:  {
+    __typename: "Balance",
+    id: string,
+    title: string,
+    icon: string,
+    fund_balance: number,
+    total_fund_size: number,
+    placement_index: number,
+    type: BalanceTypes,
+    BalanceOptions?:  {
+      __typename: "BalanceOptions",
+      id: string,
+      monthly_allocation?: number | null,
+      is_paused?: boolean | null,
+      pause_duration_hours?: number | null,
+      category?: Categories | null,
+      BalanceRules?:  {
+        __typename: "ModelBalanceRuleConnection",
+        nextToken?: string | null,
+        startedAt?: number | null,
+      } | null,
+      createdAt: string,
+      updatedAt: string,
+      _version: number,
+      _deleted?: boolean | null,
+      _lastChangedAt: number,
+      owner?: string | null,
+    } | null,
+    Transactions?:  {
+      __typename: "ModelTransactionConnection",
+      items:  Array< {
+        __typename: "Transaction",
+        id: string,
+        name: string,
+        amount: number,
+        date?: string | null,
+        memo?: string | null,
+        iso_currency_code?: string | null,
+        balanceID: string,
+        createdAt: string,
+        updatedAt: string,
+        _version: number,
+        _deleted?: boolean | null,
+        _lastChangedAt: number,
+        owner?: string | null,
+      } | null >,
+      nextToken?: string | null,
+      startedAt?: number | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+    balanceBalanceOptionsId?: string | null,
+    owner?: string | null,
+  } | null,
 };
 
-export type DeleteBudgetMutationVariables = {
-  input: DeleteBudgetInput;
-  condition?: ModelBudgetConditionInput | null;
+export type DeleteBalanceMutationVariables = {
+  input: DeleteBalanceInput,
+  condition?: ModelBalanceConditionInput | null,
 };
 
-export type DeleteBudgetMutation = {
-  deleteBudget?: {
-    __typename: "Budget";
-    id: string;
-    name: string;
-    percent_of_income: number;
-    balance: number;
-    img?: string | null;
-    userID: string;
-    category?: Categories | null;
-    Transactions?: {
-      __typename: "ModelTransactionConnection";
-      items: Array<{
-        __typename: "Transaction";
-        id: string;
-        name: string;
-        amount: number;
-        date: string;
-        memo?: string | null;
-        is_sorted: boolean;
-        iso_currency_code: string;
-        budgetID: string;
-        createdAt: string;
-        updatedAt: string;
-        _version: number;
-        _deleted?: boolean | null;
-        _lastChangedAt: number;
-      } | null>;
-      nextToken?: string | null;
-      startedAt?: number | null;
-    } | null;
-    createdAt: string;
-    updatedAt: string;
-    _version: number;
-    _deleted?: boolean | null;
-    _lastChangedAt: number;
-    owner?: string | null;
-  } | null;
+export type DeleteBalanceMutation = {
+  deleteBalance?:  {
+    __typename: "Balance",
+    id: string,
+    title: string,
+    icon: string,
+    fund_balance: number,
+    total_fund_size: number,
+    placement_index: number,
+    type: BalanceTypes,
+    BalanceOptions?:  {
+      __typename: "BalanceOptions",
+      id: string,
+      monthly_allocation?: number | null,
+      is_paused?: boolean | null,
+      pause_duration_hours?: number | null,
+      category?: Categories | null,
+      BalanceRules?:  {
+        __typename: "ModelBalanceRuleConnection",
+        nextToken?: string | null,
+        startedAt?: number | null,
+      } | null,
+      createdAt: string,
+      updatedAt: string,
+      _version: number,
+      _deleted?: boolean | null,
+      _lastChangedAt: number,
+      owner?: string | null,
+    } | null,
+    Transactions?:  {
+      __typename: "ModelTransactionConnection",
+      items:  Array< {
+        __typename: "Transaction",
+        id: string,
+        name: string,
+        amount: number,
+        date?: string | null,
+        memo?: string | null,
+        iso_currency_code?: string | null,
+        balanceID: string,
+        createdAt: string,
+        updatedAt: string,
+        _version: number,
+        _deleted?: boolean | null,
+        _lastChangedAt: number,
+        owner?: string | null,
+      } | null >,
+      nextToken?: string | null,
+      startedAt?: number | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+    balanceBalanceOptionsId?: string | null,
+    owner?: string | null,
+  } | null,
 };
 
 export type GetTransactionQueryVariables = {
-  id: string;
+  id: string,
 };
 
 export type GetTransactionQuery = {
-  getTransaction?: {
-    __typename: "Transaction";
-    id: string;
-    name: string;
-    amount: number;
-    date: string;
-    memo?: string | null;
-    is_sorted: boolean;
-    iso_currency_code: string;
-    budgetID: string;
-    createdAt: string;
-    updatedAt: string;
-    _version: number;
-    _deleted?: boolean | null;
-    _lastChangedAt: number;
-  } | null;
+  getTransaction?:  {
+    __typename: "Transaction",
+    id: string,
+    name: string,
+    amount: number,
+    date?: string | null,
+    memo?: string | null,
+    iso_currency_code?: string | null,
+    balanceID: string,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+    owner?: string | null,
+  } | null,
 };
 
 export type ListTransactionsQueryVariables = {
-  filter?: ModelTransactionFilterInput | null;
-  limit?: number | null;
-  nextToken?: string | null;
+  filter?: ModelTransactionFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
 };
 
 export type ListTransactionsQuery = {
-  listTransactions?: {
-    __typename: "ModelTransactionConnection";
-    items: Array<{
-      __typename: "Transaction";
-      id: string;
-      name: string;
-      amount: number;
-      date: string;
-      memo?: string | null;
-      is_sorted: boolean;
-      iso_currency_code: string;
-      budgetID: string;
-      createdAt: string;
-      updatedAt: string;
-      _version: number;
-      _deleted?: boolean | null;
-      _lastChangedAt: number;
-    } | null>;
-    nextToken?: string | null;
-    startedAt?: number | null;
-  } | null;
+  listTransactions?:  {
+    __typename: "ModelTransactionConnection",
+    items:  Array< {
+      __typename: "Transaction",
+      id: string,
+      name: string,
+      amount: number,
+      date?: string | null,
+      memo?: string | null,
+      iso_currency_code?: string | null,
+      balanceID: string,
+      createdAt: string,
+      updatedAt: string,
+      _version: number,
+      _deleted?: boolean | null,
+      _lastChangedAt: number,
+      owner?: string | null,
+    } | null >,
+    nextToken?: string | null,
+    startedAt?: number | null,
+  } | null,
 };
 
 export type SyncTransactionsQueryVariables = {
-  filter?: ModelTransactionFilterInput | null;
-  limit?: number | null;
-  nextToken?: string | null;
-  lastSync?: number | null;
+  filter?: ModelTransactionFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+  lastSync?: number | null,
 };
 
 export type SyncTransactionsQuery = {
-  syncTransactions?: {
-    __typename: "ModelTransactionConnection";
-    items: Array<{
-      __typename: "Transaction";
-      id: string;
-      name: string;
-      amount: number;
-      date: string;
-      memo?: string | null;
-      is_sorted: boolean;
-      iso_currency_code: string;
-      budgetID: string;
-      createdAt: string;
-      updatedAt: string;
-      _version: number;
-      _deleted?: boolean | null;
-      _lastChangedAt: number;
-    } | null>;
-    nextToken?: string | null;
-    startedAt?: number | null;
-  } | null;
+  syncTransactions?:  {
+    __typename: "ModelTransactionConnection",
+    items:  Array< {
+      __typename: "Transaction",
+      id: string,
+      name: string,
+      amount: number,
+      date?: string | null,
+      memo?: string | null,
+      iso_currency_code?: string | null,
+      balanceID: string,
+      createdAt: string,
+      updatedAt: string,
+      _version: number,
+      _deleted?: boolean | null,
+      _lastChangedAt: number,
+      owner?: string | null,
+    } | null >,
+    nextToken?: string | null,
+    startedAt?: number | null,
+  } | null,
 };
 
-export type GetSavingGoalQueryVariables = {
-  id: string;
+export type GetBalanceOptionsQueryVariables = {
+  id: string,
 };
 
-export type GetSavingGoalQuery = {
-  getSavingGoal?: {
-    __typename: "SavingGoal";
-    id: string;
-    name: string;
-    percent_of_income: number;
-    date_created: string;
-    date_affordable: string;
-    is_paused?: boolean | null;
-    pause_duration_hour?: number | null;
-    userID: string;
-    createdAt: string;
-    updatedAt: string;
-    _version: number;
-    _deleted?: boolean | null;
-    _lastChangedAt: number;
-    owner?: string | null;
-  } | null;
+export type GetBalanceOptionsQuery = {
+  getBalanceOptions?:  {
+    __typename: "BalanceOptions",
+    id: string,
+    monthly_allocation?: number | null,
+    is_paused?: boolean | null,
+    pause_duration_hours?: number | null,
+    category?: Categories | null,
+    BalanceRules?:  {
+      __typename: "ModelBalanceRuleConnection",
+      items:  Array< {
+        __typename: "BalanceRule",
+        id: string,
+        name: string,
+        description?: string | null,
+        balance_optionsID: string,
+        createdAt: string,
+        updatedAt: string,
+        _version: number,
+        _deleted?: boolean | null,
+        _lastChangedAt: number,
+        owner?: string | null,
+      } | null >,
+      nextToken?: string | null,
+      startedAt?: number | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+    owner?: string | null,
+  } | null,
 };
 
-export type ListSavingGoalsQueryVariables = {
-  filter?: ModelSavingGoalFilterInput | null;
-  limit?: number | null;
-  nextToken?: string | null;
+export type ListBalanceOptionsQueryVariables = {
+  filter?: ModelBalanceOptionsFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
 };
 
-export type ListSavingGoalsQuery = {
-  listSavingGoals?: {
-    __typename: "ModelSavingGoalConnection";
-    items: Array<{
-      __typename: "SavingGoal";
-      id: string;
-      name: string;
-      percent_of_income: number;
-      date_created: string;
-      date_affordable: string;
-      is_paused?: boolean | null;
-      pause_duration_hour?: number | null;
-      userID: string;
-      createdAt: string;
-      updatedAt: string;
-      _version: number;
-      _deleted?: boolean | null;
-      _lastChangedAt: number;
-      owner?: string | null;
-    } | null>;
-    nextToken?: string | null;
-    startedAt?: number | null;
-  } | null;
+export type ListBalanceOptionsQuery = {
+  listBalanceOptions?:  {
+    __typename: "ModelBalanceOptionsConnection",
+    items:  Array< {
+      __typename: "BalanceOptions",
+      id: string,
+      monthly_allocation?: number | null,
+      is_paused?: boolean | null,
+      pause_duration_hours?: number | null,
+      category?: Categories | null,
+      BalanceRules?:  {
+        __typename: "ModelBalanceRuleConnection",
+        nextToken?: string | null,
+        startedAt?: number | null,
+      } | null,
+      createdAt: string,
+      updatedAt: string,
+      _version: number,
+      _deleted?: boolean | null,
+      _lastChangedAt: number,
+      owner?: string | null,
+    } | null >,
+    nextToken?: string | null,
+    startedAt?: number | null,
+  } | null,
 };
 
-export type SyncSavingGoalsQueryVariables = {
-  filter?: ModelSavingGoalFilterInput | null;
-  limit?: number | null;
-  nextToken?: string | null;
-  lastSync?: number | null;
+export type SyncBalanceOptionsQueryVariables = {
+  filter?: ModelBalanceOptionsFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+  lastSync?: number | null,
 };
 
-export type SyncSavingGoalsQuery = {
-  syncSavingGoals?: {
-    __typename: "ModelSavingGoalConnection";
-    items: Array<{
-      __typename: "SavingGoal";
-      id: string;
-      name: string;
-      percent_of_income: number;
-      date_created: string;
-      date_affordable: string;
-      is_paused?: boolean | null;
-      pause_duration_hour?: number | null;
-      userID: string;
-      createdAt: string;
-      updatedAt: string;
-      _version: number;
-      _deleted?: boolean | null;
-      _lastChangedAt: number;
-      owner?: string | null;
-    } | null>;
-    nextToken?: string | null;
-    startedAt?: number | null;
-  } | null;
+export type SyncBalanceOptionsQuery = {
+  syncBalanceOptions?:  {
+    __typename: "ModelBalanceOptionsConnection",
+    items:  Array< {
+      __typename: "BalanceOptions",
+      id: string,
+      monthly_allocation?: number | null,
+      is_paused?: boolean | null,
+      pause_duration_hours?: number | null,
+      category?: Categories | null,
+      BalanceRules?:  {
+        __typename: "ModelBalanceRuleConnection",
+        nextToken?: string | null,
+        startedAt?: number | null,
+      } | null,
+      createdAt: string,
+      updatedAt: string,
+      _version: number,
+      _deleted?: boolean | null,
+      _lastChangedAt: number,
+      owner?: string | null,
+    } | null >,
+    nextToken?: string | null,
+    startedAt?: number | null,
+  } | null,
 };
 
-export type GetUserQueryVariables = {
-  id: string;
+export type GetBalanceRuleQueryVariables = {
+  id: string,
 };
 
-export type GetUserQuery = {
-  getUser?: {
-    __typename: "User";
-    id: string;
-    username: string;
-    Budgets?: {
-      __typename: "ModelSavingGoalConnection";
-      items: Array<{
-        __typename: "SavingGoal";
-        id: string;
-        name: string;
-        percent_of_income: number;
-        date_created: string;
-        date_affordable: string;
-        is_paused?: boolean | null;
-        pause_duration_hour?: number | null;
-        userID: string;
-        createdAt: string;
-        updatedAt: string;
-        _version: number;
-        _deleted?: boolean | null;
-        _lastChangedAt: number;
-        owner?: string | null;
-      } | null>;
-      nextToken?: string | null;
-      startedAt?: number | null;
-    } | null;
-    email: string;
-    income_distribution: Array<string>;
-    is_premium: boolean;
-    img?: string | null;
-    promo_code?: string | null;
-    SavingGoals?: {
-      __typename: "ModelSavingGoalConnection";
-      items: Array<{
-        __typename: "SavingGoal";
-        id: string;
-        name: string;
-        percent_of_income: number;
-        date_created: string;
-        date_affordable: string;
-        is_paused?: boolean | null;
-        pause_duration_hour?: number | null;
-        userID: string;
-        createdAt: string;
-        updatedAt: string;
-        _version: number;
-        _deleted?: boolean | null;
-        _lastChangedAt: number;
-        owner?: string | null;
-      } | null>;
-      nextToken?: string | null;
-      startedAt?: number | null;
-    } | null;
-    createdAt: string;
-    updatedAt: string;
-    _version: number;
-    _deleted?: boolean | null;
-    _lastChangedAt: number;
-    owner?: string | null;
-  } | null;
+export type GetBalanceRuleQuery = {
+  getBalanceRule?:  {
+    __typename: "BalanceRule",
+    id: string,
+    name: string,
+    description?: string | null,
+    balance_optionsID: string,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+    owner?: string | null,
+  } | null,
 };
 
-export type ListUsersQueryVariables = {
-  filter?: ModelUserFilterInput | null;
-  limit?: number | null;
-  nextToken?: string | null;
+export type ListBalanceRulesQueryVariables = {
+  filter?: ModelBalanceRuleFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
 };
 
-export type ListUsersQuery = {
-  listUsers?: {
-    __typename: "ModelUserConnection";
-    items: Array<{
-      __typename: "User";
-      id: string;
-      username: string;
-      Budgets?: {
-        __typename: "ModelSavingGoalConnection";
-        nextToken?: string | null;
-        startedAt?: number | null;
-      } | null;
-      email: string;
-      income_distribution: Array<string>;
-      is_premium: boolean;
-      img?: string | null;
-      promo_code?: string | null;
-      SavingGoals?: {
-        __typename: "ModelSavingGoalConnection";
-        nextToken?: string | null;
-        startedAt?: number | null;
-      } | null;
-      createdAt: string;
-      updatedAt: string;
-      _version: number;
-      _deleted?: boolean | null;
-      _lastChangedAt: number;
-      owner?: string | null;
-    } | null>;
-    nextToken?: string | null;
-    startedAt?: number | null;
-  } | null;
+export type ListBalanceRulesQuery = {
+  listBalanceRules?:  {
+    __typename: "ModelBalanceRuleConnection",
+    items:  Array< {
+      __typename: "BalanceRule",
+      id: string,
+      name: string,
+      description?: string | null,
+      balance_optionsID: string,
+      createdAt: string,
+      updatedAt: string,
+      _version: number,
+      _deleted?: boolean | null,
+      _lastChangedAt: number,
+      owner?: string | null,
+    } | null >,
+    nextToken?: string | null,
+    startedAt?: number | null,
+  } | null,
 };
 
-export type SyncUsersQueryVariables = {
-  filter?: ModelUserFilterInput | null;
-  limit?: number | null;
-  nextToken?: string | null;
-  lastSync?: number | null;
+export type SyncBalanceRulesQueryVariables = {
+  filter?: ModelBalanceRuleFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+  lastSync?: number | null,
 };
 
-export type SyncUsersQuery = {
-  syncUsers?: {
-    __typename: "ModelUserConnection";
-    items: Array<{
-      __typename: "User";
-      id: string;
-      username: string;
-      Budgets?: {
-        __typename: "ModelSavingGoalConnection";
-        nextToken?: string | null;
-        startedAt?: number | null;
-      } | null;
-      email: string;
-      income_distribution: Array<string>;
-      is_premium: boolean;
-      img?: string | null;
-      promo_code?: string | null;
-      SavingGoals?: {
-        __typename: "ModelSavingGoalConnection";
-        nextToken?: string | null;
-        startedAt?: number | null;
-      } | null;
-      createdAt: string;
-      updatedAt: string;
-      _version: number;
-      _deleted?: boolean | null;
-      _lastChangedAt: number;
-      owner?: string | null;
-    } | null>;
-    nextToken?: string | null;
-    startedAt?: number | null;
-  } | null;
+export type SyncBalanceRulesQuery = {
+  syncBalanceRules?:  {
+    __typename: "ModelBalanceRuleConnection",
+    items:  Array< {
+      __typename: "BalanceRule",
+      id: string,
+      name: string,
+      description?: string | null,
+      balance_optionsID: string,
+      createdAt: string,
+      updatedAt: string,
+      _version: number,
+      _deleted?: boolean | null,
+      _lastChangedAt: number,
+      owner?: string | null,
+    } | null >,
+    nextToken?: string | null,
+    startedAt?: number | null,
+  } | null,
 };
 
-export type GetBudgetQueryVariables = {
-  id: string;
+export type GetBalanceQueryVariables = {
+  id: string,
 };
 
-export type GetBudgetQuery = {
-  getBudget?: {
-    __typename: "Budget";
-    id: string;
-    name: string;
-    percent_of_income: number;
-    balance: number;
-    img?: string | null;
-    userID: string;
-    category?: Categories | null;
-    Transactions?: {
-      __typename: "ModelTransactionConnection";
-      items: Array<{
-        __typename: "Transaction";
-        id: string;
-        name: string;
-        amount: number;
-        date: string;
-        memo?: string | null;
-        is_sorted: boolean;
-        iso_currency_code: string;
-        budgetID: string;
-        createdAt: string;
-        updatedAt: string;
-        _version: number;
-        _deleted?: boolean | null;
-        _lastChangedAt: number;
-      } | null>;
-      nextToken?: string | null;
-      startedAt?: number | null;
-    } | null;
-    createdAt: string;
-    updatedAt: string;
-    _version: number;
-    _deleted?: boolean | null;
-    _lastChangedAt: number;
-    owner?: string | null;
-  } | null;
+export type GetBalanceQuery = {
+  getBalance?:  {
+    __typename: "Balance",
+    id: string,
+    title: string,
+    icon: string,
+    fund_balance: number,
+    total_fund_size: number,
+    placement_index: number,
+    type: BalanceTypes,
+    BalanceOptions?:  {
+      __typename: "BalanceOptions",
+      id: string,
+      monthly_allocation?: number | null,
+      is_paused?: boolean | null,
+      pause_duration_hours?: number | null,
+      category?: Categories | null,
+      BalanceRules?:  {
+        __typename: "ModelBalanceRuleConnection",
+        nextToken?: string | null,
+        startedAt?: number | null,
+      } | null,
+      createdAt: string,
+      updatedAt: string,
+      _version: number,
+      _deleted?: boolean | null,
+      _lastChangedAt: number,
+      owner?: string | null,
+    } | null,
+    Transactions?:  {
+      __typename: "ModelTransactionConnection",
+      items:  Array< {
+        __typename: "Transaction",
+        id: string,
+        name: string,
+        amount: number,
+        date?: string | null,
+        memo?: string | null,
+        iso_currency_code?: string | null,
+        balanceID: string,
+        createdAt: string,
+        updatedAt: string,
+        _version: number,
+        _deleted?: boolean | null,
+        _lastChangedAt: number,
+        owner?: string | null,
+      } | null >,
+      nextToken?: string | null,
+      startedAt?: number | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+    balanceBalanceOptionsId?: string | null,
+    owner?: string | null,
+  } | null,
 };
 
-export type ListBudgetsQueryVariables = {
-  filter?: ModelBudgetFilterInput | null;
-  limit?: number | null;
-  nextToken?: string | null;
+export type ListBalancesQueryVariables = {
+  filter?: ModelBalanceFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
 };
 
-export type ListBudgetsQuery = {
-  listBudgets?: {
-    __typename: "ModelBudgetConnection";
-    items: Array<{
-      __typename: "Budget";
-      id: string;
-      name: string;
-      percent_of_income: number;
-      balance: number;
-      img?: string | null;
-      userID: string;
-      category?: Categories | null;
-      Transactions?: {
-        __typename: "ModelTransactionConnection";
-        nextToken?: string | null;
-        startedAt?: number | null;
-      } | null;
-      createdAt: string;
-      updatedAt: string;
-      _version: number;
-      _deleted?: boolean | null;
-      _lastChangedAt: number;
-      owner?: string | null;
-    } | null>;
-    nextToken?: string | null;
-    startedAt?: number | null;
-  } | null;
+export type ListBalancesQuery = {
+  listBalances?:  {
+    __typename: "ModelBalanceConnection",
+    items:  Array< {
+      __typename: "Balance",
+      id: string,
+      title: string,
+      icon: string,
+      fund_balance: number,
+      total_fund_size: number,
+      placement_index: number,
+      type: BalanceTypes,
+      BalanceOptions?:  {
+        __typename: "BalanceOptions",
+        id: string,
+        monthly_allocation?: number | null,
+        is_paused?: boolean | null,
+        pause_duration_hours?: number | null,
+        category?: Categories | null,
+        createdAt: string,
+        updatedAt: string,
+        _version: number,
+        _deleted?: boolean | null,
+        _lastChangedAt: number,
+        owner?: string | null,
+      } | null,
+      Transactions?:  {
+        __typename: "ModelTransactionConnection",
+        nextToken?: string | null,
+        startedAt?: number | null,
+      } | null,
+      createdAt: string,
+      updatedAt: string,
+      _version: number,
+      _deleted?: boolean | null,
+      _lastChangedAt: number,
+      balanceBalanceOptionsId?: string | null,
+      owner?: string | null,
+    } | null >,
+    nextToken?: string | null,
+    startedAt?: number | null,
+  } | null,
 };
 
-export type SyncBudgetsQueryVariables = {
-  filter?: ModelBudgetFilterInput | null;
-  limit?: number | null;
-  nextToken?: string | null;
-  lastSync?: number | null;
+export type SyncBalancesQueryVariables = {
+  filter?: ModelBalanceFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+  lastSync?: number | null,
 };
 
-export type SyncBudgetsQuery = {
-  syncBudgets?: {
-    __typename: "ModelBudgetConnection";
-    items: Array<{
-      __typename: "Budget";
-      id: string;
-      name: string;
-      percent_of_income: number;
-      balance: number;
-      img?: string | null;
-      userID: string;
-      category?: Categories | null;
-      Transactions?: {
-        __typename: "ModelTransactionConnection";
-        nextToken?: string | null;
-        startedAt?: number | null;
-      } | null;
-      createdAt: string;
-      updatedAt: string;
-      _version: number;
-      _deleted?: boolean | null;
-      _lastChangedAt: number;
-      owner?: string | null;
-    } | null>;
-    nextToken?: string | null;
-    startedAt?: number | null;
-  } | null;
+export type SyncBalancesQuery = {
+  syncBalances?:  {
+    __typename: "ModelBalanceConnection",
+    items:  Array< {
+      __typename: "Balance",
+      id: string,
+      title: string,
+      icon: string,
+      fund_balance: number,
+      total_fund_size: number,
+      placement_index: number,
+      type: BalanceTypes,
+      BalanceOptions?:  {
+        __typename: "BalanceOptions",
+        id: string,
+        monthly_allocation?: number | null,
+        is_paused?: boolean | null,
+        pause_duration_hours?: number | null,
+        category?: Categories | null,
+        createdAt: string,
+        updatedAt: string,
+        _version: number,
+        _deleted?: boolean | null,
+        _lastChangedAt: number,
+        owner?: string | null,
+      } | null,
+      Transactions?:  {
+        __typename: "ModelTransactionConnection",
+        nextToken?: string | null,
+        startedAt?: number | null,
+      } | null,
+      createdAt: string,
+      updatedAt: string,
+      _version: number,
+      _deleted?: boolean | null,
+      _lastChangedAt: number,
+      balanceBalanceOptionsId?: string | null,
+      owner?: string | null,
+    } | null >,
+    nextToken?: string | null,
+    startedAt?: number | null,
+  } | null,
+};
+
+export type ByPlacementIndexQueryVariables = {
+  type: BalanceTypes,
+  placement_index?: ModelIntKeyConditionInput | null,
+  sortDirection?: ModelSortDirection | null,
+  filter?: ModelBalanceFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+};
+
+export type ByPlacementIndexQuery = {
+  byPlacementIndex?:  {
+    __typename: "ModelBalanceConnection",
+    items:  Array< {
+      __typename: "Balance",
+      id: string,
+      title: string,
+      icon: string,
+      fund_balance: number,
+      total_fund_size: number,
+      placement_index: number,
+      type: BalanceTypes,
+      BalanceOptions?:  {
+        __typename: "BalanceOptions",
+        id: string,
+        monthly_allocation?: number | null,
+        is_paused?: boolean | null,
+        pause_duration_hours?: number | null,
+        category?: Categories | null,
+        createdAt: string,
+        updatedAt: string,
+        _version: number,
+        _deleted?: boolean | null,
+        _lastChangedAt: number,
+        owner?: string | null,
+      } | null,
+      Transactions?:  {
+        __typename: "ModelTransactionConnection",
+        nextToken?: string | null,
+        startedAt?: number | null,
+      } | null,
+      createdAt: string,
+      updatedAt: string,
+      _version: number,
+      _deleted?: boolean | null,
+      _lastChangedAt: number,
+      balanceBalanceOptionsId?: string | null,
+      owner?: string | null,
+    } | null >,
+    nextToken?: string | null,
+    startedAt?: number | null,
+  } | null,
+};
+
+export type OnCreateTransactionSubscriptionVariables = {
+  filter?: ModelSubscriptionTransactionFilterInput | null,
+  owner?: string | null,
 };
 
 export type OnCreateTransactionSubscription = {
-  onCreateTransaction?: {
-    __typename: "Transaction";
-    id: string;
-    name: string;
-    amount: number;
-    date: string;
-    memo?: string | null;
-    is_sorted: boolean;
-    iso_currency_code: string;
-    budgetID: string;
-    createdAt: string;
-    updatedAt: string;
-    _version: number;
-    _deleted?: boolean | null;
-    _lastChangedAt: number;
-  } | null;
+  onCreateTransaction?:  {
+    __typename: "Transaction",
+    id: string,
+    name: string,
+    amount: number,
+    date?: string | null,
+    memo?: string | null,
+    iso_currency_code?: string | null,
+    balanceID: string,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+    owner?: string | null,
+  } | null,
+};
+
+export type OnUpdateTransactionSubscriptionVariables = {
+  filter?: ModelSubscriptionTransactionFilterInput | null,
+  owner?: string | null,
 };
 
 export type OnUpdateTransactionSubscription = {
-  onUpdateTransaction?: {
-    __typename: "Transaction";
-    id: string;
-    name: string;
-    amount: number;
-    date: string;
-    memo?: string | null;
-    is_sorted: boolean;
-    iso_currency_code: string;
-    budgetID: string;
-    createdAt: string;
-    updatedAt: string;
-    _version: number;
-    _deleted?: boolean | null;
-    _lastChangedAt: number;
-  } | null;
+  onUpdateTransaction?:  {
+    __typename: "Transaction",
+    id: string,
+    name: string,
+    amount: number,
+    date?: string | null,
+    memo?: string | null,
+    iso_currency_code?: string | null,
+    balanceID: string,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+    owner?: string | null,
+  } | null,
+};
+
+export type OnDeleteTransactionSubscriptionVariables = {
+  filter?: ModelSubscriptionTransactionFilterInput | null,
+  owner?: string | null,
 };
 
 export type OnDeleteTransactionSubscription = {
-  onDeleteTransaction?: {
-    __typename: "Transaction";
-    id: string;
-    name: string;
-    amount: number;
-    date: string;
-    memo?: string | null;
-    is_sorted: boolean;
-    iso_currency_code: string;
-    budgetID: string;
-    createdAt: string;
-    updatedAt: string;
-    _version: number;
-    _deleted?: boolean | null;
-    _lastChangedAt: number;
-  } | null;
+  onDeleteTransaction?:  {
+    __typename: "Transaction",
+    id: string,
+    name: string,
+    amount: number,
+    date?: string | null,
+    memo?: string | null,
+    iso_currency_code?: string | null,
+    balanceID: string,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+    owner?: string | null,
+  } | null,
 };
 
-export type OnCreateSavingGoalSubscriptionVariables = {
-  owner?: string | null;
+export type OnCreateBalanceOptionsSubscriptionVariables = {
+  filter?: ModelSubscriptionBalanceOptionsFilterInput | null,
+  owner?: string | null,
 };
 
-export type OnCreateSavingGoalSubscription = {
-  onCreateSavingGoal?: {
-    __typename: "SavingGoal";
-    id: string;
-    name: string;
-    percent_of_income: number;
-    date_created: string;
-    date_affordable: string;
-    is_paused?: boolean | null;
-    pause_duration_hour?: number | null;
-    userID: string;
-    createdAt: string;
-    updatedAt: string;
-    _version: number;
-    _deleted?: boolean | null;
-    _lastChangedAt: number;
-    owner?: string | null;
-  } | null;
+export type OnCreateBalanceOptionsSubscription = {
+  onCreateBalanceOptions?:  {
+    __typename: "BalanceOptions",
+    id: string,
+    monthly_allocation?: number | null,
+    is_paused?: boolean | null,
+    pause_duration_hours?: number | null,
+    category?: Categories | null,
+    BalanceRules?:  {
+      __typename: "ModelBalanceRuleConnection",
+      items:  Array< {
+        __typename: "BalanceRule",
+        id: string,
+        name: string,
+        description?: string | null,
+        balance_optionsID: string,
+        createdAt: string,
+        updatedAt: string,
+        _version: number,
+        _deleted?: boolean | null,
+        _lastChangedAt: number,
+        owner?: string | null,
+      } | null >,
+      nextToken?: string | null,
+      startedAt?: number | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+    owner?: string | null,
+  } | null,
 };
 
-export type OnUpdateSavingGoalSubscriptionVariables = {
-  owner?: string | null;
+export type OnUpdateBalanceOptionsSubscriptionVariables = {
+  filter?: ModelSubscriptionBalanceOptionsFilterInput | null,
+  owner?: string | null,
 };
 
-export type OnUpdateSavingGoalSubscription = {
-  onUpdateSavingGoal?: {
-    __typename: "SavingGoal";
-    id: string;
-    name: string;
-    percent_of_income: number;
-    date_created: string;
-    date_affordable: string;
-    is_paused?: boolean | null;
-    pause_duration_hour?: number | null;
-    userID: string;
-    createdAt: string;
-    updatedAt: string;
-    _version: number;
-    _deleted?: boolean | null;
-    _lastChangedAt: number;
-    owner?: string | null;
-  } | null;
+export type OnUpdateBalanceOptionsSubscription = {
+  onUpdateBalanceOptions?:  {
+    __typename: "BalanceOptions",
+    id: string,
+    monthly_allocation?: number | null,
+    is_paused?: boolean | null,
+    pause_duration_hours?: number | null,
+    category?: Categories | null,
+    BalanceRules?:  {
+      __typename: "ModelBalanceRuleConnection",
+      items:  Array< {
+        __typename: "BalanceRule",
+        id: string,
+        name: string,
+        description?: string | null,
+        balance_optionsID: string,
+        createdAt: string,
+        updatedAt: string,
+        _version: number,
+        _deleted?: boolean | null,
+        _lastChangedAt: number,
+        owner?: string | null,
+      } | null >,
+      nextToken?: string | null,
+      startedAt?: number | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+    owner?: string | null,
+  } | null,
 };
 
-export type OnDeleteSavingGoalSubscriptionVariables = {
-  owner?: string | null;
+export type OnDeleteBalanceOptionsSubscriptionVariables = {
+  filter?: ModelSubscriptionBalanceOptionsFilterInput | null,
+  owner?: string | null,
 };
 
-export type OnDeleteSavingGoalSubscription = {
-  onDeleteSavingGoal?: {
-    __typename: "SavingGoal";
-    id: string;
-    name: string;
-    percent_of_income: number;
-    date_created: string;
-    date_affordable: string;
-    is_paused?: boolean | null;
-    pause_duration_hour?: number | null;
-    userID: string;
-    createdAt: string;
-    updatedAt: string;
-    _version: number;
-    _deleted?: boolean | null;
-    _lastChangedAt: number;
-    owner?: string | null;
-  } | null;
+export type OnDeleteBalanceOptionsSubscription = {
+  onDeleteBalanceOptions?:  {
+    __typename: "BalanceOptions",
+    id: string,
+    monthly_allocation?: number | null,
+    is_paused?: boolean | null,
+    pause_duration_hours?: number | null,
+    category?: Categories | null,
+    BalanceRules?:  {
+      __typename: "ModelBalanceRuleConnection",
+      items:  Array< {
+        __typename: "BalanceRule",
+        id: string,
+        name: string,
+        description?: string | null,
+        balance_optionsID: string,
+        createdAt: string,
+        updatedAt: string,
+        _version: number,
+        _deleted?: boolean | null,
+        _lastChangedAt: number,
+        owner?: string | null,
+      } | null >,
+      nextToken?: string | null,
+      startedAt?: number | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+    owner?: string | null,
+  } | null,
 };
 
-export type OnCreateUserSubscriptionVariables = {
-  owner?: string | null;
+export type OnCreateBalanceRuleSubscriptionVariables = {
+  filter?: ModelSubscriptionBalanceRuleFilterInput | null,
+  owner?: string | null,
 };
 
-export type OnCreateUserSubscription = {
-  onCreateUser?: {
-    __typename: "User";
-    id: string;
-    username: string;
-    Budgets?: {
-      __typename: "ModelSavingGoalConnection";
-      items: Array<{
-        __typename: "SavingGoal";
-        id: string;
-        name: string;
-        percent_of_income: number;
-        date_created: string;
-        date_affordable: string;
-        is_paused?: boolean | null;
-        pause_duration_hour?: number | null;
-        userID: string;
-        createdAt: string;
-        updatedAt: string;
-        _version: number;
-        _deleted?: boolean | null;
-        _lastChangedAt: number;
-        owner?: string | null;
-      } | null>;
-      nextToken?: string | null;
-      startedAt?: number | null;
-    } | null;
-    email: string;
-    income_distribution: Array<string>;
-    is_premium: boolean;
-    img?: string | null;
-    promo_code?: string | null;
-    SavingGoals?: {
-      __typename: "ModelSavingGoalConnection";
-      items: Array<{
-        __typename: "SavingGoal";
-        id: string;
-        name: string;
-        percent_of_income: number;
-        date_created: string;
-        date_affordable: string;
-        is_paused?: boolean | null;
-        pause_duration_hour?: number | null;
-        userID: string;
-        createdAt: string;
-        updatedAt: string;
-        _version: number;
-        _deleted?: boolean | null;
-        _lastChangedAt: number;
-        owner?: string | null;
-      } | null>;
-      nextToken?: string | null;
-      startedAt?: number | null;
-    } | null;
-    createdAt: string;
-    updatedAt: string;
-    _version: number;
-    _deleted?: boolean | null;
-    _lastChangedAt: number;
-    owner?: string | null;
-  } | null;
+export type OnCreateBalanceRuleSubscription = {
+  onCreateBalanceRule?:  {
+    __typename: "BalanceRule",
+    id: string,
+    name: string,
+    description?: string | null,
+    balance_optionsID: string,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+    owner?: string | null,
+  } | null,
 };
 
-export type OnUpdateUserSubscriptionVariables = {
-  owner?: string | null;
+export type OnUpdateBalanceRuleSubscriptionVariables = {
+  filter?: ModelSubscriptionBalanceRuleFilterInput | null,
+  owner?: string | null,
 };
 
-export type OnUpdateUserSubscription = {
-  onUpdateUser?: {
-    __typename: "User";
-    id: string;
-    username: string;
-    Budgets?: {
-      __typename: "ModelSavingGoalConnection";
-      items: Array<{
-        __typename: "SavingGoal";
-        id: string;
-        name: string;
-        percent_of_income: number;
-        date_created: string;
-        date_affordable: string;
-        is_paused?: boolean | null;
-        pause_duration_hour?: number | null;
-        userID: string;
-        createdAt: string;
-        updatedAt: string;
-        _version: number;
-        _deleted?: boolean | null;
-        _lastChangedAt: number;
-        owner?: string | null;
-      } | null>;
-      nextToken?: string | null;
-      startedAt?: number | null;
-    } | null;
-    email: string;
-    income_distribution: Array<string>;
-    is_premium: boolean;
-    img?: string | null;
-    promo_code?: string | null;
-    SavingGoals?: {
-      __typename: "ModelSavingGoalConnection";
-      items: Array<{
-        __typename: "SavingGoal";
-        id: string;
-        name: string;
-        percent_of_income: number;
-        date_created: string;
-        date_affordable: string;
-        is_paused?: boolean | null;
-        pause_duration_hour?: number | null;
-        userID: string;
-        createdAt: string;
-        updatedAt: string;
-        _version: number;
-        _deleted?: boolean | null;
-        _lastChangedAt: number;
-        owner?: string | null;
-      } | null>;
-      nextToken?: string | null;
-      startedAt?: number | null;
-    } | null;
-    createdAt: string;
-    updatedAt: string;
-    _version: number;
-    _deleted?: boolean | null;
-    _lastChangedAt: number;
-    owner?: string | null;
-  } | null;
+export type OnUpdateBalanceRuleSubscription = {
+  onUpdateBalanceRule?:  {
+    __typename: "BalanceRule",
+    id: string,
+    name: string,
+    description?: string | null,
+    balance_optionsID: string,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+    owner?: string | null,
+  } | null,
 };
 
-export type OnDeleteUserSubscriptionVariables = {
-  owner?: string | null;
+export type OnDeleteBalanceRuleSubscriptionVariables = {
+  filter?: ModelSubscriptionBalanceRuleFilterInput | null,
+  owner?: string | null,
 };
 
-export type OnDeleteUserSubscription = {
-  onDeleteUser?: {
-    __typename: "User";
-    id: string;
-    username: string;
-    Budgets?: {
-      __typename: "ModelSavingGoalConnection";
-      items: Array<{
-        __typename: "SavingGoal";
-        id: string;
-        name: string;
-        percent_of_income: number;
-        date_created: string;
-        date_affordable: string;
-        is_paused?: boolean | null;
-        pause_duration_hour?: number | null;
-        userID: string;
-        createdAt: string;
-        updatedAt: string;
-        _version: number;
-        _deleted?: boolean | null;
-        _lastChangedAt: number;
-        owner?: string | null;
-      } | null>;
-      nextToken?: string | null;
-      startedAt?: number | null;
-    } | null;
-    email: string;
-    income_distribution: Array<string>;
-    is_premium: boolean;
-    img?: string | null;
-    promo_code?: string | null;
-    SavingGoals?: {
-      __typename: "ModelSavingGoalConnection";
-      items: Array<{
-        __typename: "SavingGoal";
-        id: string;
-        name: string;
-        percent_of_income: number;
-        date_created: string;
-        date_affordable: string;
-        is_paused?: boolean | null;
-        pause_duration_hour?: number | null;
-        userID: string;
-        createdAt: string;
-        updatedAt: string;
-        _version: number;
-        _deleted?: boolean | null;
-        _lastChangedAt: number;
-        owner?: string | null;
-      } | null>;
-      nextToken?: string | null;
-      startedAt?: number | null;
-    } | null;
-    createdAt: string;
-    updatedAt: string;
-    _version: number;
-    _deleted?: boolean | null;
-    _lastChangedAt: number;
-    owner?: string | null;
-  } | null;
+export type OnDeleteBalanceRuleSubscription = {
+  onDeleteBalanceRule?:  {
+    __typename: "BalanceRule",
+    id: string,
+    name: string,
+    description?: string | null,
+    balance_optionsID: string,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+    owner?: string | null,
+  } | null,
 };
 
-export type OnCreateBudgetSubscriptionVariables = {
-  owner?: string | null;
+export type OnCreateBalanceSubscriptionVariables = {
+  filter?: ModelSubscriptionBalanceFilterInput | null,
+  owner?: string | null,
 };
 
-export type OnCreateBudgetSubscription = {
-  onCreateBudget?: {
-    __typename: "Budget";
-    id: string;
-    name: string;
-    percent_of_income: number;
-    balance: number;
-    img?: string | null;
-    userID: string;
-    category?: Categories | null;
-    Transactions?: {
-      __typename: "ModelTransactionConnection";
-      items: Array<{
-        __typename: "Transaction";
-        id: string;
-        name: string;
-        amount: number;
-        date: string;
-        memo?: string | null;
-        is_sorted: boolean;
-        iso_currency_code: string;
-        budgetID: string;
-        createdAt: string;
-        updatedAt: string;
-        _version: number;
-        _deleted?: boolean | null;
-        _lastChangedAt: number;
-      } | null>;
-      nextToken?: string | null;
-      startedAt?: number | null;
-    } | null;
-    createdAt: string;
-    updatedAt: string;
-    _version: number;
-    _deleted?: boolean | null;
-    _lastChangedAt: number;
-    owner?: string | null;
-  } | null;
+export type OnCreateBalanceSubscription = {
+  onCreateBalance?:  {
+    __typename: "Balance",
+    id: string,
+    title: string,
+    icon: string,
+    fund_balance: number,
+    total_fund_size: number,
+    placement_index: number,
+    type: BalanceTypes,
+    BalanceOptions?:  {
+      __typename: "BalanceOptions",
+      id: string,
+      monthly_allocation?: number | null,
+      is_paused?: boolean | null,
+      pause_duration_hours?: number | null,
+      category?: Categories | null,
+      BalanceRules?:  {
+        __typename: "ModelBalanceRuleConnection",
+        nextToken?: string | null,
+        startedAt?: number | null,
+      } | null,
+      createdAt: string,
+      updatedAt: string,
+      _version: number,
+      _deleted?: boolean | null,
+      _lastChangedAt: number,
+      owner?: string | null,
+    } | null,
+    Transactions?:  {
+      __typename: "ModelTransactionConnection",
+      items:  Array< {
+        __typename: "Transaction",
+        id: string,
+        name: string,
+        amount: number,
+        date?: string | null,
+        memo?: string | null,
+        iso_currency_code?: string | null,
+        balanceID: string,
+        createdAt: string,
+        updatedAt: string,
+        _version: number,
+        _deleted?: boolean | null,
+        _lastChangedAt: number,
+        owner?: string | null,
+      } | null >,
+      nextToken?: string | null,
+      startedAt?: number | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+    balanceBalanceOptionsId?: string | null,
+    owner?: string | null,
+  } | null,
 };
 
-export type OnUpdateBudgetSubscriptionVariables = {
-  owner?: string | null;
+export type OnUpdateBalanceSubscriptionVariables = {
+  filter?: ModelSubscriptionBalanceFilterInput | null,
+  owner?: string | null,
 };
 
-export type OnUpdateBudgetSubscription = {
-  onUpdateBudget?: {
-    __typename: "Budget";
-    id: string;
-    name: string;
-    percent_of_income: number;
-    balance: number;
-    img?: string | null;
-    userID: string;
-    category?: Categories | null;
-    Transactions?: {
-      __typename: "ModelTransactionConnection";
-      items: Array<{
-        __typename: "Transaction";
-        id: string;
-        name: string;
-        amount: number;
-        date: string;
-        memo?: string | null;
-        is_sorted: boolean;
-        iso_currency_code: string;
-        budgetID: string;
-        createdAt: string;
-        updatedAt: string;
-        _version: number;
-        _deleted?: boolean | null;
-        _lastChangedAt: number;
-      } | null>;
-      nextToken?: string | null;
-      startedAt?: number | null;
-    } | null;
-    createdAt: string;
-    updatedAt: string;
-    _version: number;
-    _deleted?: boolean | null;
-    _lastChangedAt: number;
-    owner?: string | null;
-  } | null;
+export type OnUpdateBalanceSubscription = {
+  onUpdateBalance?:  {
+    __typename: "Balance",
+    id: string,
+    title: string,
+    icon: string,
+    fund_balance: number,
+    total_fund_size: number,
+    placement_index: number,
+    type: BalanceTypes,
+    BalanceOptions?:  {
+      __typename: "BalanceOptions",
+      id: string,
+      monthly_allocation?: number | null,
+      is_paused?: boolean | null,
+      pause_duration_hours?: number | null,
+      category?: Categories | null,
+      BalanceRules?:  {
+        __typename: "ModelBalanceRuleConnection",
+        nextToken?: string | null,
+        startedAt?: number | null,
+      } | null,
+      createdAt: string,
+      updatedAt: string,
+      _version: number,
+      _deleted?: boolean | null,
+      _lastChangedAt: number,
+      owner?: string | null,
+    } | null,
+    Transactions?:  {
+      __typename: "ModelTransactionConnection",
+      items:  Array< {
+        __typename: "Transaction",
+        id: string,
+        name: string,
+        amount: number,
+        date?: string | null,
+        memo?: string | null,
+        iso_currency_code?: string | null,
+        balanceID: string,
+        createdAt: string,
+        updatedAt: string,
+        _version: number,
+        _deleted?: boolean | null,
+        _lastChangedAt: number,
+        owner?: string | null,
+      } | null >,
+      nextToken?: string | null,
+      startedAt?: number | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+    balanceBalanceOptionsId?: string | null,
+    owner?: string | null,
+  } | null,
 };
 
-export type OnDeleteBudgetSubscriptionVariables = {
-  owner?: string | null;
+export type OnDeleteBalanceSubscriptionVariables = {
+  filter?: ModelSubscriptionBalanceFilterInput | null,
+  owner?: string | null,
 };
 
-export type OnDeleteBudgetSubscription = {
-  onDeleteBudget?: {
-    __typename: "Budget";
-    id: string;
-    name: string;
-    percent_of_income: number;
-    balance: number;
-    img?: string | null;
-    userID: string;
-    category?: Categories | null;
-    Transactions?: {
-      __typename: "ModelTransactionConnection";
-      items: Array<{
-        __typename: "Transaction";
-        id: string;
-        name: string;
-        amount: number;
-        date: string;
-        memo?: string | null;
-        is_sorted: boolean;
-        iso_currency_code: string;
-        budgetID: string;
-        createdAt: string;
-        updatedAt: string;
-        _version: number;
-        _deleted?: boolean | null;
-        _lastChangedAt: number;
-      } | null>;
-      nextToken?: string | null;
-      startedAt?: number | null;
-    } | null;
-    createdAt: string;
-    updatedAt: string;
-    _version: number;
-    _deleted?: boolean | null;
-    _lastChangedAt: number;
-    owner?: string | null;
-  } | null;
+export type OnDeleteBalanceSubscription = {
+  onDeleteBalance?:  {
+    __typename: "Balance",
+    id: string,
+    title: string,
+    icon: string,
+    fund_balance: number,
+    total_fund_size: number,
+    placement_index: number,
+    type: BalanceTypes,
+    BalanceOptions?:  {
+      __typename: "BalanceOptions",
+      id: string,
+      monthly_allocation?: number | null,
+      is_paused?: boolean | null,
+      pause_duration_hours?: number | null,
+      category?: Categories | null,
+      BalanceRules?:  {
+        __typename: "ModelBalanceRuleConnection",
+        nextToken?: string | null,
+        startedAt?: number | null,
+      } | null,
+      createdAt: string,
+      updatedAt: string,
+      _version: number,
+      _deleted?: boolean | null,
+      _lastChangedAt: number,
+      owner?: string | null,
+    } | null,
+    Transactions?:  {
+      __typename: "ModelTransactionConnection",
+      items:  Array< {
+        __typename: "Transaction",
+        id: string,
+        name: string,
+        amount: number,
+        date?: string | null,
+        memo?: string | null,
+        iso_currency_code?: string | null,
+        balanceID: string,
+        createdAt: string,
+        updatedAt: string,
+        _version: number,
+        _deleted?: boolean | null,
+        _lastChangedAt: number,
+        owner?: string | null,
+      } | null >,
+      nextToken?: string | null,
+      startedAt?: number | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+    balanceBalanceOptionsId?: string | null,
+    owner?: string | null,
+  } | null,
 };

@@ -5,7 +5,7 @@ import styled from "styled-components/native";
 // custom components
 import { Container } from "../components/shared/sizes";
 import { colors } from "../components/shared/colors";
-import BudgetCardSection from "../components/BalanceButtons/depreciated (delete me)/OldBudgetButtonSection";
+import BudgetCardSection from "../components/FundButtons/depreciated (delete me)/OldBudgetButtonSection";
 import TransactionSection from "../components/Transactions/TransactionsSection";
 
 // images
@@ -14,7 +14,7 @@ import diningImg from "../assets/cards/dining-out.jpeg";
 // types
 import { RootStackParamList } from "../navigators/Navigation";
 import { StackScreenProps } from "@react-navigation/stack";
-import { BudgetCardProps as BudgetCard } from "../components/BalanceButtons/types";
+import { BudgetCardProps as BudgetCard } from "../components/FundButtons/types";
 
 export type Props = StackScreenProps<RootStackParamList, "Home">;
 
@@ -22,7 +22,7 @@ export type Props = StackScreenProps<RootStackParamList, "Home">;
 import { API, graphqlOperation } from "aws-amplify";
 import { ListBudgetsQuery } from "../src/API";
 import { listBudgets } from "../src/graphql/queries";
-import { mapListBudgets } from "../src/models/budgetCards/mapListBudgetsQuery";
+import { mapListBudgets } from "../src/models/Fund/mapListBudgetsQuery";
 import callGraphQL from "../util/callGraphQL";
 import { Image } from "react-native";
 

@@ -6,8 +6,8 @@ import {
 } from "@shopify/react-native-skia";
 import React, { FC, useEffect } from "react";
 import { PixelRatio, Pressable, StyleSheet, View, Text } from "react-native";
-import { BalanceButtonDetails } from "./BalanceButtonDetails";
-import { BalanceIcon } from "./BalanceIcon";
+import { FundButtonDetails } from "./FundButtonDetails";
+import { FundIcon } from "./FundIcon";
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
@@ -23,17 +23,26 @@ const BUTTON_STROKE_WIDTH = 3;
 const FONT_SIZE = 30;
 
 // prop types
-import { BalanceButtonProps } from "./types";
+import { FundButtonProps } from "./types";
 import { RootStackParams } from "../../navigators/Navigation";
 import { StackNavigationProp } from "@react-navigation/stack";
 
-export const BalanceButton: FC<BalanceButtonProps> = ({
-  title,
-  emojiIcon,
-  balance,
-  percentRemaining,
+export const FundButton: FC<FundButtonProps> = ({
+  // title,
+  // emojiIcon,
+  // balance,
+  // percentRemaining,
+  // id,
+  // fundType,
+
   id,
-  balanceType,
+  title,
+  balance,
+  emojiIcon,
+  flag,
+  percentRemaining,
+  fundType,
+  placement_index,
 }) => {
   const navigation = useNavigation<StackNavigationProp<RootStackParams>>();
   const chartAnimationState = useValue(0);
@@ -42,7 +51,7 @@ export const BalanceButton: FC<BalanceButtonProps> = ({
 
   // Skia Animation
   const animateChart = () => {
-    console.log(`${balanceType} donut ${id} pressed`);
+    console.log(`${fundType} donut ${id} pressed`);
     chartAnimationState.current = 0;
     runTiming(chartAnimationState, 1 - percentRemaining, {
       duration: 1250,
@@ -50,7 +59,7 @@ export const BalanceButton: FC<BalanceButtonProps> = ({
     });
   };
 
-  const DELAY = id * 75;
+  const DELAY = placement_index * 75;
 
   const animatedStyles = useAnimatedStyle(() => {
     return {
@@ -74,25 +83,27 @@ export const BalanceButton: FC<BalanceButtonProps> = ({
       })
     );
     setTimeout(() => animateChart(), DELAY);
-  }, [balanceType]);
+  }, [fundType]);
 
-  const font = useFont(require("../../assets/fonts/Poppins-Regular.ttf"), 14);
-  const smallerFont = useFont(
-    require("../../assets/fonts/Poppins-Regular.ttf"),
-    10
-  );
+  // const font = useFont(require("../../assets/fonts/Poppins-Regular.ttf"), 14);
+  // const smallerFont = useFont(
+  //   require("../../assets/fonts/Poppins-Regular.ttf"),
+  //   10
+  // );
 
-  if (!font || !smallerFont) {
-    return null;
-  }
+  // if (!font || !smallerFont) {
+  //   return null;
+  // }
   const nav = () => {
-    navigation.navigate("BalanceDetails", {
-      title: title,
-      emojiIcon: emojiIcon,
-      balance: balance,
-      percentRemaining: percentRemaining,
+    navigation.navigate("FundDetails", {
       id: id,
-      balanceType: balanceType,
+      title: title,
+      balance: balance,
+      emojiIcon: emojiIcon,
+      flag: flag,
+      percentRemaining: percentRemaining,
+      fundType: fundType,
+      placement_index: placement_index,
     });
   };
 
@@ -102,9 +113,9 @@ export const BalanceButton: FC<BalanceButtonProps> = ({
         onPress={() => {
           nav();
         }}
-        style={styles.BalanceButtonContainer}
+        style={styles.FundButtonContainer}
       >
-        <BalanceIcon
+        <FundIcon
           emoji={emojiIcon}
           percentRemaining={chartAnimationState}
           strokeWidth={BUTTON_STROKE_WIDTH}
@@ -112,7 +123,7 @@ export const BalanceButton: FC<BalanceButtonProps> = ({
           radius={RADIUS}
         />
       </Pressable>
-      <BalanceButtonDetails
+      <FundButtonDetails
         title={title}
         balance={balance}
         percentRemaining={percentRemaining}
@@ -126,7 +137,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  BalanceButtonContainer: {
+  FundButtonContainer: {
     height: RADIUS * 2,
     width: RADIUS * 2,
   },

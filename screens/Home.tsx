@@ -1,11 +1,11 @@
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { View, StyleSheet, Pressable, Text } from "react-native";
 import { colors } from "../components/shared/colors";
 import { ScreenHeight, ScreenWidth } from "../components/shared/sizes";
 import { textStyles } from "../components/shared/textStyles";
 
 import Ionicon from "react-native-vector-icons/Ionicons";
-import { BalanceButtonSection } from "../components/BalanceButtons/BalanceButtonSection";
+import { FundButtonSection } from "../components/FundButtons/FundButtonSection";
 import { SwitchSelector } from "../components/SwitchSelector/SwitchSelector";
 
 import { CONTENT_WIDTH_PERCENTAGE } from "../components/shared/sizes";
@@ -14,6 +14,12 @@ import { BarGraphic } from "../components/BarGraphic/BarGraphic";
 // Navigation types
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParams } from "../navigators/Navigation";
+import callGraphQL from "../util/callGraphQL";
+import { mapListBudgets } from "../src/models/Fund/mapListBudgetsQuery";
+import { ByPlacementIndexQuery } from "../src/API";
+import { listSortedBudgets } from "../src/models/Fund/queries";
+import { FundButtonProps } from "../components/FundButtons/types";
+import { fundDataHardCoded } from "../components/shared/fundData";
 
 const TOP_FOLD_HEIGHT_PERCENTAGE = 0.328;
 const BOTTOM_FOLD_HEIGHT_PERCENTAGE = 1 - TOP_FOLD_HEIGHT_PERCENTAGE;
@@ -23,6 +29,25 @@ const Home: FC<NativeStackScreenProps<RootStackParams, "Home">> = ({
   navigation,
 }) => {
   const [toggledRight, setToggleRight] = useState(false);
+  const [fundData, setFundData] = useState<FundButtonProps[]>();
+
+  async function fetchData() {
+    try {
+      const fundData = await callGraphQL<ByPlacementIndexQuery>(
+        listSortedBudgets
+      );
+      const budgets = mapListBudgets(fundData);
+      console.log(JSON.stringify(fundData, 0, 5));
+      console.log(JSON.stringify(budgets, 0, 5));
+      setFundData(budgets);
+    } catch (error) {
+      console.error("Error fetching budgets", error);
+    }
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   const toggleSwitch = () => {
     setToggleRight((prevState) => {
@@ -80,7 +105,12 @@ const Home: FC<NativeStackScreenProps<RootStackParams, "Home">> = ({
             <Pressable onPress={toggleSwitch} style={styles.SwitchSelector}>
               <SwitchSelector toggledRight={toggledRight} />
             </Pressable>
-            <BalanceButtonSection goalsToggled={toggledRight} />
+            {fundData && (
+              <FundButtonSection
+                fundData={fundData}
+                goalsToggled={toggledRight}
+              />
+            )}
           </View>
         </View>
       </View>

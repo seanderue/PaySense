@@ -4,9 +4,9 @@ import { StyleSheet, Text, View } from "react-native";
 import { textStyles } from "../shared/textStyles";
 
 //prop types
-import { BalanceButtonDetailsProps } from "./types";
+import { FundButtonDetailsProps } from "./types";
 
-export const BalanceButtonDetails: FC<BalanceButtonDetailsProps> = ({
+export const FundButtonDetails: FC<FundButtonDetailsProps> = ({
   title,
   balance,
   percentRemaining,
@@ -18,9 +18,9 @@ export const BalanceButtonDetails: FC<BalanceButtonDetailsProps> = ({
       </View>
       <View style={styles.lowerContainer}>
         <Text style={textStyles.Overline}>{`$${balance}`}</Text>
-        <Text style={[textStyles.Overline, styles.percentageText]}>{`${
+        <Text style={[textStyles.Overline, styles.percentageText]}>{`${(
           percentRemaining * 100
-        }%`}</Text>
+        ).toFixed(1)}%`}</Text>
       </View>
     </>
   );

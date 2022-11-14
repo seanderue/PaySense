@@ -4,13 +4,9 @@ import React, { FC } from "react";
 import { StyleSheet, View } from "react-native";
 import { DonutGradientPath } from "./DonutGradientPath";
 
-interface BalanceDonutProps {
-  strokeWidth: number;
-  radius: number;
-  percentRemaining: SkiaMutableValue<number>;
-}
+import { FundDonutProps } from "./types";
 
-export const BalanceDonut: FC<BalanceDonutProps> = ({
+export const FundDonut: FC<FundDonutProps> = ({
   strokeWidth,
   radius,
   percentRemaining,

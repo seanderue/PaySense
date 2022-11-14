@@ -14,6 +14,12 @@
     "categories": {
       "auth": {
         "paysensea0b1768b": {}
+      },
+      "storage": {
+        "s3paysensestorage93c8a870": {}
+      },
+      "api": {
+        "PaySense": {}
       }
     }
   }

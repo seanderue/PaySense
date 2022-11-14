@@ -37,6 +37,9 @@ const TAB_BAR_TOGGLE_TIMING = {
   easing: Easing.bezier(0, 0, 0.6, 1),
 };
 
+// CONSIDER SETTING A ROUTE VARIABLE AS STATE SO THAT I
+// CAN USE USEFFECT() TO CLOSE THE TAB DRAWER
+
 export const AnimatedTabBar = ({
   state: { routes },
   navigation,
@@ -52,6 +55,19 @@ export const AnimatedTabBar = ({
       ? withTiming(TAB_BAR_HEIGHT_OPEN, TAB_BAR_TOGGLE_TIMING)
       : withTiming(TAB_BAR_HEIGHT_CLOSED, TAB_BAR_TOGGLE_TIMING);
   }, [toggledOpen]);
+
+  useEffect(() => {
+    setToggledOpen((prev) => (prev ? !prev : prev));
+  }, []);
+
+  const rotateAddButton = () => {
+    rotation.value = withTiming(toggledOpen ? 0 : 45, TAB_BAR_TOGGLE_TIMING);
+  };
+
+  const toggleTabDrawer = () => {
+    rotateAddButton();
+    setToggledOpen((prev) => !prev);
+  };
 
   const highlightWalletTab = () => {
     progress.value = withTiming(0);
@@ -134,11 +150,7 @@ export const AnimatedTabBar = ({
               }
               onPress={() => {
                 console.log("pressed");
-                rotation.value = withTiming(
-                  toggledOpen ? 0 : 45,
-                  TAB_BAR_TOGGLE_TIMING
-                );
-                setToggledOpen((prev) => !prev);
+                toggleTabDrawer();
               }}
             />
             {!toggledOpen && (
@@ -159,10 +171,29 @@ export const AnimatedTabBar = ({
               }}
             >
               <View style={styles.buttonContainer}>
-                <AddNewButton label={"New transaction"} icon={"💸"} />
-                <AddNewButton label={"New budget"} icon={"💰"} />
-                <AddNewButton label={"New saving goal"} icon={"🎯"} />
-                <AddNewButton label={"Balance adjustment"} icon={"🎚"} />
+                <AddNewButton
+                  label={"New transaction"}
+                  icon={"💸"}
+                  onPress={() => {
+                    navigation.navigate("NewBudget");
+                    toggleTabDrawer();
+                  }}
+                />
+                <AddNewButton
+                  label={"New budget"}
+                  icon={"💰"}
+                  onPress={() => navigation.navigate("NewBudget")}
+                />
+                <AddNewButton
+                  label={"New saving goal"}
+                  icon={"🎯"}
+                  onPress={() => navigation.navigate("NewBudget")}
+                />
+                <AddNewButton
+                  label={"Balance adjustment"}
+                  icon={"🎚"}
+                  onPress={() => navigation.navigate("NewBudget")}
+                />
               </View>
             </Pressable>
           </View>

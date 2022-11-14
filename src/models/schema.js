@@ -1,469 +1,495 @@
 export const schema = {
-  models: {
-    Transaction: {
-      name: "Transaction",
-      fields: {
-        id: {
-          name: "id",
-          isArray: false,
-          type: "ID",
-          isRequired: true,
-          attributes: [],
+    "models": {
+        "Transaction": {
+            "name": "Transaction",
+            "fields": {
+                "id": {
+                    "name": "id",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "name": {
+                    "name": "name",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "amount": {
+                    "name": "amount",
+                    "isArray": false,
+                    "type": "Float",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "date": {
+                    "name": "date",
+                    "isArray": false,
+                    "type": "AWSDate",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "memo": {
+                    "name": "memo",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "iso_currency_code": {
+                    "name": "iso_currency_code",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "balanceID": {
+                    "name": "balanceID",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "createdAt": {
+                    "name": "createdAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
+                },
+                "updatedAt": {
+                    "name": "updatedAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
+                }
+            },
+            "syncable": true,
+            "pluralName": "Transactions",
+            "attributes": [
+                {
+                    "type": "model",
+                    "properties": {}
+                },
+                {
+                    "type": "key",
+                    "properties": {
+                        "name": "byBalance",
+                        "fields": [
+                            "balanceID"
+                        ]
+                    }
+                },
+                {
+                    "type": "auth",
+                    "properties": {
+                        "rules": [
+                            {
+                                "allow": "public",
+                                "operations": [
+                                    "create",
+                                    "update",
+                                    "delete",
+                                    "read"
+                                ]
+                            },
+                            {
+                                "provider": "userPools",
+                                "ownerField": "owner",
+                                "allow": "owner",
+                                "identityClaim": "cognito:username",
+                                "operations": [
+                                    "create",
+                                    "update",
+                                    "delete",
+                                    "read"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            ]
         },
-        name: {
-          name: "name",
-          isArray: false,
-          type: "String",
-          isRequired: true,
-          attributes: [],
+        "BalanceOptions": {
+            "name": "BalanceOptions",
+            "fields": {
+                "id": {
+                    "name": "id",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "monthly_allocation": {
+                    "name": "monthly_allocation",
+                    "isArray": false,
+                    "type": "Float",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "is_paused": {
+                    "name": "is_paused",
+                    "isArray": false,
+                    "type": "Boolean",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "pause_duration_hours": {
+                    "name": "pause_duration_hours",
+                    "isArray": false,
+                    "type": "Float",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "category": {
+                    "name": "category",
+                    "isArray": false,
+                    "type": {
+                        "enum": "Categories"
+                    },
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "BalanceRules": {
+                    "name": "BalanceRules",
+                    "isArray": true,
+                    "type": {
+                        "model": "BalanceRule"
+                    },
+                    "isRequired": false,
+                    "attributes": [],
+                    "isArrayNullable": true,
+                    "association": {
+                        "connectionType": "HAS_MANY",
+                        "associatedWith": "balance_optionsID"
+                    }
+                },
+                "createdAt": {
+                    "name": "createdAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
+                },
+                "updatedAt": {
+                    "name": "updatedAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
+                }
+            },
+            "syncable": true,
+            "pluralName": "BalanceOptions",
+            "attributes": [
+                {
+                    "type": "model",
+                    "properties": {}
+                },
+                {
+                    "type": "auth",
+                    "properties": {
+                        "rules": [
+                            {
+                                "allow": "public",
+                                "operations": [
+                                    "create",
+                                    "update",
+                                    "delete",
+                                    "read"
+                                ]
+                            },
+                            {
+                                "provider": "userPools",
+                                "ownerField": "owner",
+                                "allow": "owner",
+                                "identityClaim": "cognito:username",
+                                "operations": [
+                                    "create",
+                                    "update",
+                                    "delete",
+                                    "read"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            ]
         },
-        amount: {
-          name: "amount",
-          isArray: false,
-          type: "Float",
-          isRequired: true,
-          attributes: [],
+        "BalanceRule": {
+            "name": "BalanceRule",
+            "fields": {
+                "id": {
+                    "name": "id",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "name": {
+                    "name": "name",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "description": {
+                    "name": "description",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "balance_optionsID": {
+                    "name": "balance_optionsID",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "createdAt": {
+                    "name": "createdAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
+                },
+                "updatedAt": {
+                    "name": "updatedAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
+                }
+            },
+            "syncable": true,
+            "pluralName": "BalanceRules",
+            "attributes": [
+                {
+                    "type": "model",
+                    "properties": {}
+                },
+                {
+                    "type": "key",
+                    "properties": {
+                        "name": "byBalanceOptions",
+                        "fields": [
+                            "balance_optionsID"
+                        ]
+                    }
+                },
+                {
+                    "type": "auth",
+                    "properties": {
+                        "rules": [
+                            {
+                                "allow": "public",
+                                "operations": [
+                                    "create",
+                                    "update",
+                                    "delete",
+                                    "read"
+                                ]
+                            },
+                            {
+                                "provider": "userPools",
+                                "ownerField": "owner",
+                                "allow": "owner",
+                                "identityClaim": "cognito:username",
+                                "operations": [
+                                    "create",
+                                    "update",
+                                    "delete",
+                                    "read"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            ]
         },
-        date: {
-          name: "date",
-          isArray: false,
-          type: "AWSDate",
-          isRequired: true,
-          attributes: [],
-        },
-        memo: {
-          name: "memo",
-          isArray: false,
-          type: "String",
-          isRequired: false,
-          attributes: [],
-        },
-        is_sorted: {
-          name: "is_sorted",
-          isArray: false,
-          type: "Boolean",
-          isRequired: true,
-          attributes: [],
-        },
-        iso_currency_code: {
-          name: "iso_currency_code",
-          isArray: false,
-          type: "String",
-          isRequired: true,
-          attributes: [],
-        },
-        budgetID: {
-          name: "budgetID",
-          isArray: false,
-          type: "ID",
-          isRequired: true,
-          attributes: [],
-        },
-        createdAt: {
-          name: "createdAt",
-          isArray: false,
-          type: "AWSDateTime",
-          isRequired: false,
-          attributes: [],
-          isReadOnly: true,
-        },
-        updatedAt: {
-          name: "updatedAt",
-          isArray: false,
-          type: "AWSDateTime",
-          isRequired: false,
-          attributes: [],
-          isReadOnly: true,
-        },
-      },
-      syncable: true,
-      pluralName: "Transactions",
-      attributes: [
-        {
-          type: "model",
-          properties: {},
-        },
-        {
-          type: "key",
-          properties: {
-            name: "byBudget",
-            fields: ["budgetID"],
-          },
-        },
-        {
-          type: "auth",
-          properties: {
-            rules: [
-              {
-                allow: "public",
-                operations: ["create", "update", "delete", "read"],
-              },
-            ],
-          },
-        },
-      ],
+        "Balance": {
+            "name": "Balance",
+            "fields": {
+                "id": {
+                    "name": "id",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "title": {
+                    "name": "title",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "icon": {
+                    "name": "icon",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "fund_balance": {
+                    "name": "fund_balance",
+                    "isArray": false,
+                    "type": "Float",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "total_fund_size": {
+                    "name": "total_fund_size",
+                    "isArray": false,
+                    "type": "Float",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "placement_index": {
+                    "name": "placement_index",
+                    "isArray": false,
+                    "type": "Int",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "type": {
+                    "name": "type",
+                    "isArray": false,
+                    "type": {
+                        "enum": "BalanceTypes"
+                    },
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "BalanceOptions": {
+                    "name": "BalanceOptions",
+                    "isArray": false,
+                    "type": {
+                        "model": "BalanceOptions"
+                    },
+                    "isRequired": false,
+                    "attributes": [],
+                    "association": {
+                        "connectionType": "HAS_ONE",
+                        "associatedWith": "id",
+                        "targetName": "balanceBalanceOptionsId"
+                    }
+                },
+                "Transactions": {
+                    "name": "Transactions",
+                    "isArray": true,
+                    "type": {
+                        "model": "Transaction"
+                    },
+                    "isRequired": false,
+                    "attributes": [],
+                    "isArrayNullable": true,
+                    "association": {
+                        "connectionType": "HAS_MANY",
+                        "associatedWith": "balanceID"
+                    }
+                },
+                "createdAt": {
+                    "name": "createdAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
+                },
+                "updatedAt": {
+                    "name": "updatedAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
+                },
+                "balanceBalanceOptionsId": {
+                    "name": "balanceBalanceOptionsId",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": false,
+                    "attributes": []
+                }
+            },
+            "syncable": true,
+            "pluralName": "Balances",
+            "attributes": [
+                {
+                    "type": "model",
+                    "properties": {}
+                },
+                {
+                    "type": "key",
+                    "properties": {
+                        "name": "byPlacementIndex",
+                        "queryField": "byPlacementIndex",
+                        "fields": [
+                            "type",
+                            "placement_index"
+                        ]
+                    }
+                },
+                {
+                    "type": "auth",
+                    "properties": {
+                        "rules": [
+                            {
+                                "allow": "public",
+                                "operations": [
+                                    "create",
+                                    "update",
+                                    "delete",
+                                    "read"
+                                ]
+                            },
+                            {
+                                "provider": "userPools",
+                                "ownerField": "owner",
+                                "allow": "owner",
+                                "identityClaim": "cognito:username",
+                                "operations": [
+                                    "create",
+                                    "update",
+                                    "delete",
+                                    "read"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
     },
-    SavingGoal: {
-      name: "SavingGoal",
-      fields: {
-        id: {
-          name: "id",
-          isArray: false,
-          type: "ID",
-          isRequired: true,
-          attributes: [],
+    "enums": {
+        "Categories": {
+            "name": "Categories",
+            "values": [
+                "NEED",
+                "SAVE",
+                "WANT"
+            ]
         },
-        name: {
-          name: "name",
-          isArray: false,
-          type: "String",
-          isRequired: true,
-          attributes: [],
-        },
-        percent_of_income: {
-          name: "percent_of_income",
-          isArray: false,
-          type: "Float",
-          isRequired: true,
-          attributes: [],
-        },
-        date_created: {
-          name: "date_created",
-          isArray: false,
-          type: "AWSDate",
-          isRequired: true,
-          attributes: [],
-        },
-        date_affordable: {
-          name: "date_affordable",
-          isArray: false,
-          type: "AWSDate",
-          isRequired: true,
-          attributes: [],
-        },
-        is_paused: {
-          name: "is_paused",
-          isArray: false,
-          type: "Boolean",
-          isRequired: false,
-          attributes: [],
-        },
-        pause_duration_hour: {
-          name: "pause_duration_hour",
-          isArray: false,
-          type: "Int",
-          isRequired: false,
-          attributes: [],
-        },
-        userID: {
-          name: "userID",
-          isArray: false,
-          type: "ID",
-          isRequired: true,
-          attributes: [],
-        },
-        createdAt: {
-          name: "createdAt",
-          isArray: false,
-          type: "AWSDateTime",
-          isRequired: false,
-          attributes: [],
-          isReadOnly: true,
-        },
-        updatedAt: {
-          name: "updatedAt",
-          isArray: false,
-          type: "AWSDateTime",
-          isRequired: false,
-          attributes: [],
-          isReadOnly: true,
-        },
-      },
-      syncable: true,
-      pluralName: "SavingGoals",
-      attributes: [
-        {
-          type: "model",
-          properties: {},
-        },
-        {
-          type: "key",
-          properties: {
-            name: "byUser",
-            fields: ["userID"],
-          },
-        },
-        {
-          type: "auth",
-          properties: {
-            rules: [
-              {
-                allow: "public",
-                operations: ["create", "update", "delete", "read"],
-              },
-              {
-                provider: "userPools",
-                ownerField: "owner",
-                allow: "owner",
-                identityClaim: "cognito:username",
-                operations: ["create", "update", "delete", "read"],
-              },
-            ],
-          },
-        },
-      ],
+        "BalanceTypes": {
+            "name": "BalanceTypes",
+            "values": [
+                "GOAL",
+                "BUDGET"
+            ]
+        }
     },
-    User: {
-      name: "User",
-      fields: {
-        id: {
-          name: "id",
-          isArray: false,
-          type: "ID",
-          isRequired: true,
-          attributes: [],
-        },
-        username: {
-          name: "username",
-          isArray: false,
-          type: "String",
-          isRequired: true,
-          attributes: [],
-        },
-        Budgets: {
-          name: "Budgets",
-          isArray: true,
-          type: {
-            model: "SavingGoal",
-          },
-          isRequired: false,
-          attributes: [],
-          isArrayNullable: true,
-          association: {
-            connectionType: "HAS_MANY",
-            associatedWith: "userID",
-          },
-        },
-        email: {
-          name: "email",
-          isArray: false,
-          type: "AWSEmail",
-          isRequired: true,
-          attributes: [],
-        },
-        income_distribution: {
-          name: "income_distribution",
-          isArray: true,
-          type: "AWSJSON",
-          isRequired: true,
-          attributes: [],
-          isArrayNullable: false,
-        },
-        is_premium: {
-          name: "is_premium",
-          isArray: false,
-          type: "Boolean",
-          isRequired: true,
-          attributes: [],
-        },
-        img: {
-          name: "img",
-          isArray: false,
-          type: "AWSURL",
-          isRequired: false,
-          attributes: [],
-        },
-        promo_code: {
-          name: "promo_code",
-          isArray: false,
-          type: "AWSURL",
-          isRequired: false,
-          attributes: [],
-        },
-        SavingGoals: {
-          name: "SavingGoals",
-          isArray: true,
-          type: {
-            model: "SavingGoal",
-          },
-          isRequired: false,
-          attributes: [],
-          isArrayNullable: true,
-          association: {
-            connectionType: "HAS_MANY",
-            associatedWith: "userID",
-          },
-        },
-        createdAt: {
-          name: "createdAt",
-          isArray: false,
-          type: "AWSDateTime",
-          isRequired: false,
-          attributes: [],
-          isReadOnly: true,
-        },
-        updatedAt: {
-          name: "updatedAt",
-          isArray: false,
-          type: "AWSDateTime",
-          isRequired: false,
-          attributes: [],
-          isReadOnly: true,
-        },
-      },
-      syncable: true,
-      pluralName: "Users",
-      attributes: [
-        {
-          type: "model",
-          properties: {},
-        },
-        {
-          type: "auth",
-          properties: {
-            rules: [
-              {
-                allow: "public",
-                operations: ["create", "update", "delete", "read"],
-              },
-              {
-                provider: "userPools",
-                ownerField: "owner",
-                allow: "owner",
-                identityClaim: "cognito:username",
-                operations: ["create", "update", "delete", "read"],
-              },
-            ],
-          },
-        },
-      ],
-    },
-    Budget: {
-      name: "Budget",
-      fields: {
-        id: {
-          name: "id",
-          isArray: false,
-          type: "ID",
-          isRequired: true,
-          attributes: [],
-        },
-        name: {
-          name: "name",
-          isArray: false,
-          type: "String",
-          isRequired: true,
-          attributes: [],
-        },
-        percent_of_income: {
-          name: "percent_of_income",
-          isArray: false,
-          type: "Float",
-          isRequired: true,
-          attributes: [],
-        },
-        balance: {
-          name: "balance",
-          isArray: false,
-          type: "Float",
-          isRequired: true,
-          attributes: [],
-        },
-        img: {
-          name: "img",
-          isArray: false,
-          type: "AWSURL",
-          isRequired: true,
-          attributes: [],
-        },
-        userID: {
-          name: "userID",
-          isArray: false,
-          type: "ID",
-          isRequired: true,
-          attributes: [],
-        },
-        category: {
-          name: "category",
-          isArray: false,
-          type: {
-            enum: "Categories",
-          },
-          isRequired: false,
-          attributes: [],
-        },
-        Transactions: {
-          name: "Transactions",
-          isArray: true,
-          type: {
-            model: "Transaction",
-          },
-          isRequired: false,
-          attributes: [],
-          isArrayNullable: true,
-          association: {
-            connectionType: "HAS_MANY",
-            associatedWith: "budgetID",
-          },
-        },
-        createdAt: {
-          name: "createdAt",
-          isArray: false,
-          type: "AWSDateTime",
-          isRequired: false,
-          attributes: [],
-          isReadOnly: true,
-        },
-        updatedAt: {
-          name: "updatedAt",
-          isArray: false,
-          type: "AWSDateTime",
-          isRequired: false,
-          attributes: [],
-          isReadOnly: true,
-        },
-      },
-      syncable: true,
-      pluralName: "Budgets",
-      attributes: [
-        {
-          type: "model",
-          properties: {},
-        },
-        {
-          type: "key",
-          properties: {
-            name: "byUser",
-            fields: ["userID"],
-          },
-        },
-        {
-          type: "auth",
-          properties: {
-            rules: [
-              {
-                allow: "public",
-                operations: ["create", "update", "delete", "read"],
-              },
-              {
-                provider: "userPools",
-                ownerField: "owner",
-                allow: "owner",
-                identityClaim: "cognito:username",
-                operations: ["create", "update", "delete", "read"],
-              },
-            ],
-          },
-        },
-      ],
-    },
-  },
-  enums: {
-    Categories: {
-      name: "Categories",
-      values: ["NEED", "SAVE", "WANT"],
-    },
-  },
-  nonModels: {},
-  version: "7b2704f9d0a8a87a7074441d7963e9e9",
+    "nonModels": {},
+    "codegenVersion": "3.3.1",
+    "version": "7175bb7c728579a865875170038aa087"
 };

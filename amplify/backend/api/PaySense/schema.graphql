@@ -1,35 +1,27 @@
-type Transaction @model @auth(rules: [{allow: public}]) {
+type Transaction @model @auth(rules: [{ allow: public }, { allow: owner }]) {
   id: ID!
   name: String!
   amount: Float!
-  date: AWSDate!
+  date: AWSDate
   memo: String
-  is_sorted: Boolean!
-  iso_currency_code: String!
-  budgetID: ID! @index(name: "byBudget")
+  iso_currency_code: String
+  FundID: ID! @index(name: "byFund")
 }
 
-type SavingGoal @model @auth(rules: [{allow: public}, {allow: owner}]) {
+type FundOptions @model @auth(rules: [{ allow: public }, { allow: owner }]) {
+  id: ID!
+  monthly_allocation: Float
+  is_paused: Boolean
+  pause_duration_hours: Float
+  category: Categories
+  FundRules: [FundRule] @hasMany(indexName: "byFundOptions", fields: ["id"])
+}
+
+type FundRule @model @auth(rules: [{ allow: public }, { allow: owner }]) {
   id: ID!
   name: String!
-  percent_of_income: Float!
-  date_created: AWSDate!
-  date_affordable: AWSDate!
-  is_paused: Boolean
-  pause_duration_hour: Int
-  userID: ID! @index(name: "byUser")
-}
-
-type User @model @auth(rules: [{allow: public}, {allow: owner}]) {
-  id: ID!
-  username: String!
-  Budgets: [SavingGoal] @hasMany(indexName: "byUser", fields: ["id"])
-  email: AWSEmail!
-  income_distribution: [AWSJSON!]!
-  is_premium: Boolean!
-  img: AWSURL
-  promo_code: AWSURL
-  SavingGoals: [SavingGoal] @hasMany(indexName: "byUser", fields: ["id"])
+  description: String
+  Fund_optionsID: ID! @index(name: "byFundOptions")
 }
 
 enum Categories {
@@ -38,14 +30,24 @@ enum Categories {
   WANT
 }
 
-type Budget @model @auth(rules: [{allow: public}, {allow: owner}]) {
-  id: ID!
-  name: String!
-  percent_of_income: Float!
-  balance: Float!
-  img: AWSURL!
-  userID: ID! @index(name: "byUser")
-  category: Categories
-  Transactions: [Transaction] @hasMany(indexName: "byBudget", fields: ["id"])
+enum FundTypes {
+  GOAL
+  BUDGET
 }
- 
+
+type Fund @model @auth(rules: [{ allow: public }, { allow: owner }]) {
+  id: ID!
+  title: String!
+  icon: String!
+  fund_balance: Float!
+  total_fund_size: Float!
+  placement_index: Int!
+  type: FundTypes!
+    @index(
+      name: "byPlacementIndex"
+      queryField: "byPlacementIndex"
+      sortKeyFields: ["placement_index"]
+    )
+  FundOptions: FundOptions @hasOne
+  Transactions: [Transaction] @hasMany(indexName: "byFund", fields: ["id"])
+}

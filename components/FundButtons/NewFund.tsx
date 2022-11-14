@@ -3,10 +3,10 @@ import { Pressable, View, StyleSheet, PixelRatio, Text } from "react-native";
 import { colors } from "../shared/colors";
 import { textStyles } from "../shared/textStyles";
 
-interface NewBalanceProps {}
+interface NewFundProps {}
 const RADIUS = PixelRatio.roundToNearestPixel(79.32 / 2);
 
-export const NewBalance: FC<NewBalanceProps> = () => {
+export const NewFund: FC<NewFundProps> = () => {
   return (
     <Pressable
       style={styles.NewCategoryContainer}

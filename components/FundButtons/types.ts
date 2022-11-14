@@ -1,37 +1,30 @@
 import { SkiaMutableValue } from "@shopify/react-native-skia";
-import { ImageSourcePropType } from "react-native";
-
-export interface BudgetCardProps {
-  id: string;
-  title: string;
-  balance: number;
-  flag?: boolean;
-  background: ImageSourcePropType;
-}
 
 //May need to update the type of icon
 //May want to make a custom enum type for flags
 
-export interface BalanceButtonProps {
-  id: number;
+export interface FundButtonProps {
+  id: string;
   title: string;
   balance: number;
   emojiIcon: string;
   flag?: boolean;
   percentRemaining: number;
-  balanceType: string;
+  fundType: string;
+  placement_index: number;
 }
 
-export interface BalanceButtonSectionProps {
+export interface FundButtonSectionProps {
+  fundData: FundButtonProps[];
   goalsToggled: boolean;
 }
 
-export interface BalanceButtonPageProps {
-  data: Array<BalanceButtonProps>;
+export interface FundButtonPageProps {
+  data: Array<FundButtonProps>;
   page: number;
 }
 
-export interface BalanceButtonDetailsProps {
+export interface FundButtonDetailsProps {
   title: string;
   balance: number;
   percentRemaining: number;
@@ -43,10 +36,16 @@ export interface DonutGradientPathProps {
   percentRemaining: SkiaMutableValue<number>;
 }
 
-export interface BalanceIconProps {
+export interface FundIconProps {
   emoji: string;
   percentRemaining: SkiaMutableValue<number>;
   strokeWidth: number;
   iconFontSize: number;
   radius: number;
+}
+
+export interface FundDonutProps {
+  strokeWidth: number;
+  radius: number;
+  percentRemaining: SkiaMutableValue<number>;
 }

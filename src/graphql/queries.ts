@@ -10,14 +10,14 @@ export const getTransaction = /* GraphQL */ `
       amount
       date
       memo
-      is_sorted
       iso_currency_code
-      budgetID
+      balanceID
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
+      owner
     }
   }
 `;
@@ -34,14 +34,14 @@ export const listTransactions = /* GraphQL */ `
         amount
         date
         memo
-        is_sorted
         iso_currency_code
-        budgetID
+        balanceID
         createdAt
         updatedAt
         _version
         _deleted
         _lastChangedAt
+        owner
       }
       nextToken
       startedAt
@@ -67,142 +67,34 @@ export const syncTransactions = /* GraphQL */ `
         amount
         date
         memo
-        is_sorted
         iso_currency_code
-        budgetID
+        balanceID
         createdAt
         updatedAt
         _version
         _deleted
         _lastChangedAt
+        owner
       }
       nextToken
       startedAt
     }
   }
 `;
-export const getSavingGoal = /* GraphQL */ `
-  query GetSavingGoal($id: ID!) {
-    getSavingGoal(id: $id) {
+export const getBalanceOptions = /* GraphQL */ `
+  query GetBalanceOptions($id: ID!) {
+    getBalanceOptions(id: $id) {
       id
-      name
-      percent_of_income
-      date_created
-      date_affordable
+      monthly_allocation
       is_paused
-      pause_duration_hour
-      userID
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      owner
-    }
-  }
-`;
-export const listSavingGoals = /* GraphQL */ `
-  query ListSavingGoals(
-    $filter: ModelSavingGoalFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listSavingGoals(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        name
-        percent_of_income
-        date_created
-        date_affordable
-        is_paused
-        pause_duration_hour
-        userID
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-        owner
-      }
-      nextToken
-      startedAt
-    }
-  }
-`;
-export const syncSavingGoals = /* GraphQL */ `
-  query SyncSavingGoals(
-    $filter: ModelSavingGoalFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncSavingGoals(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        name
-        percent_of_income
-        date_created
-        date_affordable
-        is_paused
-        pause_duration_hour
-        userID
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-        owner
-      }
-      nextToken
-      startedAt
-    }
-  }
-`;
-export const getUser = /* GraphQL */ `
-  query GetUser($id: ID!) {
-    getUser(id: $id) {
-      id
-      username
-      Budgets {
+      pause_duration_hours
+      category
+      BalanceRules {
         items {
           id
           name
-          percent_of_income
-          date_created
-          date_affordable
-          is_paused
-          pause_duration_hour
-          userID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-          owner
-        }
-        nextToken
-        startedAt
-      }
-      email
-      income_distribution
-      is_premium
-      img
-      promo_code
-      SavingGoals {
-        items {
-          id
-          name
-          percent_of_income
-          date_created
-          date_affordable
-          is_paused
-          pause_duration_hour
-          userID
+          description
+          balance_optionsID
           createdAt
           updatedAt
           _version
@@ -222,26 +114,20 @@ export const getUser = /* GraphQL */ `
     }
   }
 `;
-export const listUsers = /* GraphQL */ `
-  query ListUsers(
-    $filter: ModelUserFilterInput
+export const listBalanceOptions = /* GraphQL */ `
+  query ListBalanceOptions(
+    $filter: ModelBalanceOptionsFilterInput
     $limit: Int
     $nextToken: String
   ) {
-    listUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    listBalanceOptions(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        username
-        Budgets {
-          nextToken
-          startedAt
-        }
-        email
-        income_distribution
-        is_premium
-        img
-        promo_code
-        SavingGoals {
+        monthly_allocation
+        is_paused
+        pause_duration_hours
+        category
+        BalanceRules {
           nextToken
           startedAt
         }
@@ -257,14 +143,14 @@ export const listUsers = /* GraphQL */ `
     }
   }
 `;
-export const syncUsers = /* GraphQL */ `
-  query SyncUsers(
-    $filter: ModelUserFilterInput
+export const syncBalanceOptions = /* GraphQL */ `
+  query SyncBalanceOptions(
+    $filter: ModelBalanceOptionsFilterInput
     $limit: Int
     $nextToken: String
     $lastSync: AWSTimestamp
   ) {
-    syncUsers(
+    syncBalanceOptions(
       filter: $filter
       limit: $limit
       nextToken: $nextToken
@@ -272,17 +158,11 @@ export const syncUsers = /* GraphQL */ `
     ) {
       items {
         id
-        username
-        Budgets {
-          nextToken
-          startedAt
-        }
-        email
-        income_distribution
-        is_premium
-        img
-        promo_code
-        SavingGoals {
+        monthly_allocation
+        is_paused
+        pause_duration_hours
+        category
+        BalanceRules {
           nextToken
           startedAt
         }
@@ -298,16 +178,103 @@ export const syncUsers = /* GraphQL */ `
     }
   }
 `;
-export const getBudget = /* GraphQL */ `
-  query GetBudget($id: ID!) {
-    getBudget(id: $id) {
+export const getBalanceRule = /* GraphQL */ `
+  query GetBalanceRule($id: ID!) {
+    getBalanceRule(id: $id) {
       id
       name
-      percent_of_income
-      balance
-      img
-      userID
-      category
+      description
+      balance_optionsID
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+  }
+`;
+export const listBalanceRules = /* GraphQL */ `
+  query ListBalanceRules(
+    $filter: ModelBalanceRuleFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listBalanceRules(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        name
+        description
+        balance_optionsID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const syncBalanceRules = /* GraphQL */ `
+  query SyncBalanceRules(
+    $filter: ModelBalanceRuleFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncBalanceRules(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        name
+        description
+        balance_optionsID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const getBalance = /* GraphQL */ `
+  query GetBalance($id: ID!) {
+    getBalance(id: $id) {
+      id
+      title
+      icon
+      fund_balance
+      total_fund_size
+      placement_index
+      type
+      BalanceOptions {
+        id
+        monthly_allocation
+        is_paused
+        pause_duration_hours
+        category
+        BalanceRules {
+          nextToken
+          startedAt
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+      }
       Transactions {
         items {
           id
@@ -315,14 +282,14 @@ export const getBudget = /* GraphQL */ `
           amount
           date
           memo
-          is_sorted
           iso_currency_code
-          budgetID
+          balanceID
           createdAt
           updatedAt
           _version
           _deleted
           _lastChangedAt
+          owner
         }
         nextToken
         startedAt
@@ -332,25 +299,39 @@ export const getBudget = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
+      balanceBalanceOptionsId
       owner
     }
   }
 `;
-export const listBudgets = /* GraphQL */ `
-  query ListBudgets(
-    $filter: ModelBudgetFilterInput
+export const listBalances = /* GraphQL */ `
+  query ListBalances(
+    $filter: ModelBalanceFilterInput
     $limit: Int
     $nextToken: String
   ) {
-    listBudgets(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    listBalances(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        name
-        percent_of_income
-        balance
-        img
-        userID
-        category
+        title
+        icon
+        fund_balance
+        total_fund_size
+        placement_index
+        type
+        BalanceOptions {
+          id
+          monthly_allocation
+          is_paused
+          pause_duration_hours
+          category
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+          owner
+        }
         Transactions {
           nextToken
           startedAt
@@ -360,6 +341,7 @@ export const listBudgets = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
+        balanceBalanceOptionsId
         owner
       }
       nextToken
@@ -367,14 +349,14 @@ export const listBudgets = /* GraphQL */ `
     }
   }
 `;
-export const syncBudgets = /* GraphQL */ `
-  query SyncBudgets(
-    $filter: ModelBudgetFilterInput
+export const syncBalances = /* GraphQL */ `
+  query SyncBalances(
+    $filter: ModelBalanceFilterInput
     $limit: Int
     $nextToken: String
     $lastSync: AWSTimestamp
   ) {
-    syncBudgets(
+    syncBalances(
       filter: $filter
       limit: $limit
       nextToken: $nextToken
@@ -382,12 +364,25 @@ export const syncBudgets = /* GraphQL */ `
     ) {
       items {
         id
-        name
-        percent_of_income
-        balance
-        img
-        userID
-        category
+        title
+        icon
+        fund_balance
+        total_fund_size
+        placement_index
+        type
+        BalanceOptions {
+          id
+          monthly_allocation
+          is_paused
+          pause_duration_hours
+          category
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+          owner
+        }
         Transactions {
           nextToken
           startedAt
@@ -397,6 +392,62 @@ export const syncBudgets = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
+        balanceBalanceOptionsId
+        owner
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const byPlacementIndex = /* GraphQL */ `
+  query ByPlacementIndex(
+    $type: BalanceTypes!
+    $placement_index: ModelIntKeyConditionInput
+    $sortDirection: ModelSortDirection
+    $filter: ModelBalanceFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    byPlacementIndex(
+      type: $type
+      placement_index: $placement_index
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        title
+        icon
+        fund_balance
+        total_fund_size
+        placement_index
+        type
+        BalanceOptions {
+          id
+          monthly_allocation
+          is_paused
+          pause_duration_hours
+          category
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+          owner
+        }
+        Transactions {
+          nextToken
+          startedAt
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        balanceBalanceOptionsId
         owner
       }
       nextToken

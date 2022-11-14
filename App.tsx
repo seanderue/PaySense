@@ -15,9 +15,9 @@ Amplify.configure(awsconfig);
 
 import { withAuthenticator } from "@aws-amplify/ui-react";
 
-import { BalanceButtonSection } from "./components/BalanceButtons/BalanceButtonSection";
+import { FundButtonSection } from "./components/FundButtons/FundButtonSection";
 import { StyleSheet, Text, View } from "react-native";
-import { BalanceButtonPage } from "./components/BalanceButtons/BalanceButtonPage";
+import { FundButtonPage } from "./components/FundButtons/FundButtonPage";
 import Home from "./screens/Home";
 import { BarGraphic } from "./components/BarGraphic/BarGraphic";
 

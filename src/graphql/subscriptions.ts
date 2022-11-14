@@ -3,309 +3,266 @@
 // this is an auto generated file. This will be overwritten
 
 export const onCreateTransaction = /* GraphQL */ `
-  subscription OnCreateTransaction {
-    onCreateTransaction {
+  subscription OnCreateTransaction(
+    $filter: ModelSubscriptionTransactionFilterInput
+    $owner: String
+  ) {
+    onCreateTransaction(filter: $filter, owner: $owner) {
       id
       name
       amount
       date
       memo
-      is_sorted
       iso_currency_code
-      budgetID
+      balanceID
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
+      owner
     }
   }
 `;
 export const onUpdateTransaction = /* GraphQL */ `
-  subscription OnUpdateTransaction {
-    onUpdateTransaction {
+  subscription OnUpdateTransaction(
+    $filter: ModelSubscriptionTransactionFilterInput
+    $owner: String
+  ) {
+    onUpdateTransaction(filter: $filter, owner: $owner) {
       id
       name
       amount
       date
       memo
-      is_sorted
       iso_currency_code
-      budgetID
+      balanceID
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
+      owner
     }
   }
 `;
 export const onDeleteTransaction = /* GraphQL */ `
-  subscription OnDeleteTransaction {
-    onDeleteTransaction {
+  subscription OnDeleteTransaction(
+    $filter: ModelSubscriptionTransactionFilterInput
+    $owner: String
+  ) {
+    onDeleteTransaction(filter: $filter, owner: $owner) {
       id
       name
       amount
       date
       memo
-      is_sorted
       iso_currency_code
-      budgetID
+      balanceID
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
+      owner
     }
   }
 `;
-export const onCreateSavingGoal = /* GraphQL */ `
-  subscription OnCreateSavingGoal($owner: String) {
-    onCreateSavingGoal(owner: $owner) {
+export const onCreateBalanceOptions = /* GraphQL */ `
+  subscription OnCreateBalanceOptions(
+    $filter: ModelSubscriptionBalanceOptionsFilterInput
+    $owner: String
+  ) {
+    onCreateBalanceOptions(filter: $filter, owner: $owner) {
       id
-      name
-      percent_of_income
-      date_created
-      date_affordable
+      monthly_allocation
       is_paused
-      pause_duration_hour
-      userID
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      owner
-    }
-  }
-`;
-export const onUpdateSavingGoal = /* GraphQL */ `
-  subscription OnUpdateSavingGoal($owner: String) {
-    onUpdateSavingGoal(owner: $owner) {
-      id
-      name
-      percent_of_income
-      date_created
-      date_affordable
-      is_paused
-      pause_duration_hour
-      userID
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      owner
-    }
-  }
-`;
-export const onDeleteSavingGoal = /* GraphQL */ `
-  subscription OnDeleteSavingGoal($owner: String) {
-    onDeleteSavingGoal(owner: $owner) {
-      id
-      name
-      percent_of_income
-      date_created
-      date_affordable
-      is_paused
-      pause_duration_hour
-      userID
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      owner
-    }
-  }
-`;
-export const onCreateUser = /* GraphQL */ `
-  subscription OnCreateUser($owner: String) {
-    onCreateUser(owner: $owner) {
-      id
-      username
-      Budgets {
-        items {
-          id
-          name
-          percent_of_income
-          date_created
-          date_affordable
-          is_paused
-          pause_duration_hour
-          userID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-          owner
-        }
-        nextToken
-        startedAt
-      }
-      email
-      income_distribution
-      is_premium
-      img
-      promo_code
-      SavingGoals {
-        items {
-          id
-          name
-          percent_of_income
-          date_created
-          date_affordable
-          is_paused
-          pause_duration_hour
-          userID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-          owner
-        }
-        nextToken
-        startedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      owner
-    }
-  }
-`;
-export const onUpdateUser = /* GraphQL */ `
-  subscription OnUpdateUser($owner: String) {
-    onUpdateUser(owner: $owner) {
-      id
-      username
-      Budgets {
-        items {
-          id
-          name
-          percent_of_income
-          date_created
-          date_affordable
-          is_paused
-          pause_duration_hour
-          userID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-          owner
-        }
-        nextToken
-        startedAt
-      }
-      email
-      income_distribution
-      is_premium
-      img
-      promo_code
-      SavingGoals {
-        items {
-          id
-          name
-          percent_of_income
-          date_created
-          date_affordable
-          is_paused
-          pause_duration_hour
-          userID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-          owner
-        }
-        nextToken
-        startedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      owner
-    }
-  }
-`;
-export const onDeleteUser = /* GraphQL */ `
-  subscription OnDeleteUser($owner: String) {
-    onDeleteUser(owner: $owner) {
-      id
-      username
-      Budgets {
-        items {
-          id
-          name
-          percent_of_income
-          date_created
-          date_affordable
-          is_paused
-          pause_duration_hour
-          userID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-          owner
-        }
-        nextToken
-        startedAt
-      }
-      email
-      income_distribution
-      is_premium
-      img
-      promo_code
-      SavingGoals {
-        items {
-          id
-          name
-          percent_of_income
-          date_created
-          date_affordable
-          is_paused
-          pause_duration_hour
-          userID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-          owner
-        }
-        nextToken
-        startedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      owner
-    }
-  }
-`;
-export const onCreateBudget = /* GraphQL */ `
-  subscription OnCreateBudget($owner: String) {
-    onCreateBudget(owner: $owner) {
-      id
-      name
-      percent_of_income
-      balance
-      img
-      userID
+      pause_duration_hours
       category
+      BalanceRules {
+        items {
+          id
+          name
+          description
+          balance_optionsID
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+          owner
+        }
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+  }
+`;
+export const onUpdateBalanceOptions = /* GraphQL */ `
+  subscription OnUpdateBalanceOptions(
+    $filter: ModelSubscriptionBalanceOptionsFilterInput
+    $owner: String
+  ) {
+    onUpdateBalanceOptions(filter: $filter, owner: $owner) {
+      id
+      monthly_allocation
+      is_paused
+      pause_duration_hours
+      category
+      BalanceRules {
+        items {
+          id
+          name
+          description
+          balance_optionsID
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+          owner
+        }
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+  }
+`;
+export const onDeleteBalanceOptions = /* GraphQL */ `
+  subscription OnDeleteBalanceOptions(
+    $filter: ModelSubscriptionBalanceOptionsFilterInput
+    $owner: String
+  ) {
+    onDeleteBalanceOptions(filter: $filter, owner: $owner) {
+      id
+      monthly_allocation
+      is_paused
+      pause_duration_hours
+      category
+      BalanceRules {
+        items {
+          id
+          name
+          description
+          balance_optionsID
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+          owner
+        }
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+  }
+`;
+export const onCreateBalanceRule = /* GraphQL */ `
+  subscription OnCreateBalanceRule(
+    $filter: ModelSubscriptionBalanceRuleFilterInput
+    $owner: String
+  ) {
+    onCreateBalanceRule(filter: $filter, owner: $owner) {
+      id
+      name
+      description
+      balance_optionsID
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+  }
+`;
+export const onUpdateBalanceRule = /* GraphQL */ `
+  subscription OnUpdateBalanceRule(
+    $filter: ModelSubscriptionBalanceRuleFilterInput
+    $owner: String
+  ) {
+    onUpdateBalanceRule(filter: $filter, owner: $owner) {
+      id
+      name
+      description
+      balance_optionsID
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+  }
+`;
+export const onDeleteBalanceRule = /* GraphQL */ `
+  subscription OnDeleteBalanceRule(
+    $filter: ModelSubscriptionBalanceRuleFilterInput
+    $owner: String
+  ) {
+    onDeleteBalanceRule(filter: $filter, owner: $owner) {
+      id
+      name
+      description
+      balance_optionsID
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+  }
+`;
+export const onCreateBalance = /* GraphQL */ `
+  subscription OnCreateBalance(
+    $filter: ModelSubscriptionBalanceFilterInput
+    $owner: String
+  ) {
+    onCreateBalance(filter: $filter, owner: $owner) {
+      id
+      title
+      icon
+      fund_balance
+      total_fund_size
+      placement_index
+      type
+      BalanceOptions {
+        id
+        monthly_allocation
+        is_paused
+        pause_duration_hours
+        category
+        BalanceRules {
+          nextToken
+          startedAt
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+      }
       Transactions {
         items {
           id
@@ -313,14 +270,14 @@ export const onCreateBudget = /* GraphQL */ `
           amount
           date
           memo
-          is_sorted
           iso_currency_code
-          budgetID
+          balanceID
           createdAt
           updatedAt
           _version
           _deleted
           _lastChangedAt
+          owner
         }
         nextToken
         startedAt
@@ -330,20 +287,41 @@ export const onCreateBudget = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
+      balanceBalanceOptionsId
       owner
     }
   }
 `;
-export const onUpdateBudget = /* GraphQL */ `
-  subscription OnUpdateBudget($owner: String) {
-    onUpdateBudget(owner: $owner) {
+export const onUpdateBalance = /* GraphQL */ `
+  subscription OnUpdateBalance(
+    $filter: ModelSubscriptionBalanceFilterInput
+    $owner: String
+  ) {
+    onUpdateBalance(filter: $filter, owner: $owner) {
       id
-      name
-      percent_of_income
-      balance
-      img
-      userID
-      category
+      title
+      icon
+      fund_balance
+      total_fund_size
+      placement_index
+      type
+      BalanceOptions {
+        id
+        monthly_allocation
+        is_paused
+        pause_duration_hours
+        category
+        BalanceRules {
+          nextToken
+          startedAt
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+      }
       Transactions {
         items {
           id
@@ -351,14 +329,14 @@ export const onUpdateBudget = /* GraphQL */ `
           amount
           date
           memo
-          is_sorted
           iso_currency_code
-          budgetID
+          balanceID
           createdAt
           updatedAt
           _version
           _deleted
           _lastChangedAt
+          owner
         }
         nextToken
         startedAt
@@ -368,20 +346,41 @@ export const onUpdateBudget = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
+      balanceBalanceOptionsId
       owner
     }
   }
 `;
-export const onDeleteBudget = /* GraphQL */ `
-  subscription OnDeleteBudget($owner: String) {
-    onDeleteBudget(owner: $owner) {
+export const onDeleteBalance = /* GraphQL */ `
+  subscription OnDeleteBalance(
+    $filter: ModelSubscriptionBalanceFilterInput
+    $owner: String
+  ) {
+    onDeleteBalance(filter: $filter, owner: $owner) {
       id
-      name
-      percent_of_income
-      balance
-      img
-      userID
-      category
+      title
+      icon
+      fund_balance
+      total_fund_size
+      placement_index
+      type
+      BalanceOptions {
+        id
+        monthly_allocation
+        is_paused
+        pause_duration_hours
+        category
+        BalanceRules {
+          nextToken
+          startedAt
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+      }
       Transactions {
         items {
           id
@@ -389,14 +388,14 @@ export const onDeleteBudget = /* GraphQL */ `
           amount
           date
           memo
-          is_sorted
           iso_currency_code
-          budgetID
+          balanceID
           createdAt
           updatedAt
           _version
           _deleted
           _lastChangedAt
+          owner
         }
         nextToken
         startedAt
@@ -406,6 +405,7 @@ export const onDeleteBudget = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
+      balanceBalanceOptionsId
       owner
     }
   }

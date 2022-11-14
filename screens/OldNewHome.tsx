@@ -12,13 +12,13 @@ import diningImg from "../assets/cards/dining-out.jpeg";
 
 // types
 import { StackScreenProps } from "@react-navigation/stack";
-import { BudgetCardProps as BudgetCard } from "../components/BalanceButtons/types";
+import { BudgetCardProps as BudgetCard } from "../components/FundButtons/types";
 
 // GraphQL queries
 import { API, graphqlOperation } from "aws-amplify";
 import { ListBudgetsQuery } from "../src/API";
 import { listBudgets } from "../src/graphql/queries";
-import { mapListBudgets } from "../src/models/budgetCards/mapListBudgetsQuery";
+import { mapListBudgets } from "../src/models/Fund/mapListBudgetsQuery";
 import callGraphQL from "../util/callGraphQL";
 import { Image } from "react-native";
 

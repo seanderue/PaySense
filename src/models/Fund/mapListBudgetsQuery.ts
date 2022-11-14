@@ -1,7 +1,7 @@
-import { ListBudgetsQuery } from "../../API";
+import { ByPlacementIndexQuery } from "../../API";
 import { GraphQLResult } from "@aws-amplify/api";
 import { Storage } from "@aws-amplify/storage";
-import { BudgetCardProps } from "../../../components/BalanceButtons/types";
+import { FundButtonProps } from "../../../components/FundButtons/types";
 import { ImageURISource } from "react-native";
 
 // interface BudgetCardProps {
@@ -25,17 +25,22 @@ async function retrieveImage(imgURI: any): Promise<string | null | undefined> {
 }
 
 function mapListBudgetsQuery(
-  ListBudgetsQuery: GraphQLResult<ListBudgetsQuery>
-): BudgetCardProps[] {
+  sortedBudgets: GraphQLResult<ByPlacementIndexQuery>
+): FundButtonProps[] {
   return (
-    ListBudgetsQuery.data?.listBudgets?.items?.map(
+    sortedBudgets.data?.byPlacementIndex?.items?.map(
       (budget) =>
         ({
           id: budget?.id,
-          title: budget?.name,
-          balance: budget?.balance || 5.0,
-          background: { uri: `${budget?.img}` },
-        } as BudgetCardProps)
+          placement_index: budget?.placement_index,
+          title: budget?.title,
+          balance: budget?.fund_balance || -69.0,
+          emojiIcon: budget?.icon,
+          percentRemaining: budget
+            ? budget.fund_balance / budget.total_fund_size
+            : 0,
+          fundType: "BUDGET",
+        } as FundButtonProps)
     ) || []
   );
 }

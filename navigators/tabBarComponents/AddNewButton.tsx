@@ -10,6 +10,7 @@ interface AddNewButtonProps {
   label: string;
   description?: string;
   icon: string;
+  onPress: () => void;
 }
 
 // ----constants----
@@ -21,11 +22,13 @@ export const AddNewButton: FC<AddNewButtonProps> = ({
   label,
   icon,
   description,
+  onPress,
 }) => {
   return (
     <Pressable
       style={styles.buttonContainer}
       onPress={() => {
+        onPress();
         console.log(`pressed ${label}`);
       }}
     >

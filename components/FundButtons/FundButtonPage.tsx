@@ -1,23 +1,22 @@
 import React, { FC, useState } from "react";
-import { BalanceButton } from "./BalanceButton";
+import { FundButton } from "./FundButton";
 import { Dimensions, StyleSheet, View } from "react-native";
-import { BALANCE_PAGE_MARGIN, ScreenWidth as width } from "../shared/sizes";
+import { FUND_PAGE_MARGIN, ScreenWidth as width } from "../shared/sizes";
 
-import { BalanceButtonPageProps, BalanceButtonProps } from "./types";
-import { NewBalance } from "./NewBalance";
+import { FundButtonPageProps, FundButtonProps } from "./types";
+import { NewFund } from "./NewFund";
 import { CONTENT_WIDTH_PERCENTAGE } from "../shared/sizes";
 
 let bottomRowWidth;
 
-export const BalanceButtonPage: FC<BalanceButtonPageProps> = ({
-  data,
-  page,
-}) => {
+export const FundButtonPage: FC<FundButtonPageProps> = ({ data, page }) => {
+  console.log("data in page component");
+  console.log(data);
   const sixDataElements = data.slice(page * 6, page * 6 + 6);
 
   const topRowElements = sixDataElements.slice(0, 3).map((item) => {
-    if (item.id === 1) return <NewBalance key={item.id} />;
-    else return <BalanceButton key={item.id} {...item} />;
+    if (item.placement_index === 0) return <NewFund key={item.id} />;
+    else return <FundButton key={item.id} {...item} />;
   });
 
   // Removing the elements from the array to prevent bottomRowElement duplication
@@ -26,7 +25,7 @@ export const BalanceButtonPage: FC<BalanceButtonPageProps> = ({
   }
 
   const bottomRowElements = sixDataElements.slice(-3).map((item) => {
-    return <BalanceButton key={item.id} {...item} />;
+    return <FundButton key={item.id} {...item} />;
   });
 
   // Altering bottomRow width so space-between results in correct alignment
@@ -48,7 +47,7 @@ const styles = StyleSheet.create({
     // backgroundColor: "pink",
     display: "flex",
     width: width * CONTENT_WIDTH_PERCENTAGE,
-    marginRight: BALANCE_PAGE_MARGIN,
+    marginRight: FUND_PAGE_MARGIN,
     height: 300,
   },
   pageTopRow: {

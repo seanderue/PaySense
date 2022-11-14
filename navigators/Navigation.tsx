@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useEffect, useState } from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text, GestureResponderEvent } from "react-native";
 import Animated, {
   Easing,
   interpolateColor,
@@ -26,26 +26,21 @@ import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { Ionicons } from "@expo/vector-icons";
 import { AnimatedTabBar } from "./tabBarComponents/AnimatedTabBar";
 import Settings from "../screens/Settings";
-import BalanceDetails from "../screens/BalanceDetails";
+import FundDetails from "../screens/FundDetails";
 import { EditBudget } from "../screens/EditBudget";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { ScreenHeight } from "../components/shared/sizes";
 import { textStyles } from "../components/shared/textStyles";
 import { BackIconButton } from "../components/IconButtons/BackIconButton";
+import { FundButtonProps } from "../components/FundButtons/types";
 
 export type RootStackParams = {
   Home: undefined;
   Stats: undefined;
   Settings: undefined;
-  BalanceDetails: {
-    title: string;
-    emojiIcon: string;
-    balance: number;
-    percentRemaining: number;
-    id: number;
-    balanceType: string;
-  };
+  FundDetails: FundButtonProps;
   EditBudget: undefined;
+  NewBudget: undefined;
 };
 
 export type TabStackParams = {
@@ -83,16 +78,42 @@ const HomeStack = () => {
       />
       <Stack.Screen name="Settings" component={Settings} options={{}} />
       <Stack.Screen
-        name="BalanceDetails"
-        component={BalanceDetails}
+        name="FundDetails"
+        component={FundDetails}
         options={{ headerShown: false }}
       />
       <Stack.Screen
         name="EditBudget"
         component={EditBudget}
         options={{
-          headerShown: true,
           headerTitle: "Edit Budget",
+          headerShown: true,
+          headerShadowVisible: false,
+          headerStyle: {
+            height: ScreenHeight * 0.13547,
+          },
+          headerTitleStyle: [textStyles.LogoBig, textStyles.textColorDark],
+          headerLeft: (props) => (
+            <BackIconButton
+              {...props}
+              onPress={() => {
+                navigation.goBack();
+              }}
+            />
+          ),
+          headerLeftContainerStyle: {
+            justifyContent: "space-around",
+            alignItems: "center",
+            flexDirection: "column",
+          },
+        }}
+      />
+      <Stack.Screen
+        name="NewBudget"
+        component={EditBudget}
+        options={{
+          headerTitle: "New Budget",
+          headerShown: true,
           headerShadowVisible: false,
           headerStyle: {
             height: ScreenHeight * 0.13547,

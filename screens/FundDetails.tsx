@@ -19,28 +19,28 @@ import {
   runTiming,
   useValue,
 } from "@shopify/react-native-skia";
-import { DonutGradientPath } from "../components/BalanceButtons/DonutGradientPath";
+import { DonutGradientPath } from "../components/FundButtons/DonutGradientPath";
 import { textStyles } from "../components/shared/textStyles";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import MIcon from "react-native-vector-icons/MaterialIcons";
 import { FlashList } from "@shopify/flash-list";
 import { shadowStyles } from "../components/shared/shadowStyles";
-import { BalanceDonut } from "../components/BalanceButtons/BalanceDonut";
+import { FundDonut } from "../components/FundButtons/FundDonut";
 import TransactionItem from "../components/Transactions/TransactionItem";
 import { transactionData } from "../components/shared/transactionData";
 import { BackIconButton } from "../components/IconButtons/BackIconButton";
 import { EditIconButton } from "../components/IconButtons/EditIconButton";
 
-type DetailsScreenRouteProp = RouteProp<RootStackParams, "BalanceDetails">;
+type DetailsScreenRouteProp = RouteProp<RootStackParams, "FundDetails">;
 
 const FONT_SIZE = 40;
 
-const BalanceDetails: FC<
-  NativeStackScreenProps<RootStackParams, "BalanceDetails">
+const FundDetails: FC<
+  NativeStackScreenProps<RootStackParams, "FundDetails">
 > = ({ navigation }) => {
   // Route params
   const route: DetailsScreenRouteProp = useRoute();
-  const { title, emojiIcon, balance, percentRemaining, id, balanceType } =
+  const { title, emojiIcon, balance, percentRemaining, id, fundType } =
     route.params;
 
   // Skia Animation
@@ -58,7 +58,7 @@ const BalanceDetails: FC<
     animateChart();
   }, []);
 
-  const balanceData = transactionData.filter(
+  const fundData = transactionData.filter(
     (transaction) => transaction.fund === title
   );
 
@@ -107,7 +107,7 @@ const BalanceDetails: FC<
             }}
           />
         </View>
-        <Canvas style={[styles.balanceIconContainer]}>
+        <Canvas style={[styles.fundIconContainer]}>
           <Group
             transform={[{ rotate: Math.PI * 1.5 }]}
             origin={{ x: 100, y: 100 }}
@@ -173,7 +173,7 @@ const BalanceDetails: FC<
         <View style={{ width: "100%", height: 400, paddingBottom: "40%" }}>
           <FlashList
             showsVerticalScrollIndicator={false}
-            data={balanceData}
+            data={fundData}
             estimatedItemSize={ScreenHeight * 0.06897}
             renderItem={({ item }) => {
               return (
@@ -193,7 +193,7 @@ const BalanceDetails: FC<
   );
 };
 
-export default BalanceDetails;
+export default FundDetails;
 
 const styles = StyleSheet.create({
   animatedBG: {
@@ -251,7 +251,7 @@ const styles = StyleSheet.create({
     paddingVertical: ScreenHeight * 0.06158,
     flex: 1,
   },
-  balanceIconContainer: {
+  fundIconContainer: {
     height: 100 * 2,
     width: 100 * 2,
     // right: ScreenWidth / 2 - 100,

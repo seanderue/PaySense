@@ -1,26 +1,29 @@
 import React, { FC, useEffect, useState, useRef } from "react";
 import { Dimensions, StyleSheet, View, ScrollView } from "react-native";
 import Animated from "react-native-reanimated";
-import { BalanceButtonPage } from "./BalanceButtonPage";
-import { budgetData, goalData } from "../shared/balanceData";
+import { FundButtonPage } from "./FundButtonPage";
+import { fundDataHardCoded, goalData } from "../shared/fundData";
 
 import { CONTENT_WIDTH_PERCENTAGE } from "../shared/sizes";
-import { BALANCE_PAGE_MARGIN } from "../shared/sizes";
-import { BalanceButtonProps, BalanceButtonSectionProps } from "./types";
+import { FUND_PAGE_MARGIN } from "../shared/sizes";
+import { FundButtonProps, FundButtonSectionProps } from "./types";
 import { PageIndicator } from "../PageIndicator/PageIndicator";
 const { width, height } = Dimensions.get("window");
 
-export const BalanceButtonSection: FC<BalanceButtonSectionProps> = ({
+export const FundButtonSection: FC<FundButtonSectionProps> = ({
+  fundData,
   goalsToggled,
 }) => {
-  const [data, setData] = useState(budgetData);
+  const [activeData, setActiveData] = useState(fundData);
+  console.log("data in section component");
+  console.log(fundData);
 
   // Used to track pagination
   const [activePage, setActivePage] = useState(0);
   const [pageCount, setPageCount] = useState(0);
 
-  const [BalanceButtonPageElements, setBalanceButtonPageElements] = useState([
-    <BalanceButtonPage data={data} key={0} page={0} />,
+  const [FundButtonPageElements, setFundButtonPageElements] = useState([
+    <FundButtonPage data={activeData} key={0} page={0} />,
   ]);
   const scrollRef = useRef<Animated.ScrollView>(null);
 
@@ -28,10 +31,10 @@ export const BalanceButtonSection: FC<BalanceButtonSectionProps> = ({
     scrollRef.current?.scrollTo({ x: 0, y: 0, animated: false });
   };
 
-  const populatePages = (data: BalanceButtonProps[]) => {
+  const populatePages = (data: FundButtonProps[]) => {
     const pages = [];
     for (let i = 0; i < Math.ceil(data.length / 6); i++) {
-      pages.push(<BalanceButtonPage data={data} key={i} page={i} />);
+      pages.push(<FundButtonPage data={data} key={i} page={i} />);
     }
     setPageCount(pages.length);
     return pages;
@@ -40,19 +43,20 @@ export const BalanceButtonSection: FC<BalanceButtonSectionProps> = ({
   useEffect(() => {
     console.log("data switched");
     setActivePage(0);
-    goalsToggled ? setData(goalData) : setData(budgetData);
+    goalsToggled ? setActiveData(fundData) : setActiveData(fundData);
     goalsToggled
-      ? setBalanceButtonPageElements((prevState) => {
-          return (prevState = populatePages(goalData));
+      ? setFundButtonPageElements((prevState) => {
+          return (prevState = populatePages(fundData));
         })
-      : setBalanceButtonPageElements((prevState) => {
-          return (prevState = populatePages(budgetData));
+      : setFundButtonPageElements((prevState) => {
+          //EVENTUALLY SET THIS TO GOAL DATA
+          return (prevState = populatePages(fundData));
         });
   }, [goalsToggled]);
 
   // console.log(`data.length: ${data.length}`);
   // console.log(`Math.ceil(data.length / 6): ${Math.ceil(data.length / 6)}`);
-  // console.log(`Button page length: ${BalanceButtonPageElements.length}`);
+  // console.log(`Button page length: ${FundButtonPageElements.length}`);
 
   const handleScroll = (event: {
     nativeEvent: { contentOffset: { x: any } };
@@ -62,7 +66,7 @@ export const BalanceButtonSection: FC<BalanceButtonSectionProps> = ({
     // // console.log(`activePage: ${activePage}`);
     // console.log(activePage);
     setActivePage(
-      Math.round(x / (width * CONTENT_WIDTH_PERCENTAGE + BALANCE_PAGE_MARGIN))
+      Math.round(x / (width * CONTENT_WIDTH_PERCENTAGE + FUND_PAGE_MARGIN))
     );
   };
 
@@ -72,15 +76,15 @@ export const BalanceButtonSection: FC<BalanceButtonSectionProps> = ({
     let x = event.nativeEvent.contentOffset.x;
     // console.log(`x: ${x}`);
     // console.log(
-    //   `calc: ${x / (width * CONTENT_WIDTH_PERCENTAGE + BALANCE_PAGE_MARGIN)}`
+    //   `calc: ${x / (width * CONTENT_WIDTH_PERCENTAGE + FUND_PAGE_MARGIN)}`
     // );
     // console.log(
     //   `rounded calc: ${Math.round(
-    //     x / (width * CONTENT_WIDTH_PERCENTAGE + BALANCE_PAGE_MARGIN)
+    //     x / (width * CONTENT_WIDTH_PERCENTAGE + FUND_PAGE_MARGIN)
     //   )}`
     // );
     setActivePage(
-      Math.round(x / (width * CONTENT_WIDTH_PERCENTAGE + BALANCE_PAGE_MARGIN))
+      Math.round(x / (width * CONTENT_WIDTH_PERCENTAGE + FUND_PAGE_MARGIN))
     );
   };
 
@@ -95,9 +99,7 @@ export const BalanceButtonSection: FC<BalanceButtonSectionProps> = ({
         <View style={styles.slider}>
           <Animated.ScrollView
             horizontal
-            snapToInterval={
-              width * CONTENT_WIDTH_PERCENTAGE + BALANCE_PAGE_MARGIN
-            }
+            snapToInterval={width * CONTENT_WIDTH_PERCENTAGE + FUND_PAGE_MARGIN}
             onScroll={handleScroll}
             // onMomentumScrollEnd={handleScrollEnd}
             decelerationRate={"fast"}
@@ -108,7 +110,7 @@ export const BalanceButtonSection: FC<BalanceButtonSectionProps> = ({
             onContentSizeChange={handleTabSwitch}
             ref={scrollRef}
           >
-            {BalanceButtonPageElements}
+            {FundButtonPageElements}
           </Animated.ScrollView>
         </View>
       </View>

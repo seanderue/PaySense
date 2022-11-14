@@ -7,7 +7,7 @@ import { colors } from "../shared/colors";
 
 // types
 import { TransactionProps } from "./types";
-import { BalanceDonut } from "../BalanceButtons/BalanceDonut";
+import { BalanceDonut } from "../FundButtons/FundDonut";
 import { textStyles } from "../shared/textStyles";
 import { ScreenHeight, ScreenWidth } from "../shared/sizes";
 import { shadowStyles } from "../shared/shadowStyles";

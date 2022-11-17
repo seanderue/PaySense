@@ -7,7 +7,7 @@ import { colors } from "../shared/colors";
 
 // types
 import { TransactionProps } from "./types";
-import { BalanceDonut } from "../FundButtons/FundDonut";
+import { FundDonut } from "../FundButtons/FundDonut";
 import { textStyles } from "../shared/textStyles";
 import { ScreenHeight, ScreenWidth } from "../shared/sizes";
 import { shadowStyles } from "../shared/shadowStyles";
@@ -78,7 +78,7 @@ const TransactionItem: FunctionComponent<TransactionProps> = ({
       <Animated.View style={[styles.transactionContainer, animatedHeightStyle]}>
         <View style={styles.transactionDetailsContainer}>
           <View style={styles.transactionLabelContainer}>
-            <BalanceDonut
+            <FundDonut
               strokeWidth={3}
               radius={(ScreenWidth * 0.09333) / 2}
               percentRemaining={useValue(1 - percentMissing)}

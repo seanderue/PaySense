@@ -1,6 +1,6 @@
 import React, { FC, useState } from "react";
 import { FundButton } from "./FundButton";
-import { Dimensions, StyleSheet, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { FUND_PAGE_MARGIN, ScreenWidth as width } from "../shared/sizes";
 
 import { FundButtonPageProps, FundButtonProps } from "./types";
@@ -10,13 +10,13 @@ import { CONTENT_WIDTH_PERCENTAGE } from "../shared/sizes";
 let bottomRowWidth;
 
 export const FundButtonPage: FC<FundButtonPageProps> = ({ data, page }) => {
-  console.log("data in page component");
-  console.log(data);
+  // console.log("data in page component");
+  // console.log(data);
   const sixDataElements = data.slice(page * 6, page * 6 + 6);
 
   const topRowElements = sixDataElements.slice(0, 3).map((item) => {
-    if (item.placement_index === 0) return <NewFund key={item.id} />;
-    else return <FundButton key={item.id} {...item} />;
+    if (item.placementIndex === 0) return <NewFund key={item.placementIndex} />;
+    else return <FundButton key={item.placementIndex} {...item} />;
   });
 
   // Removing the elements from the array to prevent bottomRowElement duplication

@@ -8,7 +8,7 @@ import { FundButtonDetailsProps } from "./types";
 
 export const FundButtonDetails: FC<FundButtonDetailsProps> = ({
   title,
-  balance,
+  fundBalance,
   percentRemaining,
 }) => {
   return (
@@ -17,7 +17,7 @@ export const FundButtonDetails: FC<FundButtonDetailsProps> = ({
         <Text style={textStyles.Body2}>{title}</Text>
       </View>
       <View style={styles.lowerContainer}>
-        <Text style={textStyles.Overline}>{`$${balance}`}</Text>
+        <Text style={textStyles.Overline}>{`$${fundBalance}`}</Text>
         <Text style={[textStyles.Overline, styles.percentageText]}>{`${(
           percentRemaining * 100
         ).toFixed(1)}%`}</Text>

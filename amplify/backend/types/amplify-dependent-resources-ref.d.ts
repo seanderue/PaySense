@@ -1,10 +1,8 @@
 export type AmplifyDependentResourcesAttributes = {
     "auth": {
-        "paysensea0b1768b": {
+        "paysensee5a37ece": {
             "IdentityPoolId": "string",
             "IdentityPoolName": "string",
-            "HostedUIDomain": "string",
-            "OAuthMetadata": "string",
             "UserPoolId": "string",
             "UserPoolArn": "string",
             "UserPoolName": "string",
@@ -13,7 +11,7 @@ export type AmplifyDependentResourcesAttributes = {
         }
     },
     "api": {
-        "PaySense": {
+        "paysense": {
             "GraphQLAPIKeyOutput": "string",
             "GraphQLAPIIdOutput": "string",
             "GraphQLAPIEndpointOutput": "string"

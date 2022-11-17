@@ -1,12 +1,13 @@
 import React, { FC } from "react";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 
 // custom components
 import { colors } from "../components/shared/colors";
 import { RootStackParams } from "../navigators/Navigation";
+import { Auth } from "aws-amplify";
 
 const Settings: FC<
   NativeStackScreenProps<RootStackParams, "Settings">
@@ -19,6 +20,14 @@ const Settings: FC<
           <Text>Imagine pretty Settings here for now</Text>
           <Text>⚙️⚙️</Text>
           <Text>Ooooh...ahhhh.....</Text>
+          <Pressable
+            onPress={() => {
+              Auth.signOut();
+            }}
+            style={{ width: "100%", backgroundColor: colors.redDark }}
+          >
+            <Text>Sign Out</Text>
+          </Pressable>
         </View>
       </View>
     </>

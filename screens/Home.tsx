@@ -21,6 +21,10 @@ import { listSortedBudgets } from "../src/models/Fund/queries";
 import { FundButtonProps } from "../components/FundButtons/types";
 import { fundDataHardCoded } from "../components/shared/fundData";
 
+//Amplify
+import { DataStore } from "@aws-amplify/datastore";
+import { Fund } from "../src/models";
+
 const TOP_FOLD_HEIGHT_PERCENTAGE = 0.328;
 const BOTTOM_FOLD_HEIGHT_PERCENTAGE = 1 - TOP_FOLD_HEIGHT_PERCENTAGE;
 const SAFE_STATUS_BAR_HEIGHT = 44;
@@ -29,25 +33,31 @@ const Home: FC<NativeStackScreenProps<RootStackParams, "Home">> = ({
   navigation,
 }) => {
   const [toggledRight, setToggleRight] = useState(false);
-  const [fundData, setFundData] = useState<FundButtonProps[]>();
+  const [fundData, setFundData] = useState<Fund[]>();
+  const [budgetData, setBudgetData] = useState<FundButtonProps>();
+  const [goalData, setGoalData] = useState<FundButtonProps>();
 
-  async function fetchData() {
-    try {
-      const fundData = await callGraphQL<ByPlacementIndexQuery>(
-        listSortedBudgets
-      );
-      const budgets = mapListBudgets(fundData);
-      console.log(JSON.stringify(fundData, 0, 5));
-      console.log(JSON.stringify(budgets, 0, 5));
-      setFundData(budgets);
-    } catch (error) {
-      console.error("Error fetching budgets", error);
-    }
+  // async function fetchData() {
+  //   try {
+  //     const fundData = await callGraphQL<ByPlacementIndexQuery>(
+  //       listSortedBudgets
+  //     );
+  //     const budgets = mapListBudgets(fundData);
+  //     console.log(JSON.stringify(fundData, 0, 5));
+  //     console.log(JSON.stringify(budgets, 0, 5));
+  //     setFundData(budgets);
+  //   } catch (error) {
+  //     console.error("Error fetching budgets", error);
+  //   }
+  // }
+
+  // const fetchData = async () => {};
+
+  async function fetchFunds() {
+    const funds = await DataStore.query(Fund);
+    setFundData(funds);
   }
-
-  useEffect(() => {
-    fetchData();
-  }, []);
+  useEffect(async () => await fetchFunds(), []);
 
   const toggleSwitch = () => {
     setToggleRight((prevState) => {

@@ -28,6 +28,7 @@ import { AnimatedTabBar } from "./tabBarComponents/AnimatedTabBar";
 import Settings from "../screens/Settings";
 import FundDetails from "../screens/FundDetails";
 import { EditBudget } from "../screens/EditBudget";
+import { NewBudget } from "../screens/NewBudget";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { ScreenHeight } from "../components/shared/sizes";
 import { textStyles } from "../components/shared/textStyles";
@@ -110,7 +111,7 @@ const HomeStack = () => {
       />
       <Stack.Screen
         name="NewBudget"
-        component={EditBudget}
+        component={NewBudget}
         options={{
           headerTitle: "New Budget",
           headerShown: true,

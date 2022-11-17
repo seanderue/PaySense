@@ -1,38 +1,6 @@
-type Transaction @model @auth(rules: [{ allow: public }, { allow: owner }]) {
-  id: ID!
-  name: String!
-  amount: Float!
-  date: AWSDate
-  memo: String
-  iso_currency_code: String
-  FundID: ID! @index(name: "byFund")
-}
-
-type FundOptions @model @auth(rules: [{ allow: public }, { allow: owner }]) {
-  id: ID!
-  monthly_allocation: Float
-  is_paused: Boolean
-  pause_duration_hours: Float
-  category: Categories
-  FundRules: [FundRule] @hasMany(indexName: "byFundOptions", fields: ["id"])
-}
-
-type FundRule @model @auth(rules: [{ allow: public }, { allow: owner }]) {
-  id: ID!
-  name: String!
-  description: String
-  Fund_optionsID: ID! @index(name: "byFundOptions")
-}
-
-enum Categories {
-  NEED
-  SAVE
-  WANT
-}
-
 enum FundTypes {
-  GOAL
   BUDGET
+  GOAL
 }
 
 type Fund @model @auth(rules: [{ allow: public }, { allow: owner }]) {
@@ -50,4 +18,36 @@ type Fund @model @auth(rules: [{ allow: public }, { allow: owner }]) {
     )
   FundOptions: FundOptions @hasOne
   Transactions: [Transaction] @hasMany(indexName: "byFund", fields: ["id"])
+}
+
+type FundRule @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  name: String!
+  description: String
+  fundoptionsID: ID! @index(name: "byFundOptions")
+}
+
+enum Categories {
+  NEED
+  SAVE
+  WANT
+}
+
+type FundOptions @model @auth(rules: [{ allow: public }, { allow: owner }]) {
+  id: ID!
+  monthly_allocation: Float
+  is_paused: Boolean
+  pause_duration_hours: Float
+  categories: Categories
+  FundRules: [FundRule] @hasMany(indexName: "byFundOptions", fields: ["id"])
+}
+
+type Transaction @model @auth(rules: [{ allow: public }, { allow: owner }]) {
+  id: ID!
+  name: String!
+  amount: Float!
+  date: AWSDate!
+  memo: String
+  iso_currency_code: String
+  fundID: ID! @index(name: "byFund")
 }

@@ -12,14 +12,14 @@
       "AmplifyAppId": "d3avqrpx0oguck"
     },
     "categories": {
-      "auth": {
-        "paysensea0b1768b": {}
-      },
       "storage": {
         "s3paysensestorage93c8a870": {}
       },
+      "auth": {
+        "paysensee5a37ece": {}
+      },
       "api": {
-        "PaySense": {}
+        "paysense": {}
       }
     }
   }

@@ -1,17 +1,18 @@
 import { SkiaMutableValue } from "@shopify/react-native-skia";
-
+import { FundTypes } from "../../src/models";
 //May need to update the type of icon
 //May want to make a custom enum type for flags
 
 export interface FundButtonProps {
   id: string;
   title: string;
-  balance: number;
   emojiIcon: string;
+  fundBalance: number;
+  totalFundSize: number;
+  placementIndex: number;
+  fundType: FundTypes;
+  percentRemaining?: number;
   flag?: boolean;
-  percentRemaining: number;
-  fundType: string;
-  placement_index: number;
 }
 
 export interface FundButtonSectionProps {
@@ -26,7 +27,7 @@ export interface FundButtonPageProps {
 
 export interface FundButtonDetailsProps {
   title: string;
-  balance: number;
+  fundBalance: number;
   percentRemaining: number;
 }
 

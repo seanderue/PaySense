@@ -1,35 +1,19 @@
-import {
-  Canvas,
-  Group,
-  SkiaMutableValue,
-  useFont,
-} from "@shopify/react-native-skia";
+import { Canvas, Group } from "@shopify/react-native-skia";
 import React, { FC } from "react";
 import { StyleSheet, View, Text } from "react-native";
 import { DonutGradientPath } from "./DonutGradientPath";
 
 const FONT_SIZE = 30;
 
-import { BalanceIconProps } from "./types";
+import { FundIconProps } from "./types";
 
-export const BalanceIcon: FC<BalanceIconProps> = ({
+export const FundIcon: FC<FundIconProps> = ({
   emoji,
   percentRemaining,
   strokeWidth,
   iconFontSize,
   radius,
 }) => {
-  //Will this have to load for every component?
-  //It is really heavy and prevents quick loading
-  const font = useFont(
-    require("../../assets/fonts/NotoColorEmoji-Regular.ttf"),
-    FONT_SIZE
-  );
-
-  if (font === null) {
-    return null;
-  }
-
   const iconWidth = FONT_SIZE;
   const innerRadius = radius - strokeWidth / 2;
 

@@ -1,10 +1,10 @@
 {
-  "AppSyncApiName": "PaySense",
+  "AppSyncApiName": "paysense",
   "DynamoDBBillingMode": "PAY_PER_REQUEST",
   "DynamoDBEnableServerSideEncryption": false,
   "AuthCognitoUserPoolId": {
     "Fn::GetAtt": [
-      "authpaysensea0b1768b",
+      "authpaysensee5a37ece",
       "Outputs.UserPoolId"
     ]
   }

@@ -3,6 +3,7 @@ export const colors = {
   white: "#fff",
   black: "#000",
   primary: "#543EE0",
+  primaryDisabled: "#543ee080",
   //Neutrals
   neutral9: "#F4F5F6",
   neutral8: "#FCFCFD",

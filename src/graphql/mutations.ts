@@ -2,6 +2,279 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const createFundRule = /* GraphQL */ `
+  mutation CreateFundRule(
+    $input: CreateFundRuleInput!
+    $condition: ModelFundRuleConditionInput
+  ) {
+    createFundRule(input: $input, condition: $condition) {
+      id
+      name
+      description
+      fundoptionsID
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateFundRule = /* GraphQL */ `
+  mutation UpdateFundRule(
+    $input: UpdateFundRuleInput!
+    $condition: ModelFundRuleConditionInput
+  ) {
+    updateFundRule(input: $input, condition: $condition) {
+      id
+      name
+      description
+      fundoptionsID
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteFundRule = /* GraphQL */ `
+  mutation DeleteFundRule(
+    $input: DeleteFundRuleInput!
+    $condition: ModelFundRuleConditionInput
+  ) {
+    deleteFundRule(input: $input, condition: $condition) {
+      id
+      name
+      description
+      fundoptionsID
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const createFund = /* GraphQL */ `
+  mutation CreateFund(
+    $input: CreateFundInput!
+    $condition: ModelFundConditionInput
+  ) {
+    createFund(input: $input, condition: $condition) {
+      id
+      title
+      icon
+      fund_balance
+      total_fund_size
+      placement_index
+      type
+      FundOptions {
+        id
+        monthly_allocation
+        is_paused
+        pause_duration_hours
+        categories
+        FundRules {
+          nextToken
+        }
+        createdAt
+        updatedAt
+        owner
+      }
+      Transactions {
+        items {
+          id
+          name
+          amount
+          date
+          memo
+          iso_currency_code
+          fundID
+          createdAt
+          updatedAt
+          owner
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+      fundFundOptionsId
+      owner
+    }
+  }
+`;
+export const updateFund = /* GraphQL */ `
+  mutation UpdateFund(
+    $input: UpdateFundInput!
+    $condition: ModelFundConditionInput
+  ) {
+    updateFund(input: $input, condition: $condition) {
+      id
+      title
+      icon
+      fund_balance
+      total_fund_size
+      placement_index
+      type
+      FundOptions {
+        id
+        monthly_allocation
+        is_paused
+        pause_duration_hours
+        categories
+        FundRules {
+          nextToken
+        }
+        createdAt
+        updatedAt
+        owner
+      }
+      Transactions {
+        items {
+          id
+          name
+          amount
+          date
+          memo
+          iso_currency_code
+          fundID
+          createdAt
+          updatedAt
+          owner
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+      fundFundOptionsId
+      owner
+    }
+  }
+`;
+export const deleteFund = /* GraphQL */ `
+  mutation DeleteFund(
+    $input: DeleteFundInput!
+    $condition: ModelFundConditionInput
+  ) {
+    deleteFund(input: $input, condition: $condition) {
+      id
+      title
+      icon
+      fund_balance
+      total_fund_size
+      placement_index
+      type
+      FundOptions {
+        id
+        monthly_allocation
+        is_paused
+        pause_duration_hours
+        categories
+        FundRules {
+          nextToken
+        }
+        createdAt
+        updatedAt
+        owner
+      }
+      Transactions {
+        items {
+          id
+          name
+          amount
+          date
+          memo
+          iso_currency_code
+          fundID
+          createdAt
+          updatedAt
+          owner
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+      fundFundOptionsId
+      owner
+    }
+  }
+`;
+export const createFundOptions = /* GraphQL */ `
+  mutation CreateFundOptions(
+    $input: CreateFundOptionsInput!
+    $condition: ModelFundOptionsConditionInput
+  ) {
+    createFundOptions(input: $input, condition: $condition) {
+      id
+      monthly_allocation
+      is_paused
+      pause_duration_hours
+      categories
+      FundRules {
+        items {
+          id
+          name
+          description
+          fundoptionsID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+      owner
+    }
+  }
+`;
+export const updateFundOptions = /* GraphQL */ `
+  mutation UpdateFundOptions(
+    $input: UpdateFundOptionsInput!
+    $condition: ModelFundOptionsConditionInput
+  ) {
+    updateFundOptions(input: $input, condition: $condition) {
+      id
+      monthly_allocation
+      is_paused
+      pause_duration_hours
+      categories
+      FundRules {
+        items {
+          id
+          name
+          description
+          fundoptionsID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+      owner
+    }
+  }
+`;
+export const deleteFundOptions = /* GraphQL */ `
+  mutation DeleteFundOptions(
+    $input: DeleteFundOptionsInput!
+    $condition: ModelFundOptionsConditionInput
+  ) {
+    deleteFundOptions(input: $input, condition: $condition) {
+      id
+      monthly_allocation
+      is_paused
+      pause_duration_hours
+      categories
+      FundRules {
+        items {
+          id
+          name
+          description
+          fundoptionsID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+      owner
+    }
+  }
+`;
 export const createTransaction = /* GraphQL */ `
   mutation CreateTransaction(
     $input: CreateTransactionInput!
@@ -14,12 +287,9 @@ export const createTransaction = /* GraphQL */ `
       date
       memo
       iso_currency_code
-      balanceID
+      fundID
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       owner
     }
   }
@@ -36,12 +306,9 @@ export const updateTransaction = /* GraphQL */ `
       date
       memo
       iso_currency_code
-      balanceID
+      fundID
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       owner
     }
   }
@@ -58,354 +325,9 @@ export const deleteTransaction = /* GraphQL */ `
       date
       memo
       iso_currency_code
-      balanceID
+      fundID
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      owner
-    }
-  }
-`;
-export const createBalanceOptions = /* GraphQL */ `
-  mutation CreateBalanceOptions(
-    $input: CreateBalanceOptionsInput!
-    $condition: ModelBalanceOptionsConditionInput
-  ) {
-    createBalanceOptions(input: $input, condition: $condition) {
-      id
-      monthly_allocation
-      is_paused
-      pause_duration_hours
-      category
-      BalanceRules {
-        items {
-          id
-          name
-          description
-          balance_optionsID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-          owner
-        }
-        nextToken
-        startedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      owner
-    }
-  }
-`;
-export const updateBalanceOptions = /* GraphQL */ `
-  mutation UpdateBalanceOptions(
-    $input: UpdateBalanceOptionsInput!
-    $condition: ModelBalanceOptionsConditionInput
-  ) {
-    updateBalanceOptions(input: $input, condition: $condition) {
-      id
-      monthly_allocation
-      is_paused
-      pause_duration_hours
-      category
-      BalanceRules {
-        items {
-          id
-          name
-          description
-          balance_optionsID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-          owner
-        }
-        nextToken
-        startedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      owner
-    }
-  }
-`;
-export const deleteBalanceOptions = /* GraphQL */ `
-  mutation DeleteBalanceOptions(
-    $input: DeleteBalanceOptionsInput!
-    $condition: ModelBalanceOptionsConditionInput
-  ) {
-    deleteBalanceOptions(input: $input, condition: $condition) {
-      id
-      monthly_allocation
-      is_paused
-      pause_duration_hours
-      category
-      BalanceRules {
-        items {
-          id
-          name
-          description
-          balance_optionsID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-          owner
-        }
-        nextToken
-        startedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      owner
-    }
-  }
-`;
-export const createBalanceRule = /* GraphQL */ `
-  mutation CreateBalanceRule(
-    $input: CreateBalanceRuleInput!
-    $condition: ModelBalanceRuleConditionInput
-  ) {
-    createBalanceRule(input: $input, condition: $condition) {
-      id
-      name
-      description
-      balance_optionsID
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      owner
-    }
-  }
-`;
-export const updateBalanceRule = /* GraphQL */ `
-  mutation UpdateBalanceRule(
-    $input: UpdateBalanceRuleInput!
-    $condition: ModelBalanceRuleConditionInput
-  ) {
-    updateBalanceRule(input: $input, condition: $condition) {
-      id
-      name
-      description
-      balance_optionsID
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      owner
-    }
-  }
-`;
-export const deleteBalanceRule = /* GraphQL */ `
-  mutation DeleteBalanceRule(
-    $input: DeleteBalanceRuleInput!
-    $condition: ModelBalanceRuleConditionInput
-  ) {
-    deleteBalanceRule(input: $input, condition: $condition) {
-      id
-      name
-      description
-      balance_optionsID
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      owner
-    }
-  }
-`;
-export const createBalance = /* GraphQL */ `
-  mutation CreateBalance(
-    $input: CreateBalanceInput!
-    $condition: ModelBalanceConditionInput
-  ) {
-    createBalance(input: $input, condition: $condition) {
-      id
-      title
-      icon
-      fund_balance
-      total_fund_size
-      placement_index
-      type
-      BalanceOptions {
-        id
-        monthly_allocation
-        is_paused
-        pause_duration_hours
-        category
-        BalanceRules {
-          nextToken
-          startedAt
-        }
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-        owner
-      }
-      Transactions {
-        items {
-          id
-          name
-          amount
-          date
-          memo
-          iso_currency_code
-          balanceID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-          owner
-        }
-        nextToken
-        startedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      balanceBalanceOptionsId
-      owner
-    }
-  }
-`;
-export const updateBalance = /* GraphQL */ `
-  mutation UpdateBalance(
-    $input: UpdateBalanceInput!
-    $condition: ModelBalanceConditionInput
-  ) {
-    updateBalance(input: $input, condition: $condition) {
-      id
-      title
-      icon
-      fund_balance
-      total_fund_size
-      placement_index
-      type
-      BalanceOptions {
-        id
-        monthly_allocation
-        is_paused
-        pause_duration_hours
-        category
-        BalanceRules {
-          nextToken
-          startedAt
-        }
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-        owner
-      }
-      Transactions {
-        items {
-          id
-          name
-          amount
-          date
-          memo
-          iso_currency_code
-          balanceID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-          owner
-        }
-        nextToken
-        startedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      balanceBalanceOptionsId
-      owner
-    }
-  }
-`;
-export const deleteBalance = /* GraphQL */ `
-  mutation DeleteBalance(
-    $input: DeleteBalanceInput!
-    $condition: ModelBalanceConditionInput
-  ) {
-    deleteBalance(input: $input, condition: $condition) {
-      id
-      title
-      icon
-      fund_balance
-      total_fund_size
-      placement_index
-      type
-      BalanceOptions {
-        id
-        monthly_allocation
-        is_paused
-        pause_duration_hours
-        category
-        BalanceRules {
-          nextToken
-          startedAt
-        }
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-        owner
-      }
-      Transactions {
-        items {
-          id
-          name
-          amount
-          date
-          memo
-          iso_currency_code
-          balanceID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-          owner
-        }
-        nextToken
-        startedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      balanceBalanceOptionsId
       owner
     }
   }

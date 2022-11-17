@@ -8,7 +8,7 @@ export const fundDataHardCoded: FundButtonProps[] = [
     emojiIcon: "",
     percentRemaining: 0.69,
     fundType: "BUDGET",
-    placement_index: 1,
+    placementIndex: 1,
   },
   {
     id: "2",
@@ -17,7 +17,7 @@ export const fundDataHardCoded: FundButtonProps[] = [
     emojiIcon: "🍎",
     percentRemaining: 0.5,
     fundType: "BUDGET",
-    placement_index: 2,
+    placementIndex: 2,
   },
   {
     id: "3",
@@ -26,7 +26,7 @@ export const fundDataHardCoded: FundButtonProps[] = [
     emojiIcon: "🎉",
     percentRemaining: 0.8,
     fundType: "BUDGET",
-    placement_index: 3,
+    placementIndex: 3,
   },
   {
     id: "4",
@@ -35,7 +35,7 @@ export const fundDataHardCoded: FundButtonProps[] = [
     emojiIcon: "🍗",
     percentRemaining: 0.23,
     fundType: "BUDGET",
-    placement_index: 4,
+    placementIndex: 4,
   },
   {
     id: "5",
@@ -44,7 +44,7 @@ export const fundDataHardCoded: FundButtonProps[] = [
     emojiIcon: "⛽️",
     percentRemaining: 0.45,
     fundType: "BUDGET",
-    placement_index: 5,
+    placementIndex: 5,
   },
   {
     id: "6",
@@ -53,7 +53,7 @@ export const fundDataHardCoded: FundButtonProps[] = [
     emojiIcon: "⛳️",
     percentRemaining: 0.73,
     fundType: "BUDGET",
-    placement_index: 6,
+    placementIndex: 6,
   },
   {
     id: "7",
@@ -62,7 +62,7 @@ export const fundDataHardCoded: FundButtonProps[] = [
     emojiIcon: "💸",
     percentRemaining: 0.05,
     fundType: "BUDGET",
-    placement_index: 7,
+    placementIndex: 7,
   },
   {
     id: "8",
@@ -71,7 +71,7 @@ export const fundDataHardCoded: FundButtonProps[] = [
     emojiIcon: "📦",
     percentRemaining: 1,
     fundType: "BUDGET",
-    placement_index: 8,
+    placementIndex: 8,
   },
   {
     id: "9",
@@ -80,7 +80,7 @@ export const fundDataHardCoded: FundButtonProps[] = [
     emojiIcon: "💪",
     percentRemaining: 0.23,
     fundType: "BUDGET",
-    placement_index: 9,
+    placementIndex: 9,
   },
   {
     id: "10",
@@ -89,7 +89,7 @@ export const fundDataHardCoded: FundButtonProps[] = [
     emojiIcon: "👾",
     percentRemaining: 0.9,
     fundType: "BUDGET",
-    placement_index: 10,
+    placementIndex: 10,
   },
   {
     id: "11",
@@ -98,7 +98,7 @@ export const fundDataHardCoded: FundButtonProps[] = [
     emojiIcon: "⛪️",
     percentRemaining: 0.96,
     fundType: "BUDGET",
-    placement_index: 11,
+    placementIndex: 11,
   },
   {
     id: "12",
@@ -107,7 +107,7 @@ export const fundDataHardCoded: FundButtonProps[] = [
     emojiIcon: "🛟",
     percentRemaining: 0.8,
     fundType: "BUDGET",
-    placement_index: 12,
+    placementIndex: 12,
   },
   {
     id: "13",
@@ -116,7 +116,7 @@ export const fundDataHardCoded: FundButtonProps[] = [
     emojiIcon: "🛟",
     percentRemaining: 0.8,
     fundType: "BUDGET",
-    placement_index: 13,
+    placementIndex: 13,
   },
   {
     id: "14",
@@ -125,7 +125,7 @@ export const fundDataHardCoded: FundButtonProps[] = [
     emojiIcon: "🛟",
     percentRemaining: 0.8,
     fundType: "BUDGET",
-    placement_index: 14,
+    placementIndex: 14,
   },
   {
     id: "15",
@@ -134,7 +134,7 @@ export const fundDataHardCoded: FundButtonProps[] = [
     emojiIcon: "🛟",
     percentRemaining: 0.8,
     fundType: "BUDGET",
-    placement_index: 15,
+    placementIndex: 15,
   },
   {
     id: "16",
@@ -143,7 +143,7 @@ export const fundDataHardCoded: FundButtonProps[] = [
     emojiIcon: "🛟",
     percentRemaining: 0.8,
     fundType: "BUDGET",
-    placement_index: 16,
+    placementIndex: 16,
   },
 ];
 

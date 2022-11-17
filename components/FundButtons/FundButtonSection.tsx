@@ -15,8 +15,8 @@ export const FundButtonSection: FC<FundButtonSectionProps> = ({
   goalsToggled,
 }) => {
   const [activeData, setActiveData] = useState(fundData);
-  console.log("data in section component");
-  console.log(fundData);
+  // console.log("data in section component");
+  // console.log(fundData);
 
   // Used to track pagination
   const [activePage, setActivePage] = useState(0);

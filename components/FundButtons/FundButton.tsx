@@ -30,36 +30,37 @@ import { StackNavigationProp } from "@react-navigation/stack";
 export const FundButton: FC<FundButtonProps> = ({
   // title,
   // emojiIcon,
-  // balance,
+  // fundBalance,
   // percentRemaining,
   // id,
   // fundType,
 
   id,
   title,
-  balance,
+  fundBalance,
+  totalFundSize,
   emojiIcon,
   flag,
-  percentRemaining,
   fundType,
-  placement_index,
+  placementIndex,
 }) => {
   const navigation = useNavigation<StackNavigationProp<RootStackParams>>();
   const chartAnimationState = useValue(0);
   const opacity = useSharedValue(0);
   const scale = useSharedValue(0);
+  const PERCENT_REMAINING = fundBalance / totalFundSize;
 
   // Skia Animation
   const animateChart = () => {
     console.log(`${fundType} donut ${id} pressed`);
     chartAnimationState.current = 0;
-    runTiming(chartAnimationState, 1 - percentRemaining, {
+    runTiming(chartAnimationState, 1 - PERCENT_REMAINING, {
       duration: 1250,
       easing: SkEasing.inOut(SkEasing.cubic),
     });
   };
 
-  const DELAY = placement_index * 75;
+  const DELAY = placementIndex * 75;
 
   const animatedStyles = useAnimatedStyle(() => {
     return {
@@ -98,12 +99,13 @@ export const FundButton: FC<FundButtonProps> = ({
     navigation.navigate("FundDetails", {
       id: id,
       title: title,
-      balance: balance,
       emojiIcon: emojiIcon,
-      flag: flag,
-      percentRemaining: percentRemaining,
+      fundBalance: fundBalance,
+      totalFundSize: totalFundSize,
+      placementIndex: placementIndex,
       fundType: fundType,
-      placement_index: placement_index,
+      percentRemaining: PERCENT_REMAINING,
+      flag: flag,
     });
   };
 
@@ -125,8 +127,8 @@ export const FundButton: FC<FundButtonProps> = ({
       </Pressable>
       <FundButtonDetails
         title={title}
-        balance={balance}
-        percentRemaining={percentRemaining}
+        fundBalance={fundBalance}
+        percentRemaining={fundBalance / totalFundSize}
       />
     </Animated.View>
   );

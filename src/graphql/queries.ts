@@ -2,255 +2,40 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const getTransaction = /* GraphQL */ `
-  query GetTransaction($id: ID!) {
-    getTransaction(id: $id) {
-      id
-      name
-      amount
-      date
-      memo
-      iso_currency_code
-      balanceID
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      owner
-    }
-  }
-`;
-export const listTransactions = /* GraphQL */ `
-  query ListTransactions(
-    $filter: ModelTransactionFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listTransactions(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        name
-        amount
-        date
-        memo
-        iso_currency_code
-        balanceID
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-        owner
-      }
-      nextToken
-      startedAt
-    }
-  }
-`;
-export const syncTransactions = /* GraphQL */ `
-  query SyncTransactions(
-    $filter: ModelTransactionFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncTransactions(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        name
-        amount
-        date
-        memo
-        iso_currency_code
-        balanceID
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-        owner
-      }
-      nextToken
-      startedAt
-    }
-  }
-`;
-export const getBalanceOptions = /* GraphQL */ `
-  query GetBalanceOptions($id: ID!) {
-    getBalanceOptions(id: $id) {
-      id
-      monthly_allocation
-      is_paused
-      pause_duration_hours
-      category
-      BalanceRules {
-        items {
-          id
-          name
-          description
-          balance_optionsID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-          owner
-        }
-        nextToken
-        startedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      owner
-    }
-  }
-`;
-export const listBalanceOptions = /* GraphQL */ `
-  query ListBalanceOptions(
-    $filter: ModelBalanceOptionsFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listBalanceOptions(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        monthly_allocation
-        is_paused
-        pause_duration_hours
-        category
-        BalanceRules {
-          nextToken
-          startedAt
-        }
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-        owner
-      }
-      nextToken
-      startedAt
-    }
-  }
-`;
-export const syncBalanceOptions = /* GraphQL */ `
-  query SyncBalanceOptions(
-    $filter: ModelBalanceOptionsFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncBalanceOptions(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        monthly_allocation
-        is_paused
-        pause_duration_hours
-        category
-        BalanceRules {
-          nextToken
-          startedAt
-        }
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-        owner
-      }
-      nextToken
-      startedAt
-    }
-  }
-`;
-export const getBalanceRule = /* GraphQL */ `
-  query GetBalanceRule($id: ID!) {
-    getBalanceRule(id: $id) {
+export const getFundRule = /* GraphQL */ `
+  query GetFundRule($id: ID!) {
+    getFundRule(id: $id) {
       id
       name
       description
-      balance_optionsID
+      fundoptionsID
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      owner
     }
   }
 `;
-export const listBalanceRules = /* GraphQL */ `
-  query ListBalanceRules(
-    $filter: ModelBalanceRuleFilterInput
+export const listFundRules = /* GraphQL */ `
+  query ListFundRules(
+    $filter: ModelFundRuleFilterInput
     $limit: Int
     $nextToken: String
   ) {
-    listBalanceRules(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    listFundRules(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
         name
         description
-        balance_optionsID
+        fundoptionsID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-        owner
       }
       nextToken
-      startedAt
     }
   }
 `;
-export const syncBalanceRules = /* GraphQL */ `
-  query SyncBalanceRules(
-    $filter: ModelBalanceRuleFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncBalanceRules(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        name
-        description
-        balance_optionsID
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-        owner
-      }
-      nextToken
-      startedAt
-    }
-  }
-`;
-export const getBalance = /* GraphQL */ `
-  query GetBalance($id: ID!) {
-    getBalance(id: $id) {
+export const getFund = /* GraphQL */ `
+  query GetFund($id: ID!) {
+    getFund(id: $id) {
       id
       title
       icon
@@ -258,21 +43,17 @@ export const getBalance = /* GraphQL */ `
       total_fund_size
       placement_index
       type
-      BalanceOptions {
+      FundOptions {
         id
         monthly_allocation
         is_paused
         pause_duration_hours
-        category
-        BalanceRules {
+        categories
+        FundRules {
           nextToken
-          startedAt
         }
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         owner
       }
       Transactions {
@@ -283,34 +64,27 @@ export const getBalance = /* GraphQL */ `
           date
           memo
           iso_currency_code
-          balanceID
+          fundID
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      balanceBalanceOptionsId
+      fundFundOptionsId
       owner
     }
   }
 `;
-export const listBalances = /* GraphQL */ `
-  query ListBalances(
-    $filter: ModelBalanceFilterInput
+export const listFunds = /* GraphQL */ `
+  query ListFunds(
+    $filter: ModelFundFilterInput
     $limit: Int
     $nextToken: String
   ) {
-    listBalances(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    listFunds(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
         title
@@ -319,93 +93,34 @@ export const listBalances = /* GraphQL */ `
         total_fund_size
         placement_index
         type
-        BalanceOptions {
+        FundOptions {
           id
           monthly_allocation
           is_paused
           pause_duration_hours
-          category
+          categories
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         Transactions {
           nextToken
-          startedAt
         }
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-        balanceBalanceOptionsId
+        fundFundOptionsId
         owner
       }
       nextToken
-      startedAt
-    }
-  }
-`;
-export const syncBalances = /* GraphQL */ `
-  query SyncBalances(
-    $filter: ModelBalanceFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncBalances(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        title
-        icon
-        fund_balance
-        total_fund_size
-        placement_index
-        type
-        BalanceOptions {
-          id
-          monthly_allocation
-          is_paused
-          pause_duration_hours
-          category
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-          owner
-        }
-        Transactions {
-          nextToken
-          startedAt
-        }
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-        balanceBalanceOptionsId
-        owner
-      }
-      nextToken
-      startedAt
     }
   }
 `;
 export const byPlacementIndex = /* GraphQL */ `
   query ByPlacementIndex(
-    $type: BalanceTypes!
+    $type: FundTypes!
     $placement_index: ModelIntKeyConditionInput
     $sortDirection: ModelSortDirection
-    $filter: ModelBalanceFilterInput
+    $filter: ModelFundFilterInput
     $limit: Int
     $nextToken: String
   ) {
@@ -425,33 +140,113 @@ export const byPlacementIndex = /* GraphQL */ `
         total_fund_size
         placement_index
         type
-        BalanceOptions {
+        FundOptions {
           id
           monthly_allocation
           is_paused
           pause_duration_hours
-          category
+          categories
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           owner
         }
         Transactions {
           nextToken
-          startedAt
         }
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-        balanceBalanceOptionsId
+        fundFundOptionsId
         owner
       }
       nextToken
-      startedAt
+    }
+  }
+`;
+export const getFundOptions = /* GraphQL */ `
+  query GetFundOptions($id: ID!) {
+    getFundOptions(id: $id) {
+      id
+      monthly_allocation
+      is_paused
+      pause_duration_hours
+      categories
+      FundRules {
+        items {
+          id
+          name
+          description
+          fundoptionsID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+      owner
+    }
+  }
+`;
+export const listFundOptions = /* GraphQL */ `
+  query ListFundOptions(
+    $filter: ModelFundOptionsFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listFundOptions(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        monthly_allocation
+        is_paused
+        pause_duration_hours
+        categories
+        FundRules {
+          nextToken
+        }
+        createdAt
+        updatedAt
+        owner
+      }
+      nextToken
+    }
+  }
+`;
+export const getTransaction = /* GraphQL */ `
+  query GetTransaction($id: ID!) {
+    getTransaction(id: $id) {
+      id
+      name
+      amount
+      date
+      memo
+      iso_currency_code
+      fundID
+      createdAt
+      updatedAt
+      owner
+    }
+  }
+`;
+export const listTransactions = /* GraphQL */ `
+  query ListTransactions(
+    $filter: ModelTransactionFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listTransactions(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        name
+        amount
+        date
+        memo
+        iso_currency_code
+        fundID
+        createdAt
+        updatedAt
+        owner
+      }
+      nextToken
     }
   }
 `;

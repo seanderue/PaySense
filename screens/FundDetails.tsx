@@ -40,15 +40,15 @@ const FundDetails: FC<
 > = ({ navigation }) => {
   // Route params
   const route: DetailsScreenRouteProp = useRoute();
-  const { title, emojiIcon, balance, percentRemaining, id, fundType } =
+  const { title, emojiIcon, fundBalance, totalFundSize, id, fundType } =
     route.params;
-
+  const PERCENT_REMAINING = fundBalance / totalFundSize;
   // Skia Animation
   const chartAnimationState = useValue(0);
 
   const animateChart = () => {
     chartAnimationState.current = 0;
-    runTiming(chartAnimationState, 1 - percentRemaining, {
+    runTiming(chartAnimationState, 1 - PERCENT_REMAINING, {
       duration: 1250,
       easing: Easing.inOut(Easing.cubic),
     });
@@ -97,7 +97,7 @@ const FundDetails: FC<
           <Text style={[styles.amountTitle]}>Total {"\n"}Balance:</Text>
           <View style={styles.amountContainer}>
             <Text style={[styles.amountSymbol]}>$</Text>
-            <Text style={[styles.amountLabel]}>{balance}</Text>
+            <Text style={[styles.amountLabel]}>{fundBalance}</Text>
           </View>
         </View>
         <View style={styles.buttonContainer}>

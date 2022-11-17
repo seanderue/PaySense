@@ -2,6 +2,270 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const onCreateFundRule = /* GraphQL */ `
+  subscription OnCreateFundRule($filter: ModelSubscriptionFundRuleFilterInput) {
+    onCreateFundRule(filter: $filter) {
+      id
+      name
+      description
+      fundoptionsID
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateFundRule = /* GraphQL */ `
+  subscription OnUpdateFundRule($filter: ModelSubscriptionFundRuleFilterInput) {
+    onUpdateFundRule(filter: $filter) {
+      id
+      name
+      description
+      fundoptionsID
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteFundRule = /* GraphQL */ `
+  subscription OnDeleteFundRule($filter: ModelSubscriptionFundRuleFilterInput) {
+    onDeleteFundRule(filter: $filter) {
+      id
+      name
+      description
+      fundoptionsID
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateFund = /* GraphQL */ `
+  subscription OnCreateFund(
+    $filter: ModelSubscriptionFundFilterInput
+    $owner: String
+  ) {
+    onCreateFund(filter: $filter, owner: $owner) {
+      id
+      title
+      icon
+      fund_balance
+      total_fund_size
+      placement_index
+      type
+      FundOptions {
+        id
+        monthly_allocation
+        is_paused
+        pause_duration_hours
+        categories
+        FundRules {
+          nextToken
+        }
+        createdAt
+        updatedAt
+        owner
+      }
+      Transactions {
+        items {
+          id
+          name
+          amount
+          date
+          memo
+          iso_currency_code
+          fundID
+          createdAt
+          updatedAt
+          owner
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+      fundFundOptionsId
+      owner
+    }
+  }
+`;
+export const onUpdateFund = /* GraphQL */ `
+  subscription OnUpdateFund(
+    $filter: ModelSubscriptionFundFilterInput
+    $owner: String
+  ) {
+    onUpdateFund(filter: $filter, owner: $owner) {
+      id
+      title
+      icon
+      fund_balance
+      total_fund_size
+      placement_index
+      type
+      FundOptions {
+        id
+        monthly_allocation
+        is_paused
+        pause_duration_hours
+        categories
+        FundRules {
+          nextToken
+        }
+        createdAt
+        updatedAt
+        owner
+      }
+      Transactions {
+        items {
+          id
+          name
+          amount
+          date
+          memo
+          iso_currency_code
+          fundID
+          createdAt
+          updatedAt
+          owner
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+      fundFundOptionsId
+      owner
+    }
+  }
+`;
+export const onDeleteFund = /* GraphQL */ `
+  subscription OnDeleteFund(
+    $filter: ModelSubscriptionFundFilterInput
+    $owner: String
+  ) {
+    onDeleteFund(filter: $filter, owner: $owner) {
+      id
+      title
+      icon
+      fund_balance
+      total_fund_size
+      placement_index
+      type
+      FundOptions {
+        id
+        monthly_allocation
+        is_paused
+        pause_duration_hours
+        categories
+        FundRules {
+          nextToken
+        }
+        createdAt
+        updatedAt
+        owner
+      }
+      Transactions {
+        items {
+          id
+          name
+          amount
+          date
+          memo
+          iso_currency_code
+          fundID
+          createdAt
+          updatedAt
+          owner
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+      fundFundOptionsId
+      owner
+    }
+  }
+`;
+export const onCreateFundOptions = /* GraphQL */ `
+  subscription OnCreateFundOptions(
+    $filter: ModelSubscriptionFundOptionsFilterInput
+    $owner: String
+  ) {
+    onCreateFundOptions(filter: $filter, owner: $owner) {
+      id
+      monthly_allocation
+      is_paused
+      pause_duration_hours
+      categories
+      FundRules {
+        items {
+          id
+          name
+          description
+          fundoptionsID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+      owner
+    }
+  }
+`;
+export const onUpdateFundOptions = /* GraphQL */ `
+  subscription OnUpdateFundOptions(
+    $filter: ModelSubscriptionFundOptionsFilterInput
+    $owner: String
+  ) {
+    onUpdateFundOptions(filter: $filter, owner: $owner) {
+      id
+      monthly_allocation
+      is_paused
+      pause_duration_hours
+      categories
+      FundRules {
+        items {
+          id
+          name
+          description
+          fundoptionsID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+      owner
+    }
+  }
+`;
+export const onDeleteFundOptions = /* GraphQL */ `
+  subscription OnDeleteFundOptions(
+    $filter: ModelSubscriptionFundOptionsFilterInput
+    $owner: String
+  ) {
+    onDeleteFundOptions(filter: $filter, owner: $owner) {
+      id
+      monthly_allocation
+      is_paused
+      pause_duration_hours
+      categories
+      FundRules {
+        items {
+          id
+          name
+          description
+          fundoptionsID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+      owner
+    }
+  }
+`;
 export const onCreateTransaction = /* GraphQL */ `
   subscription OnCreateTransaction(
     $filter: ModelSubscriptionTransactionFilterInput
@@ -14,12 +278,9 @@ export const onCreateTransaction = /* GraphQL */ `
       date
       memo
       iso_currency_code
-      balanceID
+      fundID
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       owner
     }
   }
@@ -36,12 +297,9 @@ export const onUpdateTransaction = /* GraphQL */ `
       date
       memo
       iso_currency_code
-      balanceID
+      fundID
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       owner
     }
   }
@@ -58,354 +316,9 @@ export const onDeleteTransaction = /* GraphQL */ `
       date
       memo
       iso_currency_code
-      balanceID
+      fundID
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      owner
-    }
-  }
-`;
-export const onCreateBalanceOptions = /* GraphQL */ `
-  subscription OnCreateBalanceOptions(
-    $filter: ModelSubscriptionBalanceOptionsFilterInput
-    $owner: String
-  ) {
-    onCreateBalanceOptions(filter: $filter, owner: $owner) {
-      id
-      monthly_allocation
-      is_paused
-      pause_duration_hours
-      category
-      BalanceRules {
-        items {
-          id
-          name
-          description
-          balance_optionsID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-          owner
-        }
-        nextToken
-        startedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      owner
-    }
-  }
-`;
-export const onUpdateBalanceOptions = /* GraphQL */ `
-  subscription OnUpdateBalanceOptions(
-    $filter: ModelSubscriptionBalanceOptionsFilterInput
-    $owner: String
-  ) {
-    onUpdateBalanceOptions(filter: $filter, owner: $owner) {
-      id
-      monthly_allocation
-      is_paused
-      pause_duration_hours
-      category
-      BalanceRules {
-        items {
-          id
-          name
-          description
-          balance_optionsID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-          owner
-        }
-        nextToken
-        startedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      owner
-    }
-  }
-`;
-export const onDeleteBalanceOptions = /* GraphQL */ `
-  subscription OnDeleteBalanceOptions(
-    $filter: ModelSubscriptionBalanceOptionsFilterInput
-    $owner: String
-  ) {
-    onDeleteBalanceOptions(filter: $filter, owner: $owner) {
-      id
-      monthly_allocation
-      is_paused
-      pause_duration_hours
-      category
-      BalanceRules {
-        items {
-          id
-          name
-          description
-          balance_optionsID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-          owner
-        }
-        nextToken
-        startedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      owner
-    }
-  }
-`;
-export const onCreateBalanceRule = /* GraphQL */ `
-  subscription OnCreateBalanceRule(
-    $filter: ModelSubscriptionBalanceRuleFilterInput
-    $owner: String
-  ) {
-    onCreateBalanceRule(filter: $filter, owner: $owner) {
-      id
-      name
-      description
-      balance_optionsID
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      owner
-    }
-  }
-`;
-export const onUpdateBalanceRule = /* GraphQL */ `
-  subscription OnUpdateBalanceRule(
-    $filter: ModelSubscriptionBalanceRuleFilterInput
-    $owner: String
-  ) {
-    onUpdateBalanceRule(filter: $filter, owner: $owner) {
-      id
-      name
-      description
-      balance_optionsID
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      owner
-    }
-  }
-`;
-export const onDeleteBalanceRule = /* GraphQL */ `
-  subscription OnDeleteBalanceRule(
-    $filter: ModelSubscriptionBalanceRuleFilterInput
-    $owner: String
-  ) {
-    onDeleteBalanceRule(filter: $filter, owner: $owner) {
-      id
-      name
-      description
-      balance_optionsID
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      owner
-    }
-  }
-`;
-export const onCreateBalance = /* GraphQL */ `
-  subscription OnCreateBalance(
-    $filter: ModelSubscriptionBalanceFilterInput
-    $owner: String
-  ) {
-    onCreateBalance(filter: $filter, owner: $owner) {
-      id
-      title
-      icon
-      fund_balance
-      total_fund_size
-      placement_index
-      type
-      BalanceOptions {
-        id
-        monthly_allocation
-        is_paused
-        pause_duration_hours
-        category
-        BalanceRules {
-          nextToken
-          startedAt
-        }
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-        owner
-      }
-      Transactions {
-        items {
-          id
-          name
-          amount
-          date
-          memo
-          iso_currency_code
-          balanceID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-          owner
-        }
-        nextToken
-        startedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      balanceBalanceOptionsId
-      owner
-    }
-  }
-`;
-export const onUpdateBalance = /* GraphQL */ `
-  subscription OnUpdateBalance(
-    $filter: ModelSubscriptionBalanceFilterInput
-    $owner: String
-  ) {
-    onUpdateBalance(filter: $filter, owner: $owner) {
-      id
-      title
-      icon
-      fund_balance
-      total_fund_size
-      placement_index
-      type
-      BalanceOptions {
-        id
-        monthly_allocation
-        is_paused
-        pause_duration_hours
-        category
-        BalanceRules {
-          nextToken
-          startedAt
-        }
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-        owner
-      }
-      Transactions {
-        items {
-          id
-          name
-          amount
-          date
-          memo
-          iso_currency_code
-          balanceID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-          owner
-        }
-        nextToken
-        startedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      balanceBalanceOptionsId
-      owner
-    }
-  }
-`;
-export const onDeleteBalance = /* GraphQL */ `
-  subscription OnDeleteBalance(
-    $filter: ModelSubscriptionBalanceFilterInput
-    $owner: String
-  ) {
-    onDeleteBalance(filter: $filter, owner: $owner) {
-      id
-      title
-      icon
-      fund_balance
-      total_fund_size
-      placement_index
-      type
-      BalanceOptions {
-        id
-        monthly_allocation
-        is_paused
-        pause_duration_hours
-        category
-        BalanceRules {
-          nextToken
-          startedAt
-        }
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-        owner
-      }
-      Transactions {
-        items {
-          id
-          name
-          amount
-          date
-          memo
-          iso_currency_code
-          balanceID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-          owner
-        }
-        nextToken
-        startedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      balanceBalanceOptionsId
       owner
     }
   }

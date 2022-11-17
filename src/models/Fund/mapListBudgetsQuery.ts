@@ -32,7 +32,7 @@ function mapListBudgetsQuery(
       (budget) =>
         ({
           id: budget?.id,
-          placement_index: budget?.placement_index,
+          placementIndex: budget?.placement_index,
           title: budget?.title,
           balance: budget?.fund_balance || -69.0,
           emojiIcon: budget?.icon,

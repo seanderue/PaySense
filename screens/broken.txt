@@ -1,0 +1,33 @@
+      <Pressable
+        onPress={async () => {
+          console.log(newFund(newFundTemplate));
+          console.log(`new Fund: ${await (await queryFunds()).at(0)}`);
+        }}
+        style={{ width: "100%", backgroundColor: colors.gradientBlue }}
+      >
+        <Text>New template fund</Text>
+      </Pressable>
+      <TextInput
+        value={fund?.title ?? ""}
+        onChangeText={(newText) => {
+          /**
+           * Each keypress updates the fund in local react state.
+           */
+          setFund(
+            Fund.copyOf(fund!, (draft) => {
+              draft.title = newText;
+            })
+          );
+        }}
+      />
+      <Pressable
+        onPress={async () => {
+          /**
+           * This post is already up to date because observeQuery updated it.
+           */
+          await DataStore.save(fund!);
+          console.log("Post saved");
+        }}
+      >
+        <Text>Save</Text>
+      </Pressable>

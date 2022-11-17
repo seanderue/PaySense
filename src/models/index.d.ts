@@ -1,148 +1,189 @@
 import { ModelInit, MutableModel } from "@aws-amplify/datastore";
 // @ts-ignore
-import { LazyLoading, LazyLoadingDisabled, AsyncCollection, AsyncItem } from "@aws-amplify/datastore";
+import {
+  LazyLoading,
+  LazyLoadingDisabled,
+  AsyncItem,
+  AsyncCollection,
+} from "@aws-amplify/datastore";
+
+export enum FundTypes {
+  BUDGET = "BUDGET",
+  GOAL = "GOAL",
+}
 
 export enum Categories {
   NEED = "NEED",
   SAVE = "SAVE",
-  WANT = "WANT"
+  WANT = "WANT",
 }
 
-export enum BalanceTypes {
-  GOAL = "GOAL",
-  BUDGET = "BUDGET"
-}
+type FundMetaData = {
+  readOnlyFields: "createdAt" | "updatedAt";
+};
+
+type FundOptionsMetaData = {
+  readOnlyFields: "createdAt" | "updatedAt";
+};
+
+type FundRuleMetaData = {
+  readOnlyFields: "createdAt" | "updatedAt";
+};
 
 type TransactionMetaData = {
-  readOnlyFields: 'createdAt' | 'updatedAt';
-}
+  readOnlyFields: "createdAt" | "updatedAt";
+};
 
-type BalanceOptionsMetaData = {
-  readOnlyFields: 'createdAt' | 'updatedAt';
-}
+type EagerFund = {
+  readonly id: string;
+  readonly title: string;
+  readonly icon: string;
+  readonly fund_balance: number;
+  readonly total_fund_size: number;
+  readonly placement_index: number;
+  readonly type: FundTypes | keyof typeof FundTypes;
+  readonly FundOptions?: FundOptions | null;
+  readonly Transactions?: (Transaction | null)[] | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+  readonly fundFundOptionsId?: string | null;
+};
 
-type BalanceRuleMetaData = {
-  readOnlyFields: 'createdAt' | 'updatedAt';
-}
+type LazyFund = {
+  readonly id: string;
+  readonly title: string;
+  readonly icon: string;
+  readonly fund_balance: number;
+  readonly total_fund_size: number;
+  readonly placement_index: number;
+  readonly type: FundTypes | keyof typeof FundTypes;
+  readonly FundOptions: AsyncItem<FundOptions | undefined>;
+  readonly Transactions: AsyncCollection<Transaction>;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+  readonly fundFundOptionsId?: string | null;
+};
 
-type BalanceMetaData = {
-  readOnlyFields: 'createdAt' | 'updatedAt';
-}
+export declare type Fund = LazyLoading extends LazyLoadingDisabled
+  ? EagerFund
+  : LazyFund;
+
+export declare const Fund: (new (
+  init: ModelInit<Fund, FundMetaData>
+) => Fund) & {
+  copyOf(
+    source: Fund,
+    mutator: (
+      draft: MutableModel<Fund, FundMetaData>
+    ) => MutableModel<Fund, FundMetaData> | void
+  ): Fund;
+};
+
+type EagerFundOptions = {
+  readonly id: string;
+  readonly monthly_allocation?: number | null;
+  readonly is_paused?: boolean | null;
+  readonly pause_duration_hours?: number | null;
+  readonly categories?: Categories | keyof typeof Categories | null;
+  readonly FundRules?: (FundRule | null)[] | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+};
+
+type LazyFundOptions = {
+  readonly id: string;
+  readonly monthly_allocation?: number | null;
+  readonly is_paused?: boolean | null;
+  readonly pause_duration_hours?: number | null;
+  readonly categories?: Categories | keyof typeof Categories | null;
+  readonly FundRules: AsyncCollection<FundRule>;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+};
+
+export declare type FundOptions = LazyLoading extends LazyLoadingDisabled
+  ? EagerFundOptions
+  : LazyFundOptions;
+
+export declare const FundOptions: (new (
+  init: ModelInit<FundOptions, FundOptionsMetaData>
+) => FundOptions) & {
+  copyOf(
+    source: FundOptions,
+    mutator: (
+      draft: MutableModel<FundOptions, FundOptionsMetaData>
+    ) => MutableModel<FundOptions, FundOptionsMetaData> | void
+  ): FundOptions;
+};
+
+type EagerFundRule = {
+  readonly id: string;
+  readonly name: string;
+  readonly description?: string | null;
+  readonly fundoptionsID: string;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+};
+
+type LazyFundRule = {
+  readonly id: string;
+  readonly name: string;
+  readonly description?: string | null;
+  readonly fundoptionsID: string;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+};
+
+export declare type FundRule = LazyLoading extends LazyLoadingDisabled
+  ? EagerFundRule
+  : LazyFundRule;
+
+export declare const FundRule: (new (
+  init: ModelInit<FundRule, FundRuleMetaData>
+) => FundRule) & {
+  copyOf(
+    source: FundRule,
+    mutator: (
+      draft: MutableModel<FundRule, FundRuleMetaData>
+    ) => MutableModel<FundRule, FundRuleMetaData> | void
+  ): FundRule;
+};
 
 type EagerTransaction = {
   readonly id: string;
   readonly name: string;
   readonly amount: number;
-  readonly date?: string | null;
+  readonly date: string;
   readonly memo?: string | null;
   readonly iso_currency_code?: string | null;
-  readonly balanceID: string;
+  readonly fundID: string;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
-}
+};
 
 type LazyTransaction = {
   readonly id: string;
   readonly name: string;
   readonly amount: number;
-  readonly date?: string | null;
+  readonly date: string;
   readonly memo?: string | null;
   readonly iso_currency_code?: string | null;
-  readonly balanceID: string;
+  readonly fundID: string;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
-}
+};
 
-export declare type Transaction = LazyLoading extends LazyLoadingDisabled ? EagerTransaction : LazyTransaction
+export declare type Transaction = LazyLoading extends LazyLoadingDisabled
+  ? EagerTransaction
+  : LazyTransaction;
 
-export declare const Transaction: (new (init: ModelInit<Transaction, TransactionMetaData>) => Transaction) & {
-  copyOf(source: Transaction, mutator: (draft: MutableModel<Transaction, TransactionMetaData>) => MutableModel<Transaction, TransactionMetaData> | void): Transaction;
-}
-
-type EagerBalanceOptions = {
-  readonly id: string;
-  readonly monthly_allocation?: number | null;
-  readonly is_paused?: boolean | null;
-  readonly pause_duration_hours?: number | null;
-  readonly category?: Categories | keyof typeof Categories | null;
-  readonly BalanceRules?: (BalanceRule | null)[] | null;
-  readonly createdAt?: string | null;
-  readonly updatedAt?: string | null;
-}
-
-type LazyBalanceOptions = {
-  readonly id: string;
-  readonly monthly_allocation?: number | null;
-  readonly is_paused?: boolean | null;
-  readonly pause_duration_hours?: number | null;
-  readonly category?: Categories | keyof typeof Categories | null;
-  readonly BalanceRules: AsyncCollection<BalanceRule>;
-  readonly createdAt?: string | null;
-  readonly updatedAt?: string | null;
-}
-
-export declare type BalanceOptions = LazyLoading extends LazyLoadingDisabled ? EagerBalanceOptions : LazyBalanceOptions
-
-export declare const BalanceOptions: (new (init: ModelInit<BalanceOptions, BalanceOptionsMetaData>) => BalanceOptions) & {
-  copyOf(source: BalanceOptions, mutator: (draft: MutableModel<BalanceOptions, BalanceOptionsMetaData>) => MutableModel<BalanceOptions, BalanceOptionsMetaData> | void): BalanceOptions;
-}
-
-type EagerBalanceRule = {
-  readonly id: string;
-  readonly name: string;
-  readonly description?: string | null;
-  readonly balance_optionsID: string;
-  readonly createdAt?: string | null;
-  readonly updatedAt?: string | null;
-}
-
-type LazyBalanceRule = {
-  readonly id: string;
-  readonly name: string;
-  readonly description?: string | null;
-  readonly balance_optionsID: string;
-  readonly createdAt?: string | null;
-  readonly updatedAt?: string | null;
-}
-
-export declare type BalanceRule = LazyLoading extends LazyLoadingDisabled ? EagerBalanceRule : LazyBalanceRule
-
-export declare const BalanceRule: (new (init: ModelInit<BalanceRule, BalanceRuleMetaData>) => BalanceRule) & {
-  copyOf(source: BalanceRule, mutator: (draft: MutableModel<BalanceRule, BalanceRuleMetaData>) => MutableModel<BalanceRule, BalanceRuleMetaData> | void): BalanceRule;
-}
-
-type EagerBalance = {
-  readonly id: string;
-  readonly title: string;
-  readonly icon: string;
-  readonly fund_balance: number;
-  readonly total_fund_size: number;
-  readonly placement_index: number;
-  readonly type: BalanceTypes | keyof typeof BalanceTypes;
-  readonly BalanceOptions?: BalanceOptions | null;
-  readonly Transactions?: (Transaction | null)[] | null;
-  readonly createdAt?: string | null;
-  readonly updatedAt?: string | null;
-  readonly balanceBalanceOptionsId?: string | null;
-}
-
-type LazyBalance = {
-  readonly id: string;
-  readonly title: string;
-  readonly icon: string;
-  readonly fund_balance: number;
-  readonly total_fund_size: number;
-  readonly placement_index: number;
-  readonly type: BalanceTypes | keyof typeof BalanceTypes;
-  readonly BalanceOptions: AsyncItem<BalanceOptions | undefined>;
-  readonly Transactions: AsyncCollection<Transaction>;
-  readonly createdAt?: string | null;
-  readonly updatedAt?: string | null;
-  readonly balanceBalanceOptionsId?: string | null;
-}
-
-export declare type Balance = LazyLoading extends LazyLoadingDisabled ? EagerBalance : LazyBalance
-
-export declare const Balance: (new (init: ModelInit<Balance, BalanceMetaData>) => Balance) & {
-  copyOf(source: Balance, mutator: (draft: MutableModel<Balance, BalanceMetaData>) => MutableModel<Balance, BalanceMetaData> | void): Balance;
-}
+export declare const Transaction: (new (
+  init: ModelInit<Transaction, TransactionMetaData>
+) => Transaction) & {
+  copyOf(
+    source: Transaction,
+    mutator: (
+      draft: MutableModel<Transaction, TransactionMetaData>
+    ) => MutableModel<Transaction, TransactionMetaData> | void
+  ): Transaction;
+};

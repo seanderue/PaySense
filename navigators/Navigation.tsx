@@ -28,7 +28,7 @@ import { AnimatedTabBar } from "./tabBarComponents/AnimatedTabBar";
 import Settings from "../screens/Settings";
 import FundDetails from "../screens/FundDetails";
 import { EditBudget } from "../screens/EditBudget";
-import { NewBudget } from "../screens/NewBudget";
+import { NewBudget } from "../screens/NewBudget(OLD)";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { ScreenHeight } from "../components/shared/sizes";
 import { textStyles } from "../components/shared/textStyles";

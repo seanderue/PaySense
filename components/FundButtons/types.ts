@@ -1,5 +1,5 @@
 import { SkiaMutableValue } from "@shopify/react-native-skia";
-import { FundTypes } from "../../src/models";
+import { Fund, FundTypes } from "../../src/models";
 //May need to update the type of icon
 //May want to make a custom enum type for flags
 
@@ -16,7 +16,7 @@ export interface FundButtonProps {
 }
 
 export interface FundButtonSectionProps {
-  fundData: FundButtonProps[];
+  fundData: Fund[];
   goalsToggled: boolean;
 }
 

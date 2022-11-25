@@ -9,83 +9,142 @@ import { FundButtonProps } from "../components/FundButtons/types";
 import { Predicates } from "aws-amplify";
 
 export const NewBudget: FC = () => {
-  const [latestPlacementIndex, setLatestPlacementIndex] = useState<number>();
-  const initialState = {
-    title: "",
-    icon: "",
-    fund_balance: 0,
-    total_fund_size: 0,
-    placement_index: latestPlacementIndex,
-    type: FundTypes.BUDGET,
-  };
-  const [formState, setFormState] = useState(initialState);
+  const [fund, setFund] = useState<Fund>(
+    new Fund({
+      title: "",
+      icon: "",
+      fund_balance: 0,
+      total_fund_size: 0,
+      placement_index: 0,
+      type: FundTypes.BUDGET,
+    })
+  );
   const [funds, setFunds] = useState<Fund[]>([]);
 
   useEffect(() => {
     fetchFunds();
-    const subscription = DataStore.observe(Fund).subscribe(() => fetchFunds());
-    return () => subscription.unsubscribe();
+    try {
+      const subscription = DataStore.observe(Fund).subscribe(() =>
+        fetchFunds()
+      );
+      return () => subscription.unsubscribe();
+    } catch (error) {
+      console.log("Error subscribing to Fund model", error);
+    }
   }, []);
 
   useEffect(() => {
     console.log(`Latest Placement Index Updated to: ${funds?.length + 1}`);
-    setFormState({ ...formState, placement_index: funds?.length + 1 });
+    setFund(
+      Fund.copyOf(fund!, (draft) => {
+        draft.placement_index = funds?.length + 1;
+      })
+    );
   }, [funds]);
 
   function onChangeText(key: string, value: any) {
-    console.log(formState);
-    setFormState({ ...formState, [key]: value });
+    /**
+     * Each keypress updates the post in local react state.
+     */
+    switch (key) {
+      case "title":
+        setFund(
+          Fund.copyOf(fund!, (draft) => {
+            draft.title = value;
+          })
+        );
+        break;
+      case "icon":
+        setFund(
+          Fund.copyOf(fund!, (draft) => {
+            draft.icon = value;
+          })
+        );
+        break;
+      case "fund_balance":
+        setFund(
+          Fund.copyOf(fund!, (draft) => {
+            draft.fund_balance = value;
+          })
+        );
+        break;
+      case "total_fund_size":
+        setFund(
+          Fund.copyOf(fund!, (draft) => {
+            draft.total_fund_size = value;
+          })
+        );
+        break;
+      default:
+        console.warn(
+          "Key called in onChangeText() does not match a switch case within it"
+        );
+    }
+    console.log(JSON.stringify(fund, null, 2));
   }
 
   async function deleteAllFunds() {
-    await DataStore.delete(Fund, Predicates.ALL);
-    fetchFunds();
+    try {
+      await DataStore.delete(Fund, Predicates.ALL);
+      fetchFunds();
+    } catch (error) {
+      console.log("Error deleting all Fund models", error);
+    }
   }
 
   async function fetchFunds() {
-    const funds = await DataStore.query(Fund);
-    setFunds(funds);
+    try {
+      const funds = await DataStore.query(Fund);
+      setFunds(funds);
+    } catch (error) {
+      console.log("Error querying Fund model", error);
+    }
   }
 
   async function createFund() {
     if (
-      !formState.title ||
-      !formState.icon ||
-      !formState.fund_balance ||
-      !formState.total_fund_size ||
-      !formState.type
+      !fund!.title ||
+      !fund!.icon ||
+      !fund!.fund_balance ||
+      !fund!.total_fund_size ||
+      !fund!.type
     ) {
       console.log("formState returned falsy values");
-      console.log(formState.title ? "title truth" : "title falsy");
-      console.log(formState.icon ? "icon truth" : "icon falsy");
+      console.log(fund!.title ? "title truth" : "title falsy");
+      console.log(fund!.icon ? "icon truth" : "icon falsy");
       console.log(
-        formState.fund_balance ? "fund_balance truth" : "fund_balance falsy"
+        fund!.fund_balance ? "fund_balance truth" : "fund_balance falsy"
       );
       console.log(
-        formState.total_fund_size
+        fund!.total_fund_size
           ? "total_fund_size truth"
           : "total_fund_size falsy"
       );
-      console.log(formState.type ? "type truth" : "type falsy");
-      console.log(formState.title);
+      console.log(fund!.type ? "type truth" : "type falsy");
+      console.log(fund!.title);
       return;
     }
 
-    async () => {
-      // const fundsCount = (await queryFunds()).length;
-      // setFormState({
-      //   ...formState,
-      //   placement_index: 10,
-      // });
-    };
-    await DataStore.save(new Fund({ ...(formState as EagerFund) }));
-    console.log(`placement_index updated to: ${formState.placement_index}`);
-    console.log("new fund saved (hopefully)");
-    setFormState(initialState);
+    try {
+      await DataStore.save(fund!);
+      setFund(
+        new Fund({
+          title: "",
+          icon: "",
+          fund_balance: 0,
+          total_fund_size: 0,
+          placement_index: 0,
+          type: FundTypes.BUDGET,
+        })
+      );
+      console.log("Post saved successfully!");
+    } catch (error) {
+      console.log("Error saving post", error);
+    }
+    console.log(`placement_index updated to: ${fund!.placement_index}`);
+    // setFund();
+    // May need to somehow clear the form here
   }
-
-  // console.log("models:");
-  // console.log(models);
 
   // useEffect(() => {
   //   /**
@@ -103,7 +162,7 @@ export const NewBudget: FC = () => {
   //   };
   // }, []);
 
-  const id = "546fdfd7-b82e-443a-b6a2-b519e956bd68";
+  // const id = "546fdfd7-b82e-443a-b6a2-b519e956bd68";
 
   // const subscription = DataStore.observeQuery(Fund, (f) =>
   //   f.and((f) => f.title.beginsWith(id))
@@ -129,7 +188,12 @@ export const NewBudget: FC = () => {
   // }, []);
 
   const queryFunds = async () => {
-    return await DataStore.query(Fund);
+    try {
+      return await DataStore.query(Fund);
+    } catch (error) {
+      console.log("Error querying Fund model", error);
+      return null;
+    }
   };
 
   const newFundTemplate: FundButtonProps = {
@@ -143,9 +207,29 @@ export const NewBudget: FC = () => {
   };
 
   const deleteFund = async () => {
-    const modelToDelete = await queryFunds();
-    DataStore.delete(modelToDelete[0]);
-    fetchFunds();
+    try {
+      const modelToDelete = await queryFunds();
+      modelToDelete && DataStore.delete(modelToDelete[0]);
+      fetchFunds();
+    } catch (error) {
+      console.log("Error deleting model Fund[0]", error);
+    }
+  };
+
+  const clearLocalStorage = async () => {
+    try {
+      await DataStore.clear();
+    } catch (error) {
+      console.log("Error deleting local storage", error);
+    }
+  };
+
+  const startSync = async () => {
+    try {
+      await DataStore.start();
+    } catch (error) {
+      console.log("Error starting sync", error);
+    }
   };
 
   return (
@@ -155,28 +239,28 @@ export const NewBudget: FC = () => {
       <TextInput
         onChangeText={(value) => onChangeText("title", value)}
         placeholder="Budget Title"
-        value={formState.title}
+        value={fund?.title}
         style={styles.input}
       />
       <Text>Budget Icon</Text>
       <TextInput
         onChangeText={(value) => onChangeText("icon", value)}
         placeholder="Budget Icon"
-        value={formState.icon}
+        value={fund?.icon}
         style={styles.input}
       />
       <Text>Fund Balance</Text>
       <TextInput
         onChangeText={(value) => onChangeText("fund_balance", Number(value))}
         placeholder="Fund Balance"
-        value={`${formState.fund_balance}`}
+        value={`${fund?.fund_balance}`}
         style={styles.input}
       />
       <Text>Fund Size</Text>
       <TextInput
         onChangeText={(value) => onChangeText("total_fund_size", Number(value))}
         placeholder="Fund Size"
-        value={`${formState.total_fund_size}`}
+        value={`${fund?.total_fund_size}`}
         style={styles.input}
       />
       <Pressable
@@ -187,44 +271,41 @@ export const NewBudget: FC = () => {
       </Pressable>
       <Pressable
         onPress={async () => {
-          console.log(await queryFunds());
-          console.log(`funds count: ${(await queryFunds()).length}`);
+          console.log(JSON.stringify(await queryFunds(), null, 4));
+          console.log(
+            `funds count: ${
+              (await queryFunds()) ? funds.length : "queryFunds returned Null"
+            }`
+          );
         }}
         style={[styles.button, { backgroundColor: colors.greenDark }]}
       >
-        <Text>log funds</Text>
+        <Text>log funds count</Text>
       </Pressable>
-      {/* <Pressable
-        onPress={async () => {
-          console.log(newFund(newFundTemplate));
-          console.log(`new Fund: ${await (await queryFunds()).at(0)}`);
-        }}
-        style={[styles.button, { backgroundColor: colors.gradientBlue }]}
-      >
-        <Text>New template fund</Text>
-      </Pressable> */}
       <Pressable
         onPress={() => {
-          setFormState({
-            ...formState,
-            ["placement_index"]: funds?.length + 1,
-          });
           createFund();
         }}
         style={[styles.button, { backgroundColor: colors.gradientBlue }]}
       >
         <Text>Create New fund</Text>
       </Pressable>
-      {/* <Pressable
+      <Pressable
         onPress={() => {
-          setFormState({ ...formState, ["placement_index"]: 69 });
+          console.group();
+          console.log(JSON.stringify(fund, null, 2));
+          console.groupEnd();
+          // console.log(funds)
         }}
         style={[styles.button, { backgroundColor: colors.gradientBlue }]}
       >
-        <Text>Set placement index to 69</Text>
-      </Pressable> */}
+        <Text>Log fund state</Text>
+      </Pressable>
       <Pressable
-        onPress={() => console.log(funds)}
+        onPress={() => {
+          console.log(JSON.stringify(funds, null, 2));
+          // console.log(funds)
+        }}
         style={[styles.button, { backgroundColor: colors.gradientBlue }]}
       >
         <Text>Log funds state</Text>
@@ -240,6 +321,18 @@ export const NewBudget: FC = () => {
         style={[styles.button, { backgroundColor: colors.red }]}
       >
         <Text>Delete ALL funds</Text>
+      </Pressable>
+      <Pressable
+        onPress={() => clearLocalStorage()}
+        style={[styles.button, { backgroundColor: colors.red }]}
+      >
+        <Text>Clear local storage</Text>
+      </Pressable>
+      <Pressable
+        onPress={() => startSync()}
+        style={[styles.button, { backgroundColor: colors.gradientOrange }]}
+      >
+        <Text>Force Sync</Text>
       </Pressable>
     </View>
   );

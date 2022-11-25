@@ -14,6 +14,8 @@ export const FundButtonSection: FC<FundButtonSectionProps> = ({
   fundData,
   goalsToggled,
 }) => {
+  // const useEffect()
+
   const [activeData, setActiveData] = useState(fundData);
   // console.log("data in section component");
   // console.log(fundData);
@@ -23,7 +25,7 @@ export const FundButtonSection: FC<FundButtonSectionProps> = ({
   const [pageCount, setPageCount] = useState(0);
 
   const [FundButtonPageElements, setFundButtonPageElements] = useState([
-    <FundButtonPage data={activeData} key={0} page={0} />,
+    <FundButtonPage data={fundDataHardCoded} key={0} page={0} />,
   ]);
   const scrollRef = useRef<Animated.ScrollView>(null);
 
@@ -46,11 +48,11 @@ export const FundButtonSection: FC<FundButtonSectionProps> = ({
     goalsToggled ? setActiveData(fundData) : setActiveData(fundData);
     goalsToggled
       ? setFundButtonPageElements((prevState) => {
-          return (prevState = populatePages(fundData));
+          return (prevState = populatePages(fundDataHardCoded));
         })
       : setFundButtonPageElements((prevState) => {
           //EVENTUALLY SET THIS TO GOAL DATA
-          return (prevState = populatePages(fundData));
+          return (prevState = populatePages(fundDataHardCoded));
         });
   }, [goalsToggled]);
 

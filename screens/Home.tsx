@@ -57,7 +57,12 @@ const Home: FC<NativeStackScreenProps<RootStackParams, "Home">> = ({
     const funds = await DataStore.query(Fund);
     setFundData(funds);
   }
-  useEffect(async () => await fetchFunds(), []);
+
+  useEffect(() => {
+    fetchFunds();
+    const subscription = DataStore.observe(Fund).subscribe(() => fetchFunds());
+    return () => subscription.unsubscribe();
+  }, []);
 
   const toggleSwitch = () => {
     setToggleRight((prevState) => {

@@ -1,25 +1,23 @@
 # PaySense
-Budgeting Tool
-
 Budgeting is one of the most powerful financial game-changers someone can make. Forecasting your life goals and tracking your progress is no small thing. That said, budgeting apps are too feature-less, too complicated, or too expensive. So my goal with this app was to use the 50/30/20 rule to allow users to personalize a financial GPS in minutes.
 
 ## Features Timeline
-✅ App designed in figma
-✅ Reusable and device-reactive components built with React
-✅ 2D motion graphics created with Skia (Budget animated background, angular gradient on balance rings, etc.)
-✅ Manual expense tracking and categorization with strict type safety for efficient and safe data transfer
-✅ Custom budget dashboard for quick reference
-✅ Balance detail screen & animations
-✅ React Native Tab and Stack Routing with animated tab bar
-✅ Users sign-up, sign-in, & auth flow connecting with AWS Amplify & Cognito
-✅ Built Database schema GraphQL & AWS DataStore and began to store user-specific data in the cloud 
-🪲 Syncing device storage & user interactions with cloud database for offline-first usage
-❌ Add/edit transaction, budget, and goal screens.
-❌ User settings view & functionality.
-❌ Flow for quick budget set-up according to financial questions.
-❌ Automatic expense tracking and categorization using the Plaid API
-❌ 2D graphics for stats page with long-term financial data visualization
-❌ Receipt scanning coming in PaySense 2.0
+- ✅ App designed in figma
+- ✅ Reusable and device-reactive components built with React
+- ✅ 2D motion graphics created with Skia (Budget animated background, angular gradient on balance rings, etc.)
+- ✅ Manual expense tracking and categorization with strict type safety for efficient and safe data transfer
+- ✅ Custom budget dashboard for quick reference
+- ✅ Balance detail screen & animations
+- ✅ React Native Tab and Stack Routing with animated tab bar
+- ✅ Users sign-up, sign-in, & auth flow connecting with AWS Amplify & Cognito
+- ✅ Built Database schema GraphQL & AWS DataStore and began to store user-specific data in the cloud 
+- 🪲 Syncing device storage & user interactions with cloud database for offline-first usage
+- ❌ Add/edit transaction, budget, and goal screens.
+- ❌ User settings view & functionality.
+- ❌ Flow for quick budget set-up according to financial questions.
+- ❌ Automatic expense tracking and categorization using the Plaid API
+- ❌ 2D graphics for stats page with long-term financial data visualization
+- ❌ Receipt scanning coming in PaySense 2.0
 
 
 ## Outcome
